@@ -2,11 +2,11 @@
   color: red;
   position: relative;
 
-  background: url("/.img/FEND-Coffee-latte-art-3-376px.png") no-repeat center/100%;
+  background: url("/image/FEND-Coffee-latte-art-3-376px.png") no-repeat center/100%;
 
   /*Desktop*/
   @media (min-width: 992px) {
-    background: url("/.img/FEND-Coffee-latte-art-3-1440px.png") no-repeat center/100%;
+    background: url("/image/FEND-Coffee-latte-art-3-1440px.png") no-repeat center/100%;
   }
 
 }
