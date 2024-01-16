@@ -7,11 +7,24 @@
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%,-50%);
+  transform: translate(50%, -50%);
   z-index: 10;
 }
 
 .hero-img {
   filter: grayscale(50%);
   z-index: 5;
+
+  /*Smartphone*/
+  @media (min-width: 576px) {
+    background-image: url("/.img/FEND-Coffee-latte-art-3-376px.png");
+    height: 75vh;
+  }
+
+  /*Desktop*/
+  @media (min-width: 992px) {
+    background-image: url("/.img/FEND-Coffee-latte-art-3-1400px.png");
+
+    height: 65vh;
+  }
 }

@@ -4,16 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coffee Roastery</title>
+  <title>FEND Coffee Roastery</title>
   <link rel="stylesheet" href="/css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet" />
 </head>
 
 <body>
   {{> header }}
-  <h1>Hello World Test!</h1>
   <main>
-    <a href="/sub-page/">Link to Subpage</a>
+    <img class="main__hero hero-img"
+      srcset="/.img/FEND-Coffee-latte-art-3-376px.png 376w, /.img/FEND-Coffee-latte-art-3-1440px.png 1440w" sizes="(min-width: 300px) 376px,
+     (min-width: 992px) 1440px" src="/src/.img/FEND-Coffee-latte-art-3-1440px.png"
+      alt="Three Drinks in the air, seen from the top">
     <div>Home</div>
   </main>
   <script src="/js/index.js" type="module"></script>
