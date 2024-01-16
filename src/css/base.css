@@ -5,28 +5,18 @@
 
 body {
   background: grey;
-
-  @media (min-width: 768px) {
-    color: red;
-  }
 }
 
 header {
   position: absolute;
+  left: 2.5%;
+  top: 2.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  color: white;
   z-index: 1;
-}
-
-main {
-  margin: 0 auto;
-  max-width: 1440px;
-
-  & div {
-    color: yellow;
-
-    @media (min-width: 768px) {
-      color: var(--div-color);
-    }
-  }
 }
 
 img {
@@ -34,6 +24,6 @@ img {
   height: auto;
 }
 
-h2 {
-  font-size: var(--h2-font-size);
+h1 {
+  font-size: 500%;
 }

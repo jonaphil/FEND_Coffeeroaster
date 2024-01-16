@@ -1,0 +1,11 @@
+.header {
+    color: white;
+}
+
+.header__logo {
+    height: 3rem;
+}
+
+.header__menu {
+    height: 1.5rem;
+}
