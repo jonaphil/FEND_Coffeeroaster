@@ -1,0 +1,19 @@
+/* This CSS is for control-elements, like buttons, scrolls, lists, etc.*/
+
+.button {
+    background-color: var(--color-button-default);
+    color: var(--color-button-font);
+    padding: 15px 50px 15px 50px;
+    width: 163px;
+    height: 48px;
+    border-radius: 5px;
+    border: 2px;
+    white-space: nowrap;
+
+    & a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+}
