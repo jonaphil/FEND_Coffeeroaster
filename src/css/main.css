@@ -3,5 +3,6 @@
 @import "components/hero.css";
 @import "components/header.css";
 @import "components/footer.css";
-@import "components/start-page.css";
+@import "components/layout.css";
 @import "components/control-elements.css";
+@import "components/index.css";

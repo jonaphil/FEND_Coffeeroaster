@@ -17,3 +17,7 @@
     }
 
 }
+
+.button:hover {
+    background-color: var(--color-button-hovered);
+}

@@ -1,0 +1,35 @@
+.wrapper--vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper--horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-items: center;
+}
+
+.section {
+    padding: 0 var(--default-margin-sides) 4rem;
+}
+
+.section--dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-white);
+}
+
+.text-flow {}
+
+.text-flow__image {
+    width: 75%;
+    margin-top: 2rem;
+}
+
+.text-flow__image--align-right {
+    align-self: end;
+}
+
+.text-flow__image--align-left {
+    align-self: start;
+}
