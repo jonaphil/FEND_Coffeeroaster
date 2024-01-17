@@ -15,7 +15,7 @@
 
 .hero-title {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -28,13 +28,7 @@
   line-height: 75px;
 }
 
-.hero-title-sub {
-  display: block;
-  font-weight: 400;
-  font-size: 18px;
-  text-align: center;
-  line-height: 21px;
-}
+.hero-title-sub {}
 
 .hero-button {
   position: absolute;

@@ -19,8 +19,6 @@
     color: var(--color-white);
 }
 
-.text-flow {}
-
 .text-flow__image {
     width: 75%;
     margin-top: 2rem;

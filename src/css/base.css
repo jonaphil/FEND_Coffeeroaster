@@ -60,11 +60,20 @@ h3 {
   padding-bottom: var(--header-margin-bottom);
 }
 
+h5 {
+  /* subhead */
+  display: block;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  line-height: 21px;
+}
+
 p {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.3;
   text-align: left;
-  margin-top: var(--paragraph-margin-top);
-  margin-bottom: var(--paragraph-margin-bottom);
+  padding-top: var(--paragraph-margin-top);
+  padding-bottom: var(--paragraph-margin-bottom);
 }

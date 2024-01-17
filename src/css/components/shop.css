@@ -1,0 +1,26 @@
+.shop-preview {
+    margin: 10% auto;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 5%;
+}
+
+.product-preview__image {
+    background-color: var(--color-background-product);
+}
+
+.product-preview__name {
+    padding: 1rem auto 0;
+    text-align: left;
+}
+
+.product-preview__price-tag {
+    color: var(--color-text-price-tag);
+    padding: 0;
+
+}
+
+.product-preview__icon {
+    width: 10%;
+    color: white;
+}

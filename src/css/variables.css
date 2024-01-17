@@ -16,6 +16,10 @@
   --color-background-white: var(--color-white);
   --color-background-dark: var(--color-anthrazit);
 
+  --color-background-product: var(--color-light-grey);
+
+  --color-text-price-tag: var(--color-medium-grey);
+
   /* Text Styles */
 
   /* Layouting */
