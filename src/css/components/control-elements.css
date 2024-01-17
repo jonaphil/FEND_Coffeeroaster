@@ -4,11 +4,11 @@
     background-color: var(--color-button-default);
     color: var(--color-button-font);
     padding: 15px 50px 15px 50px;
-    width: 163px;
-    height: 48px;
+    width: fit-content;
+    height: auto;
     border-radius: 5px;
-    border: 2px;
-    white-space: nowrap;
+    border: 3px solid var(--color-white);
+    text-align: center;
 
     & a {
         display: block;
@@ -19,5 +19,11 @@
 }
 
 .button:hover {
-    background-color: var(--color-button-hovered);
+    background-color: var(--color-button-hover);
+}
+
+.button--standalone {
+    position: relative;
+    margin-top: 2rem;
+    align-self: center;
 }

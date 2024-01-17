@@ -35,6 +35,10 @@
   bottom: 12%;
   left: 50%;
   transform: translate(-50%, 50%);
+
+  & button {
+    border: none;
+  }
 }
 
 .hero-img {

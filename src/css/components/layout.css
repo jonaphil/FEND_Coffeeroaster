@@ -11,6 +11,8 @@
 }
 
 .section {
+    display: flex;
+    flex-direction: column;
     padding: 0 var(--default-margin-sides) 4rem;
 }
 
