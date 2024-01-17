@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FEND Coffee Roastery</title>
   <link rel="stylesheet" href="/css/main.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet" />
   <!--//FIXME making the font run on every device-->
 </head>
 
@@ -17,16 +17,35 @@
     <!--TODO: Create a workingboard/storyboard with the important elements-->
     <div class="hero">
       <div class="hero-title">
-        <h1>Rustica</h1>
-        <p>Bio und Fair seit 1991</p> <!--FIXME: positioning on the site-->
+        <h1>
+          <span class="hero-title-main">Rustica</span>
+          <span class="hero-title-sub">Bio und Fair seit 1991</span>
+        </h1>
+
       </div>
+      <a class="hero-button" href="/subpages/shop.hml"><button class="button">zum Shop</button></a>
     </div>
+
     <div class="home">
-      <div class="about">test</div>
-      <div class="entdecke">test</div>
-      <div class="origin">test</div>
-      <div class="steckt-drin">test</div>
-      <div class="map">test</div>
+      <div class="about">
+        <h2>Rösterei & Café</h2>
+        <h2>Bio und Fair</h2>
+      </div>
+      <div class="entdecke">
+        <h2>Entdecke unsere Kaffee Sorten</h2>
+      </div>
+      <div class="origin">
+        <h2>Herkunft</h2>
+
+      </div>
+      <div class="steckt-drin">
+        <h2>Das steckt drin</h2>
+
+      </div>
+      <div class="map">
+        <h2>Komm vorbei</h2>
+
+      </div>
     </div>
   </main>
   {{> footer}}

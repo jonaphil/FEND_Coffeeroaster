@@ -1,13 +1,13 @@
 .hero {
-  position: static;
+  position: relative;
   top: 0;
-  background: url("/images/FEND-Coffee-latte-art-3-376px.png") no-repeat top/75vh;
+  background: url("/images/FEND-Coffee-latte-art-3-376px.png") no-repeat center/cover;
   height: 75vh;
   color: white;
 
   /*Desktop*/
   @media (min-width: 992px) {
-    background: url("/images/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/65vh;
+    background: url("/images/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/cover;
     height: 65vh;
   }
 
@@ -16,10 +16,31 @@
 .hero-title {
   position: absolute;
   top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   color: white;
+}
+
+.hero-title-main {
+  display: block;
+  text-align: center;
+  line-height: 75px;
+}
+
+.hero-title-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  line-height: 21px;
+}
+
+.hero-button {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .hero-img {

@@ -1,7 +1,21 @@
 :root {
   /* Colors */
-  --div-color: red;
+
+  /*
+  white: #FFFFFF;
+  anthrazit: #1A1A1A;
+  Kraftpapier: #D7BE9D;
+  petrol: #006D7E;
+  rosa: #EDD1C9;
+  orange: #D77C12;
+  medium grey: #737373;
+  light grey: #E9E9E9;
+  */
+  --color-button-default: #1A1A1A;
+  --color-button-font: #FFFFFF;
+  --color-button-hovered: #3A3734;
 
   /* Text Styles */
-  --h2-font-size: 26px;
+  --h1-font-size: 4rem;
+  --h2-font-size: 3rem;
 }
