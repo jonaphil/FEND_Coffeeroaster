@@ -1,0 +1,24 @@
+.home {
+    position: relative;
+    margin: 0 0;
+}
+
+.about {
+    background: white;
+}
+
+.entdecke {
+    background: black;
+}
+
+.origin {
+    background: red;
+}
+
+.steckt-drin {
+    background: white;
+}
+
+.map {
+    background: white;
+}

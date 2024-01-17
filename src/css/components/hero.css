@@ -1,13 +1,13 @@
 .hero {
-  position: relative;
+  position: static;
   top: 0;
-  background: url("/images/FEND-Coffee-latte-art-3-376px.png") no-repeat top/100%;
+  background: url("/images/FEND-Coffee-latte-art-3-376px.png") no-repeat top/75vh;
   height: 75vh;
   color: white;
 
   /*Desktop*/
   @media (min-width: 992px) {
-    background: url("/images/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/100%;
+    background: url("/images/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/65vh;
     height: 65vh;
   }
 
@@ -15,7 +15,7 @@
 
 .hero-title {
   position: absolute;
-  top: 40%;
+  top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   z-index: 10;

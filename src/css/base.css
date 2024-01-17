@@ -4,13 +4,26 @@
 }
 
 body {
-  background: white;
+  background: grey;
+}
+
+main {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
 }
 
 header {
   position: absolute;
   width: 100%;
 }
+
+footer {
+  background: black;
+}
+
+/*TODO: Define Text-element-styling */
 
 img {
   max-width: 100%;
