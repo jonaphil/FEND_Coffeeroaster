@@ -33,3 +33,21 @@
 .text-flow__image--align-left {
     align-self: start;
 }
+
+.information-block {
+    margin: auto 15%;
+    top: 50%;
+    transform: translate(0 -50%);
+
+    & * {
+        text-align: center;
+    }
+
+    & a {
+        margin-top: 1rem;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+
+    }
+}

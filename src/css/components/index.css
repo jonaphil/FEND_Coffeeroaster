@@ -2,3 +2,13 @@
     position: relative;
     background-color: var(--color-background-white);
 }
+
+.home__origin {
+    background-image:
+        linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
+        url("/images/FEND-Coffee-bags-2-512px.png");
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
