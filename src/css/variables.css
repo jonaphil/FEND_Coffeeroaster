@@ -25,9 +25,7 @@
   /* Layouting */
   --default-margin-sides: 24px;
 
-  --header-margin-top: 3rem;
-  --header-margin-bottom: 0;
+  --header-margin-bottom: 2rem;
 
-  --paragraph-margin-top: 1rem;
-  --paragraph-margin-bottom: 0rem;
+  --paragraph-margin-bottom: 2rem;
 }

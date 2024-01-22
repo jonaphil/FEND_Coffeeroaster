@@ -19,7 +19,7 @@
 .section {
     display: flex;
     flex-direction: column;
-    padding: 0 var(--default-margin-sides) 4rem;
+    padding: 3rem var(--default-margin-sides) 0;
 }
 
 .section--dark {
@@ -31,11 +31,28 @@
 
 .section--information {
     /* FIXME: Empty class - does it make sense? For structuring yes. For coding, no!*/
+    margin-bottom: 3rem;
+
+    & h1,
+    & h2,
+    & h3,
+    & h4 {
+        margin-bottom: 1rem;
+    }
+
+    & p {
+        margin-bottom: 1rem;
+    }
+}
+
+.section--information:last-child {
+    margin-bottom: 0;
 }
 
 .section--information__image {
     width: 75%;
     margin-top: 2rem;
+    margin-bottom: 3rem;
 }
 
 .section--information__image--align-right {
@@ -82,13 +99,12 @@
 .section--shop-preview__button--standalone {
     margin-top: 3rem;
     margin-bottom: -3rem;
-    /* FIXME: Positioning of the button on the site */
     display: block;
     grid-column: span 2;
     justify-self: center;
 }
 
-.information-block {
+.section--information-teaser__text-block {
     margin: auto 15%;
     top: 50%;
     transform: translate(0 -50%);
