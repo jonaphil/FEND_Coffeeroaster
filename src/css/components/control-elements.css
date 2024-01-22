@@ -21,9 +21,3 @@
 .button:hover {
     background-color: var(--color-button-hover);
 }
-
-.button--standalone {
-    position: relative;
-    margin-top: 2rem;
-    align-self: center;
-}

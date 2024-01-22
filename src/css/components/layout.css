@@ -1,3 +1,5 @@
+/* # Universal Wrapper*/
+
 .wrapper--vertical {
     display: flex;
     flex-direction: column;
@@ -10,6 +12,10 @@
     justify-items: center;
 }
 
+/* # Block Elements */
+
+/* ## Section*/
+
 .section {
     display: flex;
     flex-direction: column;
@@ -21,17 +27,65 @@
     color: var(--color-white);
 }
 
-.text-flow__image {
+/* ### Section--information*/
+
+.section--information {
+    /* FIXME: Empty class - does it make sense? For structuring yes. For coding, no!*/
+}
+
+.section--information__image {
     width: 75%;
     margin-top: 2rem;
 }
 
-.text-flow__image--align-right {
+.section--information__image--align-right {
     align-self: end;
 }
 
-.text-flow__image--align-left {
+.section--information__image--align-left {
     align-self: start;
+}
+
+/* ### Section--shop-preview */
+
+.section--shop-preview {
+    margin: 10% auto;
+    display: grid;
+    grid-template: auto / repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.section--shop-preview__heading {
+    grid-column: span 2;
+}
+
+.section--shop-preview__product__image {
+    background-color: var(--color-background-product);
+}
+
+.section--shop-preview__product__name {
+    margin: 0.5rem auto 0;
+    text-align: left;
+}
+
+.section--shop-preview__product__price-tag {
+    color: var(--color-text-price-tag);
+    padding: 0;
+
+}
+
+.section--shop-preview__product__icon {
+    width: 0.8rem;
+    fill: white;
+}
+
+.section--shop-preview__button--standalone {
+    margin-top: 3rem;
+    margin-bottom: -3rem;
+    /* FIXME: Positioning of the button on the site */
+    display: block;
+    grid-column: span 2;
+    justify-self: center;
 }
 
 .information-block {
