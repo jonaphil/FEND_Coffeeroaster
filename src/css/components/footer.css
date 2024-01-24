@@ -1,0 +1,36 @@
+.footer {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    padding: 3rem var(--default-margin-sides);
+    gap: 2rem;
+
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    & ul {
+        list-style: none;
+    }
+}
+
+.footer__headline {
+    grid-column: span 2;
+
+    & img {
+        height: 2.5rem;
+        margin: 1rem 0;
+    }
+
+    & h5 {
+        text-align: left;
+    }
+}
+
+.footer__info {
+    align-self: end;
+}
+
+.footer__links {
+    align-self: start;
+}

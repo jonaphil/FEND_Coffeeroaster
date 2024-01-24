@@ -97,17 +97,44 @@
 }
 
 .section--shop-preview__button--standalone {
-    margin-top: 3rem;
-    margin-bottom: -3rem;
     display: block;
     grid-column: span 2;
     justify-self: center;
+    /* TODO Die Border von diesem Button mit in die Definition von .section--dark einfügen */
+}
+
+/* ### section--information-teaser */
+
+.section--information-teaser {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.section--information-teaser__background-image {
+    width: 100vw;
+    height: fit-content;
+
+    & img {
+        height: 100%;
+    }
+
+    & div {
+        /*Overlay for the picture*/
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: inherit;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 .section--information-teaser__text-block {
+    position: absolute;
     margin: auto 15%;
     top: 50%;
-    transform: translate(0 -50%);
+    transform: translate(0, -50%);
+    z-index: 5;
 
     & * {
         text-align: center;
@@ -119,5 +146,63 @@
         text-decoration: none;
         color: inherit;
 
+    }
+}
+
+/* ### About Product */
+
+.section--about-product {
+    align-items: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+
+    &>img {
+        min-width: 250px;
+        width: 100%;
+        max-width: 450px;
+
+    }
+
+    &>div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+
+}
+
+.section--about-product__info-icon {
+    width: 4rem;
+
+    & img {
+        width: 45px;
+    }
+
+    & p {
+        text-align: center;
+    }
+}
+
+/* ### Map */
+
+.section--map {
+    padding: 0;
+
+    & h2 {
+        /* the exact same padding as for the main .section class, only for the heading */
+        padding: 3rem var(--default-margin-sides) 0;
+    }
+
+    & img {
+        width: 100vw;
+        z-index: 1;
     }
 }

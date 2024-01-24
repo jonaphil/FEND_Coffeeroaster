@@ -26,6 +26,7 @@ header {
 
 footer {
   background: black;
+  color: white;
 }
 
 /*TODO: Define Text-element-styling 
@@ -57,13 +58,19 @@ h3 {
   line-height: 1.1;
 }
 
+h4 {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
 h5 {
   /* subhead */
   display: block;
   font-weight: 400;
   font-size: 18px;
   text-align: center;
-  line-height: 21px;
+  line-height: 1.1;
 }
 
 p {
