@@ -18,10 +18,16 @@
 
     & * {
         color: inherit;
+
     }
 
 }
 
 .button:hover {
     background-color: var(--color-button-hover);
+    border: red solid 3px;
+}
+
+.button:active {
+    background-color: var(--color-button-active);
 }

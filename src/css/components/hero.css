@@ -20,13 +20,12 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   color: white;
+
+  & * {
+    z-index: inherit;
+  }
 }
 
-.hero-title-main {
-  display: block;
-  text-align: center;
-  line-height: 75px;
-}
 
 .hero-title-sub {}
 

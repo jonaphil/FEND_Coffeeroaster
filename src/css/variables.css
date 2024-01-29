@@ -13,6 +13,7 @@
   --color-button-default: #1A1A1A;
   --color-button-font: var(--color-white);
   --color-button-hover: #3A3734;
+  --color-button-active: var(--color-kraftpapier);
 
   --color-background-white: var(--color-white);
   --color-background-dark: var(--color-anthrazit);
@@ -62,6 +63,10 @@
 
   --padding-top-default: var(--distance-vertical-big);
   --padding-bottom-default: var(--distance-vertical-big);
+
+  --padding-top-footer: var(--distance-vertical-medium);
+  --padding-bottom-footer: var(--distance-vertical-medium);
+
 
 
   /* ### Horizontal - px or %. Depends, if intended Design should be responsive or fixed. */

@@ -1,16 +1,21 @@
 .nav-page {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
-    z-index: 15;
+    z-index: 1500;
     display: none;
 
     height: 100vh;
     width: 100vw;
 
-    background-color: var(--color-black);
+    background: var(--color-black);
     color: var(--color-white);
+
+    & * {
+        position: relative;
+        z-index: inherit;
+    }
 }
 
 .nav-page__header {

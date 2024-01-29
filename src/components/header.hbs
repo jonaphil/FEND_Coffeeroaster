@@ -1,6 +1,13 @@
 <header>
     <div class="header">
         <a href="index.html"><img class="header__logo" src="/images/Logo-white.svg" /></a>
-        <button class="header__menu"><img src="/images/Burger-Menu-white.svg">{{>nav-page}}</button>
+
+        <input type="checkbox" class="header__menu__checkbox">
+        <label class="header__menu"><img src="/images/Burger-Menu-white.svg">{{>nav-page}}</label>
     </div>
 </header>
+
+
+{{!-- appearing menu: check-box-hack
+using a hidden check box, for which the icon is the label.
+by clicking the label, the check box is activated and makes the menu visible.--}}
