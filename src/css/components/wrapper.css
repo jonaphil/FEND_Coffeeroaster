@@ -1,0 +1,18 @@
+/* # Universal Wrapper*/
+
+.wrapper--vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper--horizontal {
+    display: flex;
+    flex-direction: row;
+
+    gap: var(--gap-horizontal-default);
+    width: 100%;
+
+    & * {
+        width: 100%;
+    }
+}

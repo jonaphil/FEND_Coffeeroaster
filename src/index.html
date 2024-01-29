@@ -13,7 +13,6 @@
 <body>
   {{> header }}
   <main>
-    <!--TODO: Create a workingboard/storyboard with the important elements-->
     <!-- FIXME: Class-naming hero -->
     <div class="hero">
       <div class="hero-title">
@@ -25,7 +24,7 @@
         <h5>Bio und Fair seit 1991</h5>
 
       </div>
-      <a class="hero-button" href="/subpages/shop.html"><button class="button">zum Shop</button></a>
+      <a class="button hero-button" href="/subpages/shop.html"><button>zum Shop</button></a>
     </div>
 
     <div class="home">
@@ -36,31 +35,34 @@
           Innenstadt.</p>
         <div class="wrapper--horizontal">
           <p>Komm uns besuchen!<br>Fraunhoferstr. 13, Kiel</p>
-          <p>Mo - Fr 8-18 Uhr<br>Sa 11-18 Uhr</p>
+          <p>Mo &ndash; Fr 8&ndash;18 Uhr<br>Sa 11&ndash;18 Uhr</p>
         </div>
-        <img class="section--information__image section--information__image--align-right"
-          src="/images/FEND-Coffee-shop-512px.jpg" alt="humans in a Coffee Store with bricked walls">
+        <img class="section--information__image" src="/images/FEND-Coffee-shop-512px.jpg"
+          alt="humans in a Coffee Store with bricked walls">
 
 
         <h3>Bio und Fair</h3>
         <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Weit
           hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Und das alles
           in bester Bio Qualität.</p>
-        <img class="section--information__image section--information__image--align-left"
-          src="/images/FEND-coffee-plant-512px.jpg" alt="A branch of a coffee plant">
+        <img class="section--information__image" src="/images/FEND-coffee-plant-512px.jpg"
+          alt="A branch of a coffee plant">
 
       </div>
 
       <div class="section section--dark">
+        <h2>Entdecke unsere Kaffee Sorten</h2>
+
         <div class="section--shop-preview">
-          <h2 class="section--shop-preview__heading">Entdecke unsere Kaffee Sorten</h2>
           {{>product-preview}}
           {{>product-preview}}
           {{>product-preview}}
           {{>product-preview}}
-          <a class="section--shop-preview__button--standalone" href="/subpages/shop.hml"><button class="button">alle
-              Produkte</button></a>
+
         </div>
+
+        <a class="button" href="/subpages/shop.hml"><button>alle
+            Produkte</button></a>
 
       </div>
 
@@ -72,7 +74,7 @@
         </div>
         <div class="section--information-teaser__text-block">
 
-          <h2>Herkunft</h2>
+          <h3>Herkunft</h3>
 
           <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. <br>Und
             das alles in bester Bioqualität. <br></p>
@@ -102,7 +104,7 @@
 
         </div>
 
-        <a href="/subpages/shop.html"><button class="button">zum Shop</button></a>
+        <a class="button" href="/subpages/shop.html"><button>zum Shop</button></a>
       </div>
 
 

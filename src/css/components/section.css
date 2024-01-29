@@ -1,0 +1,30 @@
+/* ## Section*/
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-top-default) var(--padding-sides-default) var(--padding-bottom-default);
+    gap: var(--distance-vertical-small);
+    align-items: start;
+
+
+    /*FIXME Coloring and codestyling of the "& foo {}" sometimes broken. why? */
+
+    & *:first-child {
+        margin-top: 0rem;
+    }
+
+    & *:last-child {
+        margin-bottom: 0rem;
+    }
+
+}
+
+.section--dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-white);
+
+    & *.button {
+        border: 3px solid var(--color-white);
+    }
+}

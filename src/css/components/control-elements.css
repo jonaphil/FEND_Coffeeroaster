@@ -1,18 +1,22 @@
 /* This CSS is for control-elements, like buttons, scrolls, lists, etc.*/
 
 .button {
+    /* Cleaning <a>-Styling */
+    display: block;
+    text-decoration: none;
+
+
     background-color: var(--color-button-default);
     color: var(--color-button-font);
     padding: 15px 50px 15px 50px;
     width: fit-content;
     height: auto;
     border-radius: 5px;
-    border: 3px solid var(--color-white);
+    /* border: 2px solid var(--color-button-default); */
     text-align: center;
+    align-self: center;
 
-    & a {
-        display: block;
-        text-decoration: none;
+    & * {
         color: inherit;
     }
 

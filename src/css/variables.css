@@ -1,5 +1,6 @@
 :root {
-  /* Colors */
+  /* # Colors */
+  --color-black: #000000;
   --color-white: #FFFFFF;
   --color-anthrazit: #1A1A1A;
   --color-kraftpapier: #D7BE9D;
@@ -20,12 +21,53 @@
 
   --color-text-price-tag: var(--color-medium-grey);
 
-  /* Text Styles */
+  /* # Styling Text */
 
-  /* Layouting */
-  --default-margin-sides: 24px;
+  /* Definig font-sizes in rem, so that they are responsive to user-configuration. 
+  Assuming default browser-font-size: 16px.*/
 
-  --header-margin-bottom: 2rem;
+  --14px: 0.875rem;
+  --16px: 1rem;
+  --18px: 1.125rem;
+  --24px: 1.5rem;
+  --32px: 2rem;
+  --36px: 2.25rem;
+  --64px: 4rem;
 
-  --paragraph-margin-bottom: 2rem;
+
+  /* # Layout */
+
+  /* ## Paddings, Margins, Gaps */
+
+  /* ### Vertical - rem */
+
+  /* vertical gaps measured in rem, to get the distances at high predefined font-sizes as well.
+  /* x.xxrem => FIGMA px
+  /* 1.25rem => 20px
+  /* 2.5rem  => 40px
+  /* 3.75rem => 60px */
+
+  --distance-vertical-xs: 0.625rem;
+  /* 10px */
+
+  --distance-vertical-small: 1.25rem;
+  /* 20px*/
+
+  --distance-vertical-medium: 2.5rem;
+  /* 40px */
+
+  --distance-vertical-big: 3.75rem;
+  /* 60px */
+
+
+  --padding-top-default: var(--distance-vertical-big);
+  --padding-bottom-default: var(--distance-vertical-big);
+
+
+  /* ### Horizontal - px or %. Depends, if intended Design should be responsive or fixed. */
+
+  --padding-sides-menu: 60px;
+  --padding-sides-default: 24px;
+  --gap-horizontal-default: 16px;
+
 }

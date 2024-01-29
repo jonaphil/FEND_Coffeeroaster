@@ -1,0 +1,55 @@
+/* ### section--information-teaser */
+
+.section--information-teaser {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.section--information-teaser__background-image {
+    width: 100vw;
+    height: fit-content;
+
+    /* Problem: size of the bg-image. And it needs to be cropped.
+    /* FIXME: better solve this with css-background-image */
+
+    & img {
+        width: 125%;
+        overflow: hidden;
+    }
+
+    & div {
+        /*Overlay for the picture*/
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: inherit;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.section--information-teaser__text-block {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: var(--distance-vertical-small);
+
+    margin: auto 15%;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 5;
+
+    & * {
+        text-align: center;
+    }
+
+    & a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+
+    }
+}

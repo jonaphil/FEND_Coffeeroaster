@@ -1,13 +1,13 @@
 .header {
     position: relative;
-    margin: 2.5% auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
     color: white;
     z-index: 1;
+
 }
 
 .header__logo {
@@ -15,5 +15,14 @@
 }
 
 .header__menu {
-    height: 1.25rem;
+
+    &>img {
+        height: 1.25rem;
+    }
+
+    &:active>*.nav-page {
+        display: block;
+    }
 }
+
+.header__menu:active {}

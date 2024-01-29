@@ -1,5 +1,11 @@
+/* !Important: The Order of Imports!
+/* TODO bring imports into right order!
+/* */
+
 @import "variables.css";
 @import "base.css";
+@import "components/section.css";
+
 @import "components/layout.css";
 @import "components/control-elements.css";
 
@@ -7,3 +13,9 @@
 @import "components/footer.css";
 @import "components/hero.css";
 @import "components/index.css";
+
+@import "components/information-teaser.css";
+@import "components/shop-preview.css";
+@import "components/wrapper.css";
+
+@import "components/nav-page.css";

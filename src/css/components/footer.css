@@ -1,8 +1,8 @@
 .footer {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    padding: 3rem var(--default-margin-sides);
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--padding-top-default) var(--padding-sides-default) var(--padding-bottom-default);
+    gap: var(--distance-vertical-small);
 
     & a {
         text-decoration: none;

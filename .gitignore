@@ -10,4 +10,5 @@ dist-ssr
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-Main-Classes-Coffee-page.minder
+*.minder
+Sunday-updates/*
