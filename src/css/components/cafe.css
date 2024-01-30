@@ -1,0 +1,8 @@
+.cafe-hero {
+    background: green;
+    height: 50vh;
+
+    @media (min-width: 992px) {
+        height: 65vh;
+    }
+}

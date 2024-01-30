@@ -2,12 +2,9 @@
 <html lang="en">
 
 <head>
-  <!--TODO check and understand head-section-->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{> html-head-content}}
   <title>FEND Coffee Roastery</title>
-  <link rel="stylesheet" href="/css/main.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -119,16 +116,8 @@
       </div>
 
 
+      {{> map}}
 
-      <div class="section section--map">
-        <h2>Komm vorbei</h2>
-        <!-- TODO interactive google-map -->
-        <!-- <img src="/images/Map.jpg" alt="a map showing the location where our shop is"> -->
-        <iframe class="map" title="Map of our Location at Fraunhoferstr. 13, Kiel" src="https://www.openstreetmap.org/export/embed.html?bbox=10.118579864501955%2C54.33990976163104%2C10.125875473022463%2C54.343693649263116&amp;marker=54.34181113052293%2C10.122216939926147
-          "></iframe>
-
-
-      </div>
     </div>
   </main>
   {{> footer}}

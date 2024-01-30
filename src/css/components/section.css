@@ -1,6 +1,7 @@
 /* ## Section*/
 
 .section {
+    background-color: var(--color-background-white);
     display: flex;
     flex-direction: column;
     padding: var(--padding-top-default) var(--padding-sides-default) var(--padding-bottom-default);
