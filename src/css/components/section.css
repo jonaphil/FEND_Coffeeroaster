@@ -18,6 +18,8 @@
         margin-bottom: 0rem;
     }
 
+    @media (min-width: 992px) {}
+
 }
 
 .section--dark {

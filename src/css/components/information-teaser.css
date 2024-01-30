@@ -9,23 +9,18 @@
 .section--information-teaser__background-image {
     width: 100vw;
     height: 50vh;
+    min-height: 300px;
 
     /* Problem: size of the bg-image. And it needs to be cropped.
     /* FIXME: better solve this with css-background-image */
 
-    & img {
-        width: 125%;
-        overflow: hidden;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/FEND-Coffee-bags-2-512px.png) no-repeat center/cover;
+
+    @media (min-width: 992px) {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/Coffee-bags-background.png) no-repeat center/cover;
+
     }
 
-    & div {
-        /*Overlay for the picture*/
-        position: absolute;
-        top: 0;
-        height: 100%;
-        width: inherit;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
 }
 
 .section--information-teaser__text-block {
@@ -37,13 +32,15 @@
 
     gap: var(--distance-vertical-small);
 
-    margin: auto 15%;
+    /* margin: auto 15%; */
     top: 50%;
-    transform: translate(0, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 5;
 
     & * {
         text-align: center;
+        width: 17em;
     }
 
     & a {
@@ -51,5 +48,10 @@
         text-decoration: none;
         color: inherit;
 
+    }
+
+    & h3 {
+        width: 0;
+        overflow: hidden;
     }
 }

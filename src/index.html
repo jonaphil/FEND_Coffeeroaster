@@ -29,29 +29,35 @@
 
     <div class="home">
 
-      <div class="section section--information wrapper--vertical">
-        <h2>Rösterei & Café</h2>
-        <p>Kaffee aus Kiel, direkt gehandelt und geröstet in der eigenen Rösterei, serviert im gemütlichen Café in der
-          Innenstadt.</p>
-        <div class="wrapper--horizontal">
-          <p>Komm uns besuchen!<br>Fraunhoferstr. 13, Kiel</p>
-          <p>Mo &ndash; Fr 8&ndash;18 Uhr<br>Sa 11&ndash;18 Uhr</p>
+      <div class="section section--information">
+
+        <div class="section--information__text-block">
+          <h2>Rösterei & Café</h2>
+          <p>Kaffee aus Kiel, direkt gehandelt und geröstet in der eigenen Rösterei, serviert im gemütlichen Café in
+            der
+            Innenstadt.</p>
+          <div class="wrapper--horizontal">
+            <p>Komm uns besuchen!<br>Fraunhoferstr. 13, Kiel</p>
+            <p>Mo &ndash; Fr 8&ndash;18 Uhr<br>Sa 11&ndash;18 Uhr</p>
+          </div>
         </div>
         <img class="section--information__image" src="/images/FEND-Coffee-shop-512px.jpg"
           alt="humans in a Coffee Store with bricked walls">
 
-
-        <h3>Bio und Fair</h3>
-        <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Weit
-          hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Und das alles
-          in bester Bio Qualität.</p>
+        <div class="section--information__text-block section--information__text-block--small">
+          <h3>Bio und Fair</h3>
+          <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Weit
+            hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Und das
+            alles
+            in bester Bio Qualität.</p>
+        </div>
         <img class="section--information__image" src="/images/FEND-coffee-plant-512px.jpg"
           alt="A branch of a coffee plant">
 
       </div>
 
       <div class="section section--dark">
-        <h2>Entdecke unsere Kaffee Sorten</h2>
+        <h2 class="section--shop-preview__header">Entdecke unsere Kaffee Sorten</h2>
 
         <div class="section--shop-preview">
           {{>product-preview}}
@@ -69,42 +75,47 @@
       <div class="section section--information-teaser section--dark">
 
         <div class="section--information-teaser__background-image">
-          <img src="/images/FEND-Coffee-bags-2-512px.png" alt="Bags of Coffee on a board">
-          <div></div>
+          <div class="section--information-teaser__text-block">
+
+            <h3>Herkunft</h3>
+
+            <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte.
+              <br>Und
+              das alles in bester Bioqualität. <br>
+            </p>
+            <a href="/sub-pages/origin.html">mehr</a>
+
+          </div>
         </div>
-        <div class="section--information-teaser__text-block">
 
-          <h3>Herkunft</h3>
-
-          <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. <br>Und
-            das alles in bester Bioqualität. <br></p>
-          <a href="/sub-pages/origin.html">mehr</a>
-
-        </div>
 
 
 
       </div>
       <div class="section section--about-product">
         <h2>Das steckt drin</h2>
-        <img src="/images/FEND_Coffee_Costa-Rica 1-512px.jpg" alt="our flagship coffee">
-        <div>
-          <div class="section--about-product__info-icon">
-            <img src="/images/Icon Kaffee Tasse.svg" alt="Icon of a hot pot of coffee">
-            <p>Bester Geschmack</p>
-          </div>
-          <div class="section--about-product__info-icon">
-            <img src="/images/Icon Kaffee Schaufel-black.svg" alt="Icon of a shovel for coffee">
-            <p>Fair gehandelt</p>
-          </div>
-          <div class="section--about-product__info-icon">
-            <img src="/images/Icon-Kaffee Pflanze.svg" alt="Icon of a branch of the coffee plant">
-            <p>Bio Qualität</p>
-          </div>
+        <div class="section--about-product__product">
+          <!-- TODO responsive image -->
+          <img src="/images/FEND_Coffee_Costa-Rica 1-512px.jpg" alt="our flagship coffee">
+          <div>
+            <div class="section--about-product__info">
+              <img src="/images/Icon Kaffee Tasse.svg" alt="Icon of a hot pot of coffee">
+              <p>Bester Geschmack</p>
+            </div>
+            <div class="section--about-product__info">
+              <img src="/images/Icon Kaffee Schaufel-black.svg" alt="Icon of a shovel for coffee">
+              <p>Fair gehandelt</p>
+            </div>
+            <div class="section--about-product__info">
+              <img src="/images/Icon-Kaffee Pflanze.svg" alt="Icon of a branch of the coffee plant">
+              <p>Bio Qualität</p>
+            </div>
+            <div class="section--about-product__button"><a class="button" href="/subpages/shop.html"><button>zum
+                  Shop</button></a></div>
 
+          </div>
         </div>
 
-        <a class="button" href="/subpages/shop.html"><button>zum Shop</button></a>
       </div>
 
 

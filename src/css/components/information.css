@@ -1,0 +1,67 @@
+/* ### Section--information*/
+
+/* TODO Find right sizes media (min-width)
+/* TODO  */
+
+.section--information {
+    @media (min-width: 992px) {
+        display: grid;
+        /* grid-template:
+            "a b"
+            "d c" / 1fr 1fr; */
+        grid-template: repeat(2, 1fr)/ repeat(2, 1fr);
+        row-gap: var(--gap-vertical-default);
+        column-gap: 0.5rem;
+        grid-auto-flow: row dense;
+
+    }
+}
+
+.section--information__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--distance-vertical-small);
+
+    @media (min-width: 992px) {
+        gap: var(--distance-vertical-medium);
+    }
+
+    &:nth-of-type(even) {
+        @media (min-width: 992px) {
+            grid-column: 2;
+        }
+    }
+}
+
+.section--information__text-block--small {
+    @media (min-width: 992px) {
+        margin: var(--distance-vertical-medium-large) var(--padding-sides-text-area) auto;
+        margin-right: max(15px, 14.5%);
+
+        &>* {}
+    }
+}
+
+.section--information__image {
+    width: 75%;
+    margin-top: var(--distance-vertical-small);
+    margin-bottom: var(--distance-vertical-small);
+
+    &:nth-of-type(odd) {
+        align-self: end;
+
+
+    }
+
+    &:nth-of-type(even) {
+        align-self: flex-start;
+
+
+    }
+
+    @media (min-width: 992px) {
+        width: 100%;
+        margin: 0;
+    }
+
+}

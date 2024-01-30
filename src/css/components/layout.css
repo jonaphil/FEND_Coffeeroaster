@@ -2,71 +2,6 @@
 
 
 
-/* ### Section--information*/
-
-.section--information__image {
-    width: 75%;
-    margin-top: var(--distance-vertical-small);
-    margin-bottom: var(--distance-vertical-small);
-
-    &:nth-of-type(odd) {
-        align-self: end;
-    }
-
-    &:nth-of-type(even) {
-        align-self: flex-start;
-    }
-
-}
-
-
-
-
-/* ### About Product */
-
-.section--about-product {
-    align-items: center;
-    text-align: center;
-
-    &>img {
-        margin-top: var(--distance-vertical-small);
-        margin-bottom: var(--distance-vertical-small);
-        min-width: 250px;
-        width: 100%;
-        max-width: 450px;
-
-    }
-
-    &>div {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: var(--distance-vertical-small);
-    }
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-
-}
-
-.section--about-product__info-icon {
-    width: 5rem;
-
-    & img {
-        width: 45px;
-        margin-bottom: var(--distance-vertical-small);
-    }
-
-    & p {
-        /* FIXME Why is it there? And how to solve this? */
-        padding-bottom: 7px;
-        text-align: center;
-    }
-}
-
 /* ### Map */
 
 .section--map {
@@ -82,5 +17,9 @@
         width: 100vw;
         z-index: 1;
         border: none;
+
+        @media (min-width: 992px) {
+            height: 55vh;
+        }
     }
 }

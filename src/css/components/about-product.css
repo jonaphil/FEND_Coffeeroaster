@@ -1,0 +1,112 @@
+/* ### About Product */
+
+.section--about-product {
+
+    align-items: stretch;
+
+    &>h2 {
+        text-align: center;
+    }
+}
+
+/* TODO: Layout "Das steckt drin" */
+
+.section--about-product__product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &>img {
+        margin-top: var(--distance-vertical-small);
+        margin-bottom: var(--distance-vertical-small);
+        min-width: 250px;
+        max-width: 450px;
+
+        @media (min-width: 992px) {
+            margin: 0;
+            min-width: auto;
+            max-width: auto;
+            width: auto;
+        }
+
+    }
+
+    &>div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: var(--distance-vertical-small);
+        flex-wrap: wrap;
+
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 992px) {
+
+        margin-top: var(--70px);
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 13vw;
+        transform: translateX(-5vw);
+
+        &>div {
+            flex-direction: column;
+        }
+    }
+}
+
+.section--about-product__info {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 5rem;
+
+    & img {
+        width: 45px;
+        margin-bottom: var(--distance-vertical-small);
+    }
+
+    & p {
+        /* FIXME Why is it there? And how to solve this? */
+        padding-bottom: 7px;
+        text-align: center;
+    }
+
+    @media (min-width: 992px) {
+        flex-direction: row;
+        justify-content: start;
+        width: 5rem;
+
+        & p {
+            text-align: left;
+        }
+
+        & img {
+            margin-left: 20px;
+            margin-right: 30px;
+        }
+
+    }
+}
+
+.section--about-product__button {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: var(--40px);
+
+    @media (min-width: 992px) {
+        width: auto;
+        display: block;
+        margin: 0;
+        justify-content: start;
+    }
+}

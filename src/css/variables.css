@@ -27,13 +27,21 @@
   /* Definig font-sizes in rem, so that they are responsive to user-configuration. 
   Assuming default browser-font-size: 16px.*/
 
+  --10px: 0.625;
   --14px: 0.875rem;
   --16px: 1rem;
   --18px: 1.125rem;
   --24px: 1.5rem;
   --32px: 2rem;
   --36px: 2.25rem;
+  --40px: 2.5rem;
+  --60px: 3.75rem;
   --64px: 4rem;
+  --70px: 4.375rem;
+  --80px: 5rem;
+  --90px: 5.625rem;
+  --100px: 6.25rem;
+  --125px: 7.8125rem;
 
 
   /* # Layout */
@@ -57,8 +65,12 @@
   --distance-vertical-medium: 2.5rem;
   /* 40px */
 
+  --distance-vertical-medium-large: 3.125rem;
+  /* 50px */
+
   --distance-vertical-big: 3.75rem;
   /* 60px */
+
 
 
   --padding-top-default: var(--distance-vertical-big);
@@ -74,5 +86,16 @@
   --padding-sides-menu: 60px;
   --padding-sides-default: 24px;
   --gap-horizontal-default: 16px;
+
+  /* Desktop-version: */
+  @media (min-width: 992px) {
+    --padding-sides-default: 100px;
+    --padding-sides-text-area: 125px;
+
+    --padding-top-default: 7.8125rem;
+    --padding-bottom-default: 7.8125rem;
+
+    --gap-vertical-default: 8.125rem;
+  }
 
 }

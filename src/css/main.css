@@ -14,8 +14,10 @@
 @import "components/hero.css";
 @import "components/index.css";
 
+@import "components/information.css";
 @import "components/information-teaser.css";
 @import "components/shop-preview.css";
+@import "components/about-product.css";
 @import "components/wrapper.css";
 
 @import "components/nav-page.css";
