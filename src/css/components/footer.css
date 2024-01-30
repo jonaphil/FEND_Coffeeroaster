@@ -103,7 +103,7 @@
         &:last-of-type {
             /* Links */
             grid-column: 3;
-            transform: translateY(25%);
+            /* transform: translateY(25%); */
         }
     }
 }

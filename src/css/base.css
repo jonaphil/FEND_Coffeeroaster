@@ -61,14 +61,27 @@ h4 {
 
 h1 {
   font-size: var(--64px);
+
+  @media (min-width: 992px) {
+    font-size: var(--96px);
+  }
+
 }
 
 h2 {
   font-size: var(--36px);
+
+  @media (min-width: 992px) {
+    font-size: var(--48px);
+  }
 }
 
 h3 {
   font-size: var(--32px);
+
+  @media (min-width: 992px) {
+    font-size: var(--42px);
+  }
 }
 
 h4 {
@@ -81,7 +94,8 @@ h5 {
   font-weight: 400;
   font-size: var(--18px);
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.175;
+
 }
 
 p,
