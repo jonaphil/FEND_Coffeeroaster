@@ -18,6 +18,7 @@
 
     & * {
         color: inherit;
+        cursor: pointer;
 
     }
 
@@ -25,7 +26,6 @@
 
 .button:hover {
     background-color: var(--color-button-hover);
-    border: red solid 3px;
 }
 
 .button:active {

@@ -25,13 +25,14 @@
         height: 1rem;
     }
 
-    &:active>*.nav-page {
+    /* &:active>*.nav-page {
         display: block;
     }
+    */
 }
 
-.header__menu:active {}
+/* .header__menu:active {}
 
 .header__menu__checkbox {
     display: none;
-}
+} */

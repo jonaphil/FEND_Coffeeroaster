@@ -8,7 +8,7 @@
 
 .section--information-teaser__background-image {
     width: 100vw;
-    height: fit-content;
+    height: 50vh;
 
     /* Problem: size of the bg-image. And it needs to be cropped.
     /* FIXME: better solve this with css-background-image */

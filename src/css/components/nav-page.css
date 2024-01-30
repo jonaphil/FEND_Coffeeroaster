@@ -1,3 +1,11 @@
+.nav-page__switch {
+    display: none;
+
+    &:checked+* .nav-page {
+        display: block;
+    }
+}
+
 .nav-page {
     position: fixed;
     top: 0;
@@ -19,8 +27,32 @@
 }
 
 .nav-page__header {
+    display: flex;
+    flex-direction: row;
     position: absolute;
+    justify-content: flex-end;
+    width: 100%;
+
+    /* FIXME okay?*/
+    height: 55px;
+
+    & * {
+        height: fit-content;
+        top: 50%;
+        right: var(--padding-sides-default);
+        transform: translateY(-50%);
+    }
+
 }
+
+/* .nav-page__header__container {
+    & * {
+        top: 50%;
+        margin-right: var(--padding-sides-default);
+
+        transform: translateY(-50%);
+    }
+} */
 
 .nav-page__menu {
     position: relative;
