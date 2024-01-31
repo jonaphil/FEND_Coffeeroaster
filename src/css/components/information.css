@@ -3,34 +3,14 @@
 /* TODO Find right sizes media (min-width)
 /* TODO  */
 
-.section--information {
-    @media (min-width: 992px) {
-        display: grid;
-        /* grid-template:
-            "a b"
-            "d c" / 1fr 1fr; */
-        grid-template: repeat(2, 1fr)/ repeat(2, 1fr);
-        row-gap: var(--gap-vertical-default);
-        column-gap: 0.5rem;
-        grid-auto-flow: row dense;
-
-    }
-}
+.section--information {}
 
 .section--information__text-block {
     display: flex;
     flex-direction: column;
     gap: var(--distance-vertical-small);
 
-    @media (min-width: 992px) {
-        gap: var(--distance-vertical-medium);
-    }
 
-    &:nth-of-type(even) {
-        @media (min-width: 992px) {
-            grid-column: 2;
-        }
-    }
 }
 
 .section--information__text-block--small {
@@ -38,7 +18,6 @@
         margin: var(--distance-vertical-medium-large) var(--padding-sides-text-area) auto;
         margin-right: max(15px, 14.5%);
 
-        &>* {}
     }
 }
 

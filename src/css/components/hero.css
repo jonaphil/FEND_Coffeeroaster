@@ -1,13 +1,13 @@
 .hero {
   position: relative;
   top: 0;
-  background: url("/images/FEND-Coffee-latte-art-3-376px.png") no-repeat center/cover;
+  background: url("/images/mobile/FEND-Coffee-latte-art-3-376px.png") no-repeat center/cover;
   height: 75vh;
   color: white;
 
   /*Desktop*/
   @media (min-width: 992px) {
-    background: url("/images/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/cover;
+    background: url("/images/desktop/FEND-Coffee-latte-art-3-1440px.png") no-repeat top/cover;
     height: 65vh;
   }
 

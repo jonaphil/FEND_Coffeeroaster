@@ -3,6 +3,32 @@
     background-color: var(--color-background-white);
 }
 
+.home__cafe {
+    @media (min-width: 992px) {
+        display: grid;
+        /* grid-template:
+            "a b"
+            "d c" / 1fr 1fr; */
+        grid-template: repeat(2, 1fr)/ repeat(2, 1fr);
+        row-gap: var(--gap-vertical-default);
+        column-gap: 0.5rem;
+        grid-auto-flow: row dense;
+
+    }
+
+    &>div {
+        @media (min-width: 992px) {
+            gap: var(--distance-vertical-medium);
+        }
+
+        &:nth-of-type(even) {
+            @media (min-width: 992px) {
+                grid-column: 2;
+            }
+        }
+    }
+}
+
 .home__origin {
     background-image:
         linear-gradient(0deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),

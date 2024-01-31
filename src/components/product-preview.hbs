@@ -1,13 +1,18 @@
 <div class="section--shop-preview__product">
-    <img class="section--shop-preview__product__image" src="/images/FEND_Coffee_Costa-Rica 1-512px.jpg"
-        alt="our flagship coffee">
+    <picture>
+        {{!-- //FIXME Problem with the source selected --}}
+        <source media="(min-width: 992px)" scrset="/images/desktop/FEND_Coffee_Costa-Rica 1.jpg">
+        <img class="section--shop-preview__product__image" src="/images/mobile/FEND_Coffee_Costa-Rica 1-512px.jpg"
+            alt="our flagship coffee">
+    </picture>
     <h5 class="section--shop-preview__product__name">Costa Rica</h5>
     <p class="section--shop-preview__product__price-tag">6,90€ &ndash; 26,90€</p>
     <div class="section--shop-preview__product__icon-wrapper">
-        <img class="section--shop-preview__product__icon" src="/images/Icon Kaffee Bohnen.svg" alt="Icon Coffee Bean">
+        <img class="section--shop-preview__product__icon" src="/images/icons/Icon Kaffee Bohnen.svg"
+            alt="Icon Coffee Bean">
         <img class="section--shop-preview__product__icon section--shop-preview__product__icon--french-press"
-            src="/images/Icon French Press.svg" alt="Icon French Press">
-        <img class="section--shop-preview__product__icon" src="/images/Icon Kaffee Schaufel-white.svg"
+            src="/images/icons/Icon French Press.svg" alt="Icon French Press">
+        <img class="section--shop-preview__product__icon" src="/images/icons/Icon Kaffee Schaufel-white.svg"
             alt="Icon Coffee Shovel">
     </div>
 </div>

@@ -26,7 +26,7 @@
 
     <div class="home">
 
-      <div class="section section--information">
+      <div class="section section--information home__cafe">
 
         <div class="section--information__text-block">
           <h2>Rösterei & Café</h2>
@@ -38,8 +38,11 @@
             <p>Mo &ndash; Fr 8&ndash;18 Uhr<br>Sa 11&ndash;18 Uhr</p>
           </div>
         </div>
-        <img class="section--information__image" src="/images/FEND-Coffee-shop-512px.jpg"
-          alt="humans in a Coffee Store with bricked walls">
+        <picture>
+          <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-shop.jpg">
+          <img class="section--information__image" src="/images/mobile/FEND-Coffee-shop-512px.jpg"
+            alt="humans in a Coffee Store with bricked walls">
+        </picture>
 
         <div class="section--information__text-block section--information__text-block--small">
           <h3>Bio und Fair</h3>
@@ -47,9 +50,13 @@
             hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Und das
             alles
             in bester Bio Qualität.</p>
+          <!-- hier noch ein "mehr"-Link, der nur aufm Desktop sichtbar ist. -->
         </div>
-        <img class="section--information__image" src="/images/FEND-coffee-plant-512px.jpg"
-          alt="A branch of a coffee plant">
+        <picture>
+          <source media="(min-width: 992px)" srcset="/images/desktop/FEND-coffee-plant.jpg">
+          <img class="section--information__image" src="/images/mobile/FEND-coffee-plant-512px.jpg"
+            alt="A branch of a coffee plant">
+        </picture>
 
       </div>
 
@@ -64,7 +71,7 @@
 
         </div>
 
-        <a class="button" href="/subpages/shop.hml"><button>alle
+        <a class="button" href="/subpages/shop.html"><button>alle
             Produkte</button></a>
 
       </div>
@@ -92,19 +99,22 @@
       <div class="section section--about-product">
         <h2>Das steckt drin</h2>
         <div class="section--about-product__product">
-          <!-- TODO responsive image -->
-          <img src="/images/FEND_Coffee_Costa-Rica 1-512px.jpg" alt="our flagship coffee">
+          <picture>
+            <!-- //FIXME same problem as in the shop-preview -->
+            <source media="(min-width: 992px)" srcset="/images/desktop/FEND_Coffee_Costa-Rica 1.jpg" />
+            <img src="/images/mobile/FEND_Coffee_Costa-Rica 1-512px.jpg" alt="our flagship coffee" />
+          </picture>
           <div>
             <div class="section--about-product__info">
-              <img src="/images/Icon Kaffee Tasse.svg" alt="Icon of a hot pot of coffee">
+              <img src="/images/icons/Icon Kaffee Tasse.svg" alt="Icon of a hot pot of coffee">
               <p>Bester Geschmack</p>
             </div>
             <div class="section--about-product__info">
-              <img src="/images/Icon Kaffee Schaufel-black.svg" alt="Icon of a shovel for coffee">
+              <img src="/images/icons/Icon Kaffee Schaufel-black.svg" alt="Icon of a shovel for coffee">
               <p>Fair gehandelt</p>
             </div>
             <div class="section--about-product__info">
-              <img src="/images/Icon-Kaffee Pflanze.svg" alt="Icon of a branch of the coffee plant">
+              <img src="/images/icons/Icon-Kaffee Pflanze.svg" alt="Icon of a branch of the coffee plant">
               <p>Bio Qualität</p>
             </div>
             <div class="section--about-product__button"><a class="button" href="/subpages/shop.html"><button>zum

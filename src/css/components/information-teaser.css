@@ -14,10 +14,10 @@
     /* Problem: size of the bg-image. And it needs to be cropped.
     /* FIXME: better solve this with css-background-image */
 
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/FEND-Coffee-bags-2-512px.png) no-repeat center/cover;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/mobile/FEND-Coffee-bags-2.png) no-repeat center/cover;
 
     @media (min-width: 992px) {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/Coffee-bags-background.png) no-repeat center/cover;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/desktop/Coffee-bags-background.png) no-repeat center/cover;
 
     }
 

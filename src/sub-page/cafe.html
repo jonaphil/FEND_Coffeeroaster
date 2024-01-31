@@ -11,7 +11,7 @@
     {{> header}}
     <div class="cafe-hero"></div>
 
-    <div class="section section--information">
+    <div class="section section--information cafe-content">
         <div class="section--information__text-block">
             <h2>Rösterei & Café</h2>
             <p>Kaffee aus Kiel, direkt gehandelt und geröstet in der eigenen Rösterei, serviert im gemütlichen Café in
@@ -22,10 +22,13 @@
                 <p>Mo &ndash; Fr 8&ndash;18 Uhr<br>Sa 11&ndash;18 Uhr</p>
             </div>
         </div>
-        <img class="section--information__image" src="/images/FEND-Coffee-shop-512px.jpg"
-            alt="humans in a Coffee Store with bricked walls">
+        <picture>
+            <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-shop.jpg">
+            <img class="section--information__image" src="/images/mobile/FEND-Coffee-shop-512px.jpg"
+                alt="humans in a Coffee Store with bricked walls">
+        </picture>
 
-        <div class="section--information__text-block">
+        <div class="section--information__text-block cafe-content__fresh-goods">
             <h3>Frisches Gebäck von nebenan</h3>
             <p>Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die
                 Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf. Wehmütig lief ihm eine
@@ -35,7 +38,47 @@
                 sein eigenes, sicheres Land zurückkehren.</p>
         </div>
 
-        <div class="image-gallery"></div>
+        <div class="cafe-content__image-gallery">
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-danish 1.jpg">
+                <img src="/images/mobile/FEND-danish 1.jpg"
+                    alt="croissants and other viennoiseries presented on the counter">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-latte-art-2.jpg">
+                <img src="/images/mobile/FEND-Coffee-latte-art-2.jpg"
+                    alt="three cups of cappuchino with beautiful foam on a small table">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-coffee-machine.jpg">
+                <img src="/images/mobile/FEND-coffee-machine.jpg"
+                    alt="an espresso poured into a glass from a barista coffee machine">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-coffee-breakfast 1.jpg">
+                <img src="/images/mobile/FEND-coffee-breakfast 1.jpg"
+                    alt="a cappuchino with a glass of water and a piece of brioche on a breakfast table">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-latte-art.jpg">
+                <img src="/images/mobile/FEND-Coffee-latte-art.jpg" alt="a barrista doing latte art on a cappuchino">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-coffee-list.jpg">
+                <img src="/images/mobile/FEND-coffee-list.jpg"
+                    alt="a list of different coffee-products on a bricked wall">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-sign.jpg">
+                <img src="/images/mobile/FEND-Coffee-sign.jpg"
+                    alt="a sign showing 'COFFEE' written in blue fluorescent letters">
+            </picture>
+            <picture>
+                <source media="(min-width: 992px)" srcset="/images/desktop/FEND-Coffee-latte-art-3.jpg">
+                <img src="/images/desktop/FEND-Coffee-latte-art-3.jpg"
+                    alt="2 cups of coffee and 1 glass of coke, each hold by one hand, together in the air.">
+            </picture>
+        </div>
     </div>
 
 
