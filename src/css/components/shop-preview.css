@@ -32,28 +32,48 @@
 .section--shop-preview__product__name {
     margin-top: 0.5rem;
     text-align: left;
+
+    @media(min-width:992px) {
+        margin-top: 1rem;
+    }
 }
 
 .section--shop-preview__product__price-tag {
     color: var(--color-text-price-tag);
     padding: 0;
 
+    @media(min-width: 992px) {
+        margin: 0.5rem auto;
+    }
+
 }
 
 .section--shop-preview__product__icon-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: var(--8px);
     justify-items: start;
+
+    @media(min-width:992px) {
+        gap: var(--13px);
+    }
 }
 
 /* FIXME stroke-width of svgs */
 
 .section--shop-preview__product__icon {
-    width: 12px;
+    width: var(--12px);
     fill: white;
+
+    @media(min-width: 992px) {
+        width: var(--17px);
+    }
 }
 
 .section--shop-preview__product__icon--french-press {
-    width: 10px;
+    width: var(--10px);
+
+    @media(min-width: 992px) {
+        width: var(--14px);
+    }
 }

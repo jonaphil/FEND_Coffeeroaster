@@ -27,9 +27,13 @@
   /* Definig font-sizes in rem, so that they are responsive to user-configuration. 
   Assuming default browser-font-size: 16px.*/
 
+  --8px: 0.5rem;
   --10px: 0.625;
+  --12px: 0.75rem;
+  --13px: 0.8125rem;
   --14px: 0.875rem;
   --16px: 1rem;
+  --17px: 1.0625rem;
   --18px: 1.125rem;
   --24px: 1.5rem;
   --30px: 1.875rem;
@@ -46,6 +50,7 @@
   --96px: 6rem;
   --100px: 6.25rem;
   --125px: 7.8125rem;
+  --350px: 21.875rem;
 
 
   /* # Layout */

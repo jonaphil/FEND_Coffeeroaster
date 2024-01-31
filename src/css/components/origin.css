@@ -11,3 +11,111 @@
 }
 
 /* TODO. Grid or flex-box with line-wrap for positiong of elements */
+
+.origin__content {
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--60px);
+
+    & picture {
+        margin: 0;
+    }
+
+    @media(min-width: 992px) {
+
+        gap: var(--125px);
+
+        &>*:nth-child(1) {
+            /* Preliminary text */
+            width: 50%;
+            align-self: center;
+            min-width: var(--350px);
+            max-width: 100vw;
+        }
+
+        &>*:nth-child(2) {
+            /* Video */
+            width: 100%;
+        }
+    }
+}
+
+.origin__content__video {
+    display: block;
+    width: 100%;
+
+    & a {
+        text-decoration: underline;
+        color: var(--color-medium-grey);
+
+        &:visited {
+            color: var(--color-kraftpapier);
+        }
+
+        &:hover {
+            color: var(--color-anthrazit);
+        }
+
+        &:active {
+            color: var(--color-petrol);
+        }
+
+
+    }
+
+}
+
+.origin__content__further-information-wrapper {
+
+    display: inherit;
+    flex-direction: inherit;
+    gap: inherit;
+    flex-wrap: inherit;
+
+    @media(min-width: 992px) {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(3, auto);
+        grid-template:
+            "a a b b" auto
+            "e c c d" auto / 7vw auto 6.2vw auto;
+
+        /* ca. 100px und 89px bei voller breite. Dadurch bleibt es responsive. */
+
+        column-gap: 0;
+        row-gap: var(--125px);
+
+        justify-items: stretch;
+        align-items: stretch;
+
+        &>*:nth-child(1) {
+            grid-area: a;
+            margin-right: 8.3vw;
+
+            /* FIXME A11y */
+            max-width: 400px;
+            width: 30vw;
+        }
+
+        &>*:nth-child(2) {
+            grid-area: b;
+            margin-top: var(--125px);
+            max-width: 50vw;
+
+        }
+
+        &>*:nth-child(3) {
+            grid-area: d;
+            max-width: 400px;
+            width: 30vw;
+        }
+
+        &>*:nth-child(4) {
+            grid-area: c;
+            margin-top: var(--125px);
+        }
+
+
+
+    }
+}
