@@ -1,4 +1,4 @@
-.cafe-hero {
+.cafe__hero {
     background: url("/images/mobile/FEND-Coffee-shop.png") no-repeat center/cover;
     height: 50vh;
 
@@ -9,7 +9,7 @@
     }
 }
 
-.cafe-content {
+.cafe__content {
 
 
     @media (min-width: 992px) {
@@ -28,7 +28,7 @@
     }
 }
 
-.cafe-content__fresh-goods {
+.cafe__content__fresh-goods {
 
     &>h3 {
         width: 15rem;
@@ -46,10 +46,11 @@
     }
 }
 
-.cafe-content__image-gallery {
+.cafe__content__image-gallery {
     margin: var(--30px) auto;
 
     display: grid;
+
     grid-template:
         "a b"
         "c b"
@@ -66,12 +67,14 @@
 
     @media (min-width: 992px) {
         grid-column: span 2;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+
         grid-template-rows: auto auto auto;
+        grid-template-columns: repeat(4, 1fr);
         grid-template:
             "a b c d"
-            "e b f d"
-            "e g f h" / repeat(4, 1fr);
+            "e b g d"
+            "e f g h";
+        /* grid-auto-flow: row dense; */
     }
 
     & picture {
@@ -85,13 +88,36 @@
         @media(min-width: 992px) {
             grid-row: span 1;
 
+            /* &:nth-child(1) {
+                grid-area: a;
+            } */
+
+            &:nth-child(2) {
+                grid-area: b;
+            }
+
+            /* &:nth-child(3) {
+                grid-area: c;
+            } */
+
+            &:nth-child(6) {
+                grid-area: d;
+            }
+
+            &:nth-child(7) {
+                grid-area: e;
+            }
+
+            /* &:nth-child(8) {
+                grid-area: f;
+            } */
 
             &:nth-child(4) {
                 grid-area: h;
             }
 
             &:nth-child(5) {
-                grid-area: f;
+                grid-area: g;
             }
         }
     }

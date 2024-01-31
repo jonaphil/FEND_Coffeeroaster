@@ -1,0 +1,13 @@
+.origin__hero {
+
+    height: 50vh;
+    background: url("/images/mobile/FEND-Coffee-beans-hand-2.png") no-repeat center/cover;
+
+    @media(min-width: 992px) {
+
+        height: 65vh;
+        background: url("/images/desktop/FEND-Coffee-beans-hand-2.png") no-repeat top/cover;
+    }
+}
+
+/* TODO. Grid or flex-box with line-wrap for positiong of elements */

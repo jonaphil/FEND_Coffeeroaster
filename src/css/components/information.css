@@ -44,3 +44,17 @@
     }
 
 }
+
+.section--information__image--upright {
+    @media (min-width: 992px) {
+        /* margins, etc. */
+    }
+}
+
+.section--information__media {
+    align-self: stretch;
+
+    @media (min-width: 992px) {
+        grid-column: span 2;
+    }
+}
