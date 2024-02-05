@@ -16,6 +16,7 @@
 
 body {
   background: grey;
+  /* TODO font-family: roboto */
   font-family: Roboto;
   font-weight: 400;
   font-size: var(--14px);
@@ -70,7 +71,6 @@ h1 {
   @media (min-width: 992px) {
     font-size: var(--96px);
   }
-
 }
 
 h2 {
@@ -100,7 +100,6 @@ h5 {
   font-size: var(--18px);
   text-align: center;
   line-height: 1.175;
-
 }
 
 p,

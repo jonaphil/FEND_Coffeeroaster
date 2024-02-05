@@ -1,131 +1,128 @@
 .cafe__hero {
-    background: url("/images/mobile/FEND-Coffee-shop.png") no-repeat center/cover;
-    height: 50vh;
+  background: url("/images/mobile/FEND-Coffee-shop.png") no-repeat center/cover;
+  height: 50vh;
 
-    @media (min-width: 992px) {
-        background: url("/images/desktop/FEND-Coffee-shop.png") no-repeat center/cover;
+  @media (min-width: 992px) {
+    background: url("/images/desktop/FEND-Coffee-shop.png") no-repeat
+      center/cover;
 
-        height: 65vh;
-    }
+    height: 65vh;
+  }
 }
 
 .cafe__content {
-
-
-    @media (min-width: 992px) {
-        display: grid;
-        /* grid-template:
+  @media (min-width: 992px) {
+    display: grid;
+    /* grid-template:
             "a b"
             "d c" / 1fr 1fr; */
-        grid-template: repeat(2, 1fr)/ repeat(2, 1fr);
-        row-gap: var(--gap-vertical-default);
-        column-gap: 0.5rem;
-        grid-auto-flow: row dense;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    row-gap: var(--gap-vertical-default);
+    column-gap: 0.5rem;
+    grid-auto-flow: row dense;
 
-        justify-items: center;
-        align-items: center;
-
-    }
+    justify-items: center;
+    align-items: center;
+  }
 }
 
 .cafe__content__fresh-goods {
-
-    &>h3 {
-        width: 15rem;
-
-        @media (min-width: 992px) {
-            width: 20rem;
-        }
-    }
+  & > h3 {
+    width: 15rem;
 
     @media (min-width: 992px) {
-        grid-column: span 2;
-        width: 50%;
-        min-width: 500px;
-
+      width: 20rem;
     }
+  }
+
+  @media (min-width: 992px) {
+    grid-column: span 2;
+    width: 50%;
+    min-width: 500px;
+  }
 }
 
+/* //FIXME: Properties in the Gallery*/
+
 .cafe__content__image-gallery {
-    margin: var(--30px) auto;
+  margin: var(--30px) auto;
 
-    display: grid;
+  display: grid;
 
+  grid-template:
+    "a b"
+    "c b"
+    "c d"
+    "e d"
+    "e f"
+    "g f"
+    "g h" / 1fr 1fr;
+
+  /* FIXME: dimensions!! */
+  row-gap: 14px;
+  column-gap: 16px;
+  justify-items: stretch;
+
+  @media (min-width: 992px) {
+    grid-column: span 2;
+
+    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     grid-template:
-        "a b"
-        "c b"
-        "c d"
-        "e d"
-        "e f"
-        "g f"
-        "g h" / 1fr 1fr;
+      "a b c d"
+      "e b g d"
+      "e f g h";
+    /* grid-auto-flow: row dense; */
+  }
 
-    /* FIXME: dimensions!! */
-    row-gap: 14px;
-    column-gap: 16px;
-    justify-items: stretch;
+  & picture {
+    grid-row: span 2;
 
-    @media (min-width: 992px) {
-        grid-column: span 2;
-
-        grid-template-rows: auto auto auto;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template:
-            "a b c d"
-            "e b g d"
-            "e f g h";
-        /* grid-auto-flow: row dense; */
+    &:first-of-type,
+    &:last-of-type {
+      grid-row: span 1;
     }
 
-    & picture {
-        grid-row: span 2;
+    @media (min-width: 992px) {
+      grid-row: span 1;
 
-        &:first-of-type,
-        &:last-of-type {
-            grid-row: span 1;
-        }
-
-        @media(min-width: 992px) {
-            grid-row: span 1;
-
-            /* &:nth-child(1) {
+      /* &:nth-child(1) {
                 grid-area: a;
             } */
 
-            &:nth-child(2) {
-                grid-area: b;
-            }
+      &:nth-child(2) {
+        grid-area: b;
+      }
 
-            /* &:nth-child(3) {
+      /* &:nth-child(3) {
                 grid-area: c;
             } */
 
-            &:nth-child(6) {
-                grid-area: d;
-            }
+      &:nth-child(6) {
+        grid-area: d;
+      }
 
-            &:nth-child(7) {
-                grid-area: e;
-            }
+      &:nth-child(7) {
+        grid-area: e;
+      }
 
-            /* &:nth-child(8) {
+      /* &:nth-child(8) {
                 grid-area: f;
             } */
 
-            &:nth-child(4) {
-                grid-area: h;
-            }
+      &:nth-child(4) {
+        grid-area: h;
+      }
 
-            &:nth-child(5) {
-                grid-area: g;
-            }
-        }
+      &:nth-child(5) {
+        grid-area: g;
+      }
     }
+  }
 
-    & img {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
