@@ -51,9 +51,12 @@ img {
   height: auto;
 }
 
-picture img {
-  height: 100%;
-  width: 100%;
+picture {
+  height: fit-content;
+  & img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 h1,
