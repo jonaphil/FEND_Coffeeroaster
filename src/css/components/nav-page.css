@@ -88,6 +88,8 @@
     padding: none;
     transform: translate(0, 0);
     height: 100%;
+    gap: var(--64px);
+    padding: 0;
 
     & * {
       font-size: var(--18px);
@@ -106,6 +108,7 @@
       &:hover:after,
       &:focus:after {
         border-bottom: none;
+        /* //TODO keyFrame-Animation moving underline*/
       }
     }
   }
