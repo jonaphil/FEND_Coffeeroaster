@@ -1,7 +1,13 @@
-import myFunction, { multiply } from "./myModule";
+// old:
 
-myFunction();
+// import myFunction, { multiply } from "./myModule";
 
-const result = multiply(2, 5);
+// myFunction();
 
-console.log(result);
+// const result = multiply(2, 5);
+
+// console.log(result);
+
+import Slider from './myModule';
+
+new Slider();

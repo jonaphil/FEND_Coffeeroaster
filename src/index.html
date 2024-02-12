@@ -61,12 +61,17 @@
       <div class="section section--dark">
         <h2 class="section--shop-preview__header">Entdecke unsere Kaffee Sorten</h2>
 
-        <div class="section--shop-preview">
-          {{>product-preview}}
-          {{>product-preview}}
-          {{>product-preview}}
-          {{>product-preview}}
-
+        <div class="section--shop-preview__wrapper">
+          <div class="section--shop-preview">
+            {{>product-preview}}
+            {{>product-preview}}
+            {{>product-preview}}
+            {{>product-preview}}
+          </div>
+          <div class="section--shop-preview__navigation">
+            <button>links</button>
+            <button>rechts</button>
+          </div>
         </div>
 
         <a class="button" href="/subpages/shop.html"><button>alle
