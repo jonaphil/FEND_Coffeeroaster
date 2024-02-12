@@ -48,12 +48,14 @@
 }
 
 .header__shopping-cart {
+  position: fixed;
   display: none;
   height: 0;
   width: 0;
 
   @media (min-width: 992px) {
     display: block;
+    position: relative;
     width: var(--19px);
     height: var(--22px);
   }
