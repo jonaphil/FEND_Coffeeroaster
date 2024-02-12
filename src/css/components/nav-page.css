@@ -1,14 +1,19 @@
 .navigation__switch {
   display: none;
 
+  &:checked + * *.navigation {
+    display: block;
+    transition: all 2s;
+
+    /* FIXME: Animation is not working! */
+  }
+
   @media (min-width: 992px) {
     &:checked + * .navigation {
-      display: block;
+      display: none;
+      position: fixed;
       height: 0;
-      transition: height 2s;
-      height: 100vh;
-
-      /* FIXME: Animation is not working! */
+      width: 0;
     }
   }
 }
@@ -21,11 +26,13 @@
   z-index: 1500;
   display: none;
 
-  height: 0vh;
+  height: 100vh;
   width: 100vw;
 
   background: var(--color-black);
   color: var(--color-white);
+
+  transition: all 2s;
 
   & * {
     position: relative;
