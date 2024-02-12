@@ -1,108 +1,105 @@
 .footer {
-    display: grid;
-    grid-template: "a a"
-        "b c"
-        "d e" / 1fr 1fr;
+  display: grid;
+  grid-template:
+    "a a"
+    "b c"
+    "d e" / 1fr 1fr;
 
-    padding: var(--padding-top-footer) var(--padding-sides-default) var(--padding-bottom-footer);
-    gap: var(--distance-vertical-small);
+  padding: var(--padding-top-footer) var(--padding-sides-default)
+    var(--padding-bottom-footer);
+  gap: var(--distance-vertical-small);
 
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-    & a {
-        text-decoration: none;
-        color: inherit;
-    }
+  & ul {
+    list-style: none;
+  }
 
-    & ul {
-        list-style: none;
-    }
-
-    @media (min-width: 992px) {
-        grid-template: repeat(2, auto) / repeat(4, 1fr);
-        padding: 125px 100px;
-    }
+  @media (min-width: 992px) {
+    grid-template: repeat(2, auto) / repeat(4, 1fr);
+    padding: 125px 100px;
+  }
 }
 
 .footer__headline {
-    grid-column: span 2;
+  grid-column: span 2;
 
-    & img {
-        height: 35px;
-        margin: 1rem 0;
+  & img {
+    height: 35px;
+    margin: 1rem 0;
 
-        @media (min-width: 992px) {
-            height: 70px;
-        }
+    @media (min-width: 992px) {
+      height: 70px;
+    }
+  }
+
+  & h5 {
+    text-align: left;
+  }
+
+  @media (min-width: 992px) {
+    grid-column: 1;
+
+    & img,
+    & h4 {
+      grid-row: 1;
     }
 
     & h5 {
-        text-align: left;
+      grid-row: 2;
     }
-
-    @media (min-width: 992px) {
-        grid-column: 1;
-
-        & img,
-        & h4 {
-            grid-row: 1;
-        }
-
-        & h5 {
-            grid-row: 2;
-        }
-    }
+  }
 }
 
 .footer__headline__subtitle--mobile {
-    @media (min-width: 992px) {
-        display: none;
-    }
+  @media (min-width: 992px) {
+    display: none;
+  }
 }
 
 .footer__headline__subtitle--desktop {
-    display: none;
+  display: none;
 
-    @media (min-width: 992px) {
-        display: block;
-        text-align: left;
-        grid-column: 1;
-        grid-row: 2;
-    }
+  @media (min-width: 992px) {
+    display: block;
+    text-align: left;
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 
 .footer__info {
-    align-self: end;
+  align-self: end;
 
-    @media (min-width: 992px) {
-        grid-column: 2;
+  @media (min-width: 992px) {
+    grid-column: 2;
 
-        &:first-of-type::before {
+    /* &:first-of-type::before {
             content: 'Komm uns besuchen!\a';
             white-space: pre-wrap;
 
-        }
-
-    }
-
-
+        } */
+  }
 }
 
 .footer__links {
-    align-self: start;
+  align-self: start;
 
-    @media (min-width: 992px) {
+  @media (min-width: 992px) {
+    grid-row: 1;
+    align-self: end;
 
-        grid-row: 1;
-        align-self: end;
-
-        &:first-of-type {
-            /* Impressum & Datenschutz */
-            grid-column: 4;
-        }
-
-        &:last-of-type {
-            /* Links */
-            grid-column: 3;
-        }
+    &:first-of-type {
+      /* Impressum & Datenschutz */
+      grid-column: 4;
     }
+
+    &:last-of-type {
+      /* Links */
+      grid-column: 3;
+    }
+  }
 }
