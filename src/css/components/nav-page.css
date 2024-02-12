@@ -104,10 +104,12 @@
         border-bottom: 1px solid white;
         width: 40px;
         height: 1px;
+        transition: width 0.5s;
       }
       &:hover:after,
       &:focus:after {
-        border-bottom: none;
+        width: 0px;
+
         /* //TODO keyFrame-Animation moving underline*/
       }
     }
