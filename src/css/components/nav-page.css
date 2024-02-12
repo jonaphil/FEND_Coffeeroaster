@@ -3,6 +3,9 @@
 
   &:checked + * .navigation {
     display: block;
+    height: 100vh;
+    transition: height 2s;
+    /* FIXME: Animation is not working! */
   }
 }
 
@@ -14,7 +17,7 @@
   z-index: 1500;
   display: none;
 
-  height: 100vh;
+  height: 0vh;
   width: 100vw;
 
   background: var(--color-black);
