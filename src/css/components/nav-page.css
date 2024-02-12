@@ -109,8 +109,6 @@
       &:hover:after,
       &:focus:after {
         width: 0px;
-
-        /* //TODO keyFrame-Animation moving underline*/
       }
     }
   }
