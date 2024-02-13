@@ -16,6 +16,10 @@ new Slider({
     sliderElementSelector: '.section--shop-preview__product',
     previousSelector: '.section--shop-preview__navigation__previous',
     nextSelector: '.section--shop-preview__navigation__next',
+    
+    sliderNavigationSelector: ".section--shop-preview__navigation",
+
+    shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
 
 //new Slider();

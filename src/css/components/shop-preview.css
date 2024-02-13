@@ -1,6 +1,7 @@
 /* ### Section--shop-preview */
 
 .section--shop-preview__wrapper {
+  position: relative;
   overflow: hidden;
 }
 
@@ -32,14 +33,74 @@
 }
 
 .section--shop-preview__navigation {
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: calc(100vw - 2 * var(--padding-sides-default));
+  height: 100%;
+  transform: translateY(-100%);
 
-  & button {
+  & .section--shop-preview__navigation__previous {
+    position: relative;
+    left: 15px;
+    transition: left 0.7s;
+
+    &:hover {
+      left: 10px;
+    }
+  }
+  & .section--shop-preview__navigation__next {
+    position: relative;
+    right: 15px;
+    transition: right 0.7s;
+
+    &:hover {
+      right: 10px;
+    }
+  }
+
+  & .section--shop-preview__navigation__previous,
+  & .section--shop-preview__navigation__next {
+    position: relative;
     color: inherit;
-    border: 1px solid white;
+    line-height: 1;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0.7, 0.7, 0.7, 0.2);
+    border-radius: 10px;
+    top: 35%;
+
+    &:hover {
+      background-color: rgba(0.7, 0.7, 0.7, 0.3);
+    }
+  }
+
+  & .section--shop-preview__navigation__shortcuts {
+    position: absolute;
+    bottom: 0%;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    & * {
+      width: 15px;
+      height: 15px;
+      border-radius: 10px;
+      background-color: rgba(125, 125, 125, 0.5);
+
+      &:hover {
+        background-color: rgba(125, 125, 125, 0.8);
+      }
+
+      &.active {
+        background-color: rgb(200, 200, 200, 0.8);
+        border: 1px solid black;
+      }
+    }
   }
 
   @media (min-width: 992px) {
@@ -58,6 +119,7 @@
 
 .section--shop-preview__product {
   min-width: calc(50% - 0.5rem);
+  padding-bottom: 1rem;
   @media (min-width: 992px) {
     width: auto;
   }
