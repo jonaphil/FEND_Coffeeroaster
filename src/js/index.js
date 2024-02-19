@@ -8,7 +8,7 @@
 
 // console.log(result);
 
-import Slider from './myModule';
+import Slider from './Slider';
 
 new Slider({
     sliderSelector: '.section--shop-preview__wrapper',
