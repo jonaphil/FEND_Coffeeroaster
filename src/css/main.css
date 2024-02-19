@@ -4,23 +4,22 @@
 
 @import "variables.css";
 @import "base.css";
-@import "components/section.css";
+
+@import "sections/header.css";
+@import "sections/footer.css";
+@import "sections/nav-page.css";
+
+@import "sections/hero.css";
+@import "sections/section.css";
+@import "sections/information.css";
+@import "sections/information-teaser.css";
+@import "sections/shop-preview.css";
+@import "sections/about-product.css";
+
+@import "sub-pages/index.css";
+@import "sub-pages/cafe.css";
+@import "sub-pages/origin.css";
 
 @import "components/layout.css";
 @import "components/control-elements.css";
-
-@import "components/header.css";
-@import "components/footer.css";
-@import "components/hero.css";
-
-@import "components/information.css";
-@import "components/information-teaser.css";
-@import "components/shop-preview.css";
-@import "components/about-product.css";
 @import "components/wrapper.css";
-
-@import "components/nav-page.css";
-
-@import "components/index.css";
-@import "components/cafe.css";
-@import "components/origin.css";

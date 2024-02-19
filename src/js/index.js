@@ -9,6 +9,7 @@
 // console.log(result);
 
 import Slider from './Slider';
+import {Shop, Product} from './Shop';
 
 new Slider({
     sliderSelector: '.section--shop-preview__wrapper',
@@ -22,4 +23,9 @@ new Slider({
     shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
 
-//new Slider();
+// Shop:
+new Shop({
+    shopSelector: ".section__shop",
+    productSelector: ".section__shop__product",
+});
+

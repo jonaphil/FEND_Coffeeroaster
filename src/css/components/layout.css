@@ -1,25 +1,23 @@
 /* # Block Elements */
 
-
-
 /* ### Map */
 
 .section--map {
-    padding: 0;
+  padding: 0;
 
-    & h2 {
-        /* the exact same padding as for the main .section class, only for the heading */
-        padding: var(--distance-vertical-xs) var(--padding-sides-default) 0.5rem;
+  & h2 {
+    /* the exact same padding as for the main .section class, only for the heading */
+    padding: var(--distance-vertical-xs) var(--padding-sides-default) 0.5rem;
+  }
+
+  & iframe {
+    height: 35vh;
+    width: 100vw;
+    z-index: 1;
+    border: none;
+
+    @media (min-width: 992px) {
+      height: 55vh;
     }
-
-    & iframe {
-        height: 35vh;
-        width: 100vw;
-        z-index: 1;
-        border: none;
-
-        @media (min-width: 992px) {
-            height: 55vh;
-        }
-    }
+  }
 }
