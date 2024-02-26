@@ -1,0 +1,23 @@
+[
+    {
+        "name": "frenchPress",
+        "sourceWhite": "/images/icons/Icon French Press.svg",
+        "sourceBlack": "/images/icons/Icon French Press-black.svg",
+        "alt": "Icon French Press",
+        "cssClass": "shop__product__icon-french-press"
+    },
+    {
+        "name": "coffeeBeans",
+        "sourceWhite": "/images/icons/Icon Kaffee Bohnen.svg",
+        "sourceBlack": "/images/icons/Icon Kaffee Bohnen-black.svg",
+        "alt": "Icon Coffee Bean",
+        "cssClass": "shop__product__icon"
+    },
+    {
+        "name": "coffeeShovel",
+        "sourceWhite": "/images/icons/Icon Kaffee Schaufel-white.svg",
+        "sourceBlack": "/images/icons/Icon Kaffee Schaufel-black.svg",
+        "alt": "Icon Coffee Shovel",
+        "cssClass": "shop__product__icon"
+    }
+]

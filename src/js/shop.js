@@ -1,104 +1,5 @@
-const iconsList = [
-    {
-        name: "frenchPress",
-        sourceWhite: "/images/icons/Icon French Press.svg",
-        sourceBlack: "/images/icons/Icon French Press-black.svg",
-        alt: "Icon French Press",
-        cssClass: "shop__product__icon-french-press",
-    },
-    {
-        name: "coffeeBeans",
-        sourceWhite: "/images/icons/Icon Kaffee Bohnen.svg",
-        sourceBlack: "/images/icons/Icon Kaffee Bohnen-black.svg",
-        alt: "Icon Coffee Bean",
-        cssClass: "shop__product__icon",
-    },
-    {
-        name: "coffeeShovel",
-        sourceWhite: "/images/icons/Icon Kaffee Schaufel-white.svg",
-        sourceBlack: "/images/icons/Icon Kaffee Schaufel-black.svg",
-        alt: "Icon Coffee Shovel",
-        cssClass: "shop__product__icon",
-    }
-]
-
-const productList = [
-    {
-        id:
-            0,
-        name:
-            "Äthiopien",
-        variants:
-            [
-                {
-                    name: "500g",
-                    weight: 500,
-                    price: 690
-                },
-                {
-                    name: "1kg",
-                    weight: 1000,
-                    price: 1000
-                },
-                {
-                    name: "5kg",
-                    weight: 5000,
-                    price: 5000
-                }
-            ],
-        icons:
-            [
-                "frenchPress",
-                "coffeeBeans",
-                "coffeeShovel"
-            ],
-        picture:
-            {
-                desktop: "/images/desktop/FEND_Coffee_Costa-Rica 1.png",
-                mobile: "/images/mobile/FEND_Coffee_Costa-Rica 1-512px.png",
-                alt: "The Picture of our Äthiopien-Coffee."
-            },
-        description:
-            "MAYA Hochlandkaffee von MAYA Kaffee 1991 wird an den Hängen der Sierra Madre de Chiapas angebaut, ein Gebirgszug, der sich entlang der Pazifikküste im Süden Mexikos erstreckt. Hier haben sich indianische Kleinbauern mit Anbauflächen von ein bis drei Hektar Land in Kooperativen zusammengeschlossen und verzichten komplett auf Industriedünger und Pestizide. Schonend geröstet, entwickelt diese einzigartige Spezialität ein überraschend vielschichtiges Aromenspiel mit deutlichen Noten von Haselnuss. Als klassischer Aufguss ist unser MAYA Filterkaffee besonders ergiebig. 100% BIO aus kontrolliert ökologischem Anbau. DE-ÖKO-003 / Nicht-EU-Landwirtschaft."
-    },
-    {
-        id:
-            1,
-        name:
-            "Brasilien",
-        variants: [
-          {
-            name: "500g",
-            weight: 500,
-            price: 880
-          },
-          {
-            name: "1kg",
-            weight: 1000,
-            price: 1200
-          },
-          {
-            name: "5kg",
-            weight: 5000,
-            price: 6500
-          }
-        ],
-        icons:
-            [
-                "frenchPress",
-                "coffeeBeans",
-                "coffeeShovel"
-            ],
-        picture:
-            {
-                desktop: "/images/desktop/FEND_Coffee_Costa-Rica 1.png",
-                mobile: "/images/mobile/FEND_Coffee_Costa-Rica 1-512px.png",
-                alt: "the Picture of our Brasilien-Coffee."
-            },
-        description:
-            "MAYA Hochlandkaffee von MAYA Kaffee 1991 wird an den Hängen der Sierra Madre de Chiapas angebaut, ein Gebirgszug, der sich entlang der Pazifikküste im Süden Mexikos erstreckt. Hier haben sich indianische Kleinbauern mit Anbauflächen von ein bis drei Hektar Land in Kooperativen zusammengeschlossen und verzichten komplett auf Industriedünger und Pestizide. Schonend geröstet, entwickelt diese einzigartige Spezialität ein überraschend vielschichtiges Aromenspiel mit deutlichen Noten von Haselnuss. Als klassischer Aufguss ist unser MAYA Filterkaffee besonders ergiebig. 100% BIO aus kontrolliert ökologischem Anbau. DE-ÖKO-003 / Nicht-EU-Landwirtschaft."
-      }
-]
+import iconsList from "./data/icons.json"; //assert??
+import productList from "./data/products.json";
 
 function asMoney(intCents, seperator = ",") {
 
@@ -147,7 +48,6 @@ function generateProductHtml(productObj) {
             iconsAllHtml.appendChild(iconSingleHtml);
         }
         
-        console.log(productIcons);
         productIcons.forEach(createIconHtml);
         return iconsAllHtml;
     }
@@ -174,12 +74,6 @@ function generateProductHtml(productObj) {
         wrapperHtml.appendChild(pictureHtml);
 
         return wrapperHtml;
-
-        // const html =
-        //     `<picture>
-        //         <source media="(min-width: 992px)" srcset="${productPicture.desktop}">
-        //         <img class="shop__product__image" src="${productPicture.mobile}" alt="${productPicture.alt}">
-        //     </picture>`;
     }
 
     // HTML-Creation:
@@ -203,18 +97,10 @@ function generateProductHtml(productObj) {
 }
 
 function generateShop(productList) {
-
     const shop = document.querySelector(".shop");
     productList.forEach((productObj) => {
         shop.appendChild(generateProductHtml(productObj));
     })
-   
-    // const generateShop = (arg1, arg2) => {
-    //     console.log(arg1 + arg2);
-    //     return 0;
-    // }   
-    // generateShop();
-    // generateProduct();
 }
 
 generateShop(productList);
