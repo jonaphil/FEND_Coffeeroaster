@@ -23,3 +23,5 @@
 @import "components/layout.css";
 @import "components/control-elements.css";
 @import "components/wrapper.css";
+
+@import "shop/shop.css";
