@@ -8,8 +8,8 @@ function asMoney(intCents, seperator = ",", currency = "€") {
     return moneyString.join("") + currency;
 }
 
-function addToCart(productID, varietyID) {
-    console.log(`Sorte: ${productID}, Produkt: ${varietyID}`);
+function addToCart(productID, variantID) {
+    console.log(`Sorte: ${productID}, Produkt: ${variantID}`);
 }
 
 function generateProductHtml(productObj) {
@@ -53,23 +53,33 @@ function generateProductHtml(productObj) {
 
         const quickAddSelection = () => {
             const selectionHtml = document.createElement("div");
+            selectionHtml.classList.add("shop__product__quick-add__selection");
+
             productVariants.forEach((variant) => {
                 const varietyHtml = document.createElement("button");
-                varietyHtml.addEventListener("click", addToCart); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
+                varietyHtml.addEventListener("click", addToCart.bind(null, productObj.id, variant.id)); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
                 varietyHtml.innerHTML = `${variant.name}`;
-                varietyHtml.classList.add("shop__product__quick-add__selection");
                 
                 selectionHtml.appendChild(varietyHtml);
             })
+            selectionHtml.onmouseout = showButton;
             return selectionHtml;
         }
 
-        quickAddButton.addEventListener("click", () => {
-            quickMenuWrapper.removeChild(quickAddButton);
-            quickMenuWrapper.appendChild(quickAddSelection());
-        })
-
         quickMenuWrapper.appendChild(quickAddButton);
+
+        const showSelection = () => {
+            quickMenuWrapper.innerText = "";
+            quickMenuWrapper.appendChild(quickAddSelection());
+        }
+
+        const showButton = () => {
+            quickMenuWrapper.innerText = "";
+            quickMenuWrapper.appendChild(quickAddButton);
+            quickAddButton.onmouseover = showSelection;
+        }
+        
+        quickAddButton.onmouseover = showSelection;
 
         return quickMenuWrapper;
 
