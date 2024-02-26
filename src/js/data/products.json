@@ -7,16 +7,19 @@
         "variants":
             [
                 {
-                    "name": "500g",
+         	    "id": 0,       
+	 	    "name": "500g",
                     "weight": 500,
                     "price": 690
                 },
                 {
+         	    "id": 1,       
                     "name": "1kg",
                     "weight": 1000,
                     "price": 1000
                 },
                 {
+		    "id": 2,
                     "name": "5kg",
                     "weight": 5000,
                     "price": 5000
@@ -44,16 +47,19 @@
             "Brasilien",
         "variants": [
           {
+	    "id" : 0,
             "name": "500g",
             "weight": 500,
             "price": 880
           },
           {
+	    "id" : 1,
             "name": "1kg",
             "weight": 1000,
             "price": 1200
           },
           {
+	    "id" : 2,
             "name": "5kg",
             "weight": 5000,
             "price": 6500
