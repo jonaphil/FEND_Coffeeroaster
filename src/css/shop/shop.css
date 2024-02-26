@@ -11,12 +11,9 @@
 
   width: calc(100vw - 2 * var(--padding-sides-default));
 
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template: auto / repeat(2, 1fr);
   gap: 1rem;
-
-  transform: translate(calc(-0 * (50% + 0.5rem)));
-  transition: transform 1s ease;
 
   & * {
     margin: 0rem;
