@@ -19,6 +19,7 @@
   --color-background-dark: var(--color-anthrazit);
 
   --color-background-product: var(--color-light-grey);
+  --color-background-product-hovered: var(--color-kraftpapier);
 
   --color-text-price-tag: var(--color-medium-grey);
 

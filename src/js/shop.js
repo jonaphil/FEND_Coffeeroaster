@@ -1,15 +1,21 @@
 import iconsList from "./data/icons.json"; //assert??
 import productList from "./data/products.json";
 
-function asMoney(intCents, seperator = ",") {
+function asMoney(intCents, seperator = ",", currency = "€") {
 
     let moneyString = Array.from(intCents.toString());
     moneyString.splice(-2, 0, seperator);
-    return moneyString.join("");
+    return moneyString.join("") + currency;
+}
+
+function addToCart(productID, varietyID) {
+    console.log(`Sorte: ${productID}, Produkt: ${varietyID}`);
 }
 
 function generateProductHtml(productObj) {
     
+    // Variables:
+
     const productName = productObj.name; //string
     
     const productVariants = productObj.variants; //Array(object)
@@ -36,6 +42,39 @@ function generateProductHtml(productObj) {
 
     const productPicture = productObj.picture; //object {desktop: string-source-to-desktop-version, mobile: string-source-to-mobile-version}
     
+    // Functions:
+
+    const quickAdd = () => {
+        const quickMenuWrapper = document.createElement("div");
+        quickMenuWrapper.classList.add("shop__product__quick-add");
+        
+        const quickAddButton = document.createElement("button");
+        quickAddButton.innerHTML = "quick add <strong>+</strong>";
+
+        const quickAddSelection = () => {
+            const selectionHtml = document.createElement("div");
+            productVariants.forEach((variant) => {
+                const varietyHtml = document.createElement("button");
+                varietyHtml.addEventListener("click", addToCart); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
+                varietyHtml.innerHTML = `${variant.name}`;
+                varietyHtml.classList.add("shop__product__quick-add__selection");
+                
+                selectionHtml.appendChild(varietyHtml);
+            })
+            return selectionHtml;
+        }
+
+        quickAddButton.addEventListener("click", () => {
+            quickMenuWrapper.removeChild(quickAddButton);
+            quickMenuWrapper.appendChild(quickAddSelection());
+        })
+
+        quickMenuWrapper.appendChild(quickAddButton);
+
+        return quickMenuWrapper;
+
+    }
+   
     const getIconsHtml = () => {
         const iconsAllHtml = document.createElement("div");
         iconsAllHtml.classList.add("shop__product__icon-wrapper");
@@ -60,6 +99,7 @@ function generateProductHtml(productObj) {
         const imgHtml = document.createElement("img");
         
         wrapperHtml.classList.add("shop__product__image-wrapper");
+        wrapperHtml.tabIndex = "0";
 
         sourceHtml.media = "(min-width: 992px)";
         sourceHtml.srcset = `${productPicture.desktop}`;
@@ -72,11 +112,12 @@ function generateProductHtml(productObj) {
         pictureHtml.appendChild(imgHtml);
 
         wrapperHtml.appendChild(pictureHtml);
+        wrapperHtml.appendChild(quickAdd());
 
         return wrapperHtml;
     }
 
-    // HTML-Creation:
+    // Final HTML-Creation:
     const productHtml = document.createElement("div");
     const productNameHtml = document.createElement("h5");
     const productPriceTagHtml = document.createElement("p");
@@ -85,7 +126,7 @@ function generateProductHtml(productObj) {
     productNameHtml.innerHTML = productName;
 
     productPriceTagHtml.classList.add("shop__product__price-tag");
-    productPriceTagHtml.innerHTML = `${asMoney(productMinPrice)}€ &ndash; ${asMoney(productMaxPrice)}€`;
+    productPriceTagHtml.innerHTML = `${asMoney(productMinPrice)} &ndash; ${asMoney(productMaxPrice)}`;
 
     productHtml.appendChild(getPicturesHtml());
     productHtml.appendChild(productNameHtml);
