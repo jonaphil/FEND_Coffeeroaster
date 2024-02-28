@@ -1,18 +1,8 @@
 import iconsList from "./data/icons.json"; //assert??
-import productList from "./data/products.json";
 
-function asMoney(intCents, seperator = ",", currency = "€") {
+import { asMoney, addToCart } from "./shop/general";
 
-    let moneyString = Array.from(intCents.toString());
-    moneyString.splice(-2, 0, seperator);
-    return moneyString.join("") + currency;
-}
-
-function addToCart(productID, variantID) {
-    console.log(`Sorte: ${productID}, Produkt: ${variantID}`);
-}
-
-function generateProductCard(productObj) {
+export default function generateProductCard(productObj) {
     
     // Variables:
 
@@ -146,12 +136,3 @@ function generateProductCard(productObj) {
     return productHtml;
 
 }
-
-function generateShop(productList) {
-    const shop = document.querySelector(".shop");
-    productList.forEach((productObj) => {
-        shop.appendChild(generateProductCard(productObj));
-    })
-}
-
-generateShop(productList);
