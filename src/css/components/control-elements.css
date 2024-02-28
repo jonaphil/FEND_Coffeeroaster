@@ -55,12 +55,25 @@
 }
 
 .jsDropDownMenu__Wrapper {
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .jsDropDownMenu__Button {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  &:hover .jsDropDownMenu__Button__Label {
+    color: var(--color-anthrazit);
+  }
+
+  &.open {
+    &:hover .jsDropDownMenu__Button__Label {
+      color: var(--color-white);
+    }
+  }
 }
 
 .jsDropDownMenu__Button__Label {
@@ -68,6 +81,18 @@
   border: 2px solid var(--color-anthrazit);
   border-radius: 5px 0 0 5px;
   box-sizing: border-box;
+  cursor: pointer;
+  color: var(--color-medium-grey);
+  background-color: var(--color-white);
+
+  &:hover {
+    color: var(--color-anthrazit);
+  }
+
+  &.open {
+    background-color: var(--color-anthrazit);
+    color: var(--color-white);
+  }
 }
 
 .jsDropDownMenu__Button__Opener {
@@ -80,6 +105,7 @@
   width: 45px;
   height: auto;
   border-radius: 0 5px 5px 0;
+  cursor: pointer;
   & span {
     transform: translate(75%, 25%) rotate(90deg);
     /* transform: translate(-75%, -25%) rotate(-90deg); */
@@ -89,7 +115,37 @@
     height: var(--18px);
     width: var(--18px);
   }
+
+  &.open span {
+    transform: translate(-75%, -25%) rotate(-90deg);
+  }
 }
 
-.jsDropDownMenu__Button__OptionsList {
+.jsDropDownMenu__OptionsList {
+  display: none;
+  border: 2px solid var(--color-anthrazit);
+  border-radius: 5px;
+  height: 0px;
+  transition: 1s height;
+
+  & > * {
+    padding: 7px 25px;
+
+    &:first-child {
+      padding-top: 13px;
+    }
+    &:last-child {
+      padding-bottom: 13px;
+    }
+
+    &:hover {
+      background-color: #c4c4c4;
+    }
+  }
+
+  &.visible {
+    display: block;
+    height: auto;
+    transition: 1s height; /* animation of scrolling out */
+  }
 }

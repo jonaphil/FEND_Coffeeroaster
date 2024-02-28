@@ -17,6 +17,22 @@ function styleSingleDropDownMenu(menuObj) {
     menuButtonOpener.className = "jsDropDownMenu__Button__Opener";
     menuButtonOpener.innerHTML = "<span>&#155</span>"; //Single right angle quotation (UTF+203A), used as an arrow for the drop-down-menu
 
+    function openCloseList() {
+        if (menuButtonOpener.classList.contains("open")) {
+            menuOptionsList.classList.remove("visible");
+            menuButtonOpener.classList.remove("open");
+            menuButtonLabel.classList.remove("open");
+            menuButton.classList.remove("open");
+
+        } else {
+            menuOptionsList.classList.add("visible");
+            menuButtonOpener.classList.add("open");
+            menuButtonLabel.classList.add("open");
+            menuButton.classList.add("open");
+
+        }
+    } 
+
     const menuOptionsList = document.createElement("div");
     menuOptionsList.className = "jsDropDownMenu__OptionsList";
 
@@ -28,13 +44,19 @@ function styleSingleDropDownMenu(menuObj) {
         menuOptionsList.appendChild(element);
     })
 
+    const test = document.createElement("p");
+    test.innerHTML = "Test";
+
+    menuButtonOpener.addEventListener("click", openCloseList);
+    menuButtonLabel.addEventListener("click", openCloseList);
+
     menuButton.appendChild(menuButtonLabel);
     menuButton.appendChild(menuButtonOpener);
     menuWrapper.appendChild(menuButton);
     menuWrapper.appendChild(menuOptionsList);
 
     parent.insertBefore(menuWrapper, originMenu);
-    //parent.removeChild(originMenu);
+    parent.removeChild(originMenu);
 
 }
 
