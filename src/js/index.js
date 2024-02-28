@@ -1,16 +1,6 @@
-// old:
+import Slider from './slider';
 
-// import myFunction, { multiply } from "./myModule";
-
-// myFunction();
-
-// const result = multiply(2, 5);
-
-// console.log(result);
-
-import Slider from './Slider';
-// import {Shop, Product} from './Shop';
-
+// TODO: add Slider only on these pages with an actual slider!
 new Slider({
     sliderSelector: '.section--shop-preview__wrapper',
     sliderContainerSelector: '.section--shop-preview',
@@ -22,10 +12,4 @@ new Slider({
 
     shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
-
-// // Shop:
-// new Shop({
-//     shopSelector: ".section__shop",
-//     productSelector: ".section__shop__product",
-// });
 
