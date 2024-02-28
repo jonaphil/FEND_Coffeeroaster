@@ -4,7 +4,7 @@
   /* Cleaning <a>-Styling */
   display: block;
   text-decoration: none;
-
+  border: none;
   background-color: var(--color-button-default);
   color: var(--color-button-font);
   padding: 15px 50px 15px 50px;
@@ -29,8 +29,67 @@
   background-color: var(--color-button-active);
 }
 
-.button--select {
+.button-select {
+  display: block;
+  text-decoration: none;
   background-color: var(--color-white);
+  padding: 15px 50px 15px 50px;
   border: 2px solid var(--color-anthrazit);
-  color: var(--color-black);
+  width: fit-content;
+  height: auto;
+  border-radius: 5px;
+  text-align: center;
+  align-self: center;
+  color: var(--color-medium-grey);
+
+  &:hover {
+    color: var(--color-black);
+  }
+
+  &:active {
+    background-colo: var(--color-black);
+  }
+}
+
+.jsDropDownMenu {
+}
+
+.jsDropDownMenu__Wrapper {
+}
+
+.jsDropDownMenu__Button {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.jsDropDownMenu__Button__Label {
+  padding: 12px 22px; /*recalculated that sizes starting from 15px and 25px to get the border inside of the padding*/
+  border: 2px solid var(--color-anthrazit);
+  border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+}
+
+.jsDropDownMenu__Button__Opener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-anthrazit);
+  color: var(--color-white);
+
+  width: 45px;
+  height: auto;
+  border-radius: 0 5px 5px 0;
+  & span {
+    transform: translate(75%, 25%) rotate(90deg);
+    /* transform: translate(-75%, -25%) rotate(-90deg); */
+    transition: 1s transform;
+    color: var(--color-white);
+    font-size: var(--34px);
+    height: var(--18px);
+    width: var(--18px);
+  }
+}
+
+.jsDropDownMenu__Button__OptionsList {
 }
