@@ -1,6 +1,6 @@
-import iconsList from "./data/icons.json"; //assert??
+import iconsList from "/js/data/icons.json"; //assert??
 
-import { asMoney, addToCart } from "./shop/general";
+import { asMoney, addToCart } from "/js/shop/general";
 
 export default function generateProductCard(productObj) {
     

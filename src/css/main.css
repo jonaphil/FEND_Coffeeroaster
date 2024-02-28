@@ -4,6 +4,7 @@
 
 @import "variables.css";
 @import "base.css";
+@import "keyframes.css";
 
 @import "sections/header.css";
 @import "sections/footer.css";

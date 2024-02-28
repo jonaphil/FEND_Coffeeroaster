@@ -179,10 +179,18 @@
   & button {
     font-weight: 700;
     font-size: var(--14px);
+    transition: 1s ease-out opacity;
+    opacity: 1;
 
     &:hover,
     &:focus {
       color: var(--color-petrol);
+      opacity: 1;
+    }
+
+    &:active {
+      transition-duration: 0s;
+      opacity: 0;
     }
   }
 }
