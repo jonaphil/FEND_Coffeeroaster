@@ -1,0 +1,67 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: var(--75px);
+  gap: var(--32px);
+}
+
+.product__image {
+  background-color: var(--color-kraftpapier);
+}
+
+.product__specs {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--30px);
+  & > *:last-child {
+    margin-bottom: var(--20px);
+  }
+}
+
+.product__overview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--10px);
+
+  & p {
+    margin-top: var(--22px);
+  }
+}
+
+.product__select-to-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-bottom: var(--80px);
+  gap: var(--20px);
+}
+
+.product__properties__wrapper {
+  display: grid;
+  align-self: flex-start;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  row-gap: var(--22px);
+  column-gap: var(--16px);
+  & img {
+    height: 46px;
+    justify-self: center;
+    &:first-of-type {
+      justify-self: start;
+    }
+    &:last-of-type {
+      justify-self: end;
+    }
+  }
+}
+
+.product__description {
+  & p {
+    margin-top: var(--20px);
+  }
+}
