@@ -27,14 +27,21 @@ export default class Slider {
         this.previousBtn = document.querySelector(previousSelector);
         this.nextBtn = document.querySelector(nextSelector);
         this.shortcutsClass = shortcutsClass;
-        console.log(this);
-
+        
         this.sliderContainerGapsize = parseInt(window.getComputedStyle(this.sliderContainer).gap, 10);
         this.slideSize = (this.slider.offsetWidth + this.sliderContainerGapsize) / 2;
+
         this.currentSlide = 0;
 
         this.setEventListeners();
         this.generateShortcuts();
+    }
+
+    refreshGapSize() {
+        this.sliderContainerGapsize = parseInt(window.getComputedStyle(this.sliderContainer).gap, 10);
+        this.slideSize = (this.slider.offsetWidth + this.sliderContainerGapsize) / 2;
+        this.moveSlides();
+
     }
 
     moveSlides() {
@@ -56,6 +63,8 @@ export default class Slider {
     setEventListeners() {
         this.nextBtn.addEventListener('click', this.nextSlide.bind(this));
         this.previousBtn.addEventListener('click', this.previousSlide.bind(this));
+        window.addEventListener('resize', this.refreshGapSize.bind(this));
+        
     }
 
     generateShortcuts() {

@@ -121,15 +121,25 @@
   }
 }
 
+.jsDropDownMenu__OptionsList__Wrapper {
+  overflow: hidden;
+  transition: 1s height;
+  height: 1px;
+  &.open {
+    height: 200px; /* FIXME: animation with height: fit-content; */
+  }
+}
+
 .jsDropDownMenu__OptionsList {
-  display: none;
+  display: block;
   border: 2px solid var(--color-anthrazit);
   border-radius: 5px;
-  height: 0px;
-  transition: 1s height;
+  transform: translateY(-100%);
+  transition: 1s transform;
 
   & > * {
     padding: 7px 25px;
+    cursor: pointer;
 
     &:first-child {
       padding-top: 13px;
@@ -137,15 +147,15 @@
     &:last-child {
       padding-bottom: 13px;
     }
-
     &:hover {
       background-color: #c4c4c4;
     }
   }
 
-  &.visible {
+  &.open {
     display: block;
-    height: auto;
-    transition: 1s height; /* animation of scrolling out */
+    transform: translateY(-100%);
+    transition: 1s transform;
+    transform: translateY(0%);
   }
 }
