@@ -128,7 +128,7 @@
 .jsDropDownMenu__OptionsList__Wrapper {
   overflow: hidden;
   transition: 1s height;
-  height: 1px;
+  height: 0px;
   &.open {
     height: 200px; /* FIXME: animation with height: fit-content; */
   }

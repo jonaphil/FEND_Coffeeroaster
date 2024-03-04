@@ -9,19 +9,15 @@ export default function generateProductCard(productObj) {
     // Variables:
 
     const productName = productObj.name; //string
-    
     const productVariants = productObj.variants; //Array(object)
-
     const minMaxPrice = getMinMaxPrice(productVariants);
     
     const productIcons = productObj.icons.map((iconName) => {
         return iconsList.find((iconObj) => iconObj.name === iconName );
     }); //Array(object)
-
     const productPicture = productObj.picture; //object {desktop: string-source-to-desktop-version, mobile: string-source-to-mobile-version}
     
     // Functions:
-
     const quickAdd = () => {
         const quickMenuWrapper = document.createElement("div");
         quickMenuWrapper.classList.add("shop__product__quick-add");
@@ -62,7 +58,6 @@ export default function generateProductCard(productObj) {
         return quickMenuWrapper;
 
     }
-   
     const getIconsHtml = () => {
         const iconsAllHtml = document.createElement("div");
         iconsAllHtml.classList.add("shop__product__icon-wrapper");
@@ -78,7 +73,6 @@ export default function generateProductCard(productObj) {
         productIcons.forEach(createIconHtml);
         return iconsAllHtml;
     }
-
     const getPicturesHtml = () => {
         const wrapperHtml = document.createElement("div");
 

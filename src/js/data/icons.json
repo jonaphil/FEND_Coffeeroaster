@@ -3,21 +3,27 @@
         "name": "frenchPress",
         "sourceWhite": "/images/icons/Icon French Press.svg",
         "sourceBlack": "/images/icons/Icon French Press-black.svg",
+        "sourceGrey": "/images/icons/Icon French Press-grey.svg",
         "alt": "Icon French Press",
-        "cssClass": "shop__product__icon-french-press"
+        "cssClass": "shop__product__icon-french-press",
+        "description": "Für French Press"
     },
     {
         "name": "coffeeBeans",
         "sourceWhite": "/images/icons/Icon Kaffee Bohnen.svg",
         "sourceBlack": "/images/icons/Icon Kaffee Bohnen-black.svg",
+        "sourceGrey": "/images/icons/Icon Kaffee Bohnen-grey.svg",
         "alt": "Icon Coffee Bean",
-        "cssClass": "shop__product__icon"
+        "cssClass": "shop__product__icon",
+        "description": "Mild geröstet"
     },
     {
         "name": "coffeeShovel",
         "sourceWhite": "/images/icons/Icon Kaffee Schaufel-white.svg",
         "sourceBlack": "/images/icons/Icon Kaffee Schaufel-black.svg",
+        "sourceGrey": "/images/icons/Icon Kaffee Schaufel-grey.svg",
         "alt": "Icon Coffee Shovel",
-        "cssClass": "shop__product__icon"
+        "cssClass": "shop__product__icon",
+        "description": "gemahlen oder als Bohne"
     }
 ]
