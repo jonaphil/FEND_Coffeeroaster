@@ -4,6 +4,8 @@ function styleSingleDropDownMenu(menuObj) {
     const optionsOriginal = originMenu.querySelectorAll("option");
     const options = Array.from(optionsOriginal);
 
+    // ---start generate optionsList
+    // TODO: having a function to generate that List, work on it and then it can be used in the java-script generated form.
     let selectedOption = options.findIndex((option) => option.selected === true);
 
     // define descriptor Line, befor the Hidden option is going to be kicked out of the list;
@@ -20,25 +22,24 @@ function styleSingleDropDownMenu(menuObj) {
             index = options.findIndex((option) => option.hidden === true);
         };
     }
+
+    const optionsList = [
+        {
+            name: "Name of the option",
+            value: "value of the option"
+        }
+    ];
+    // ---end generate optionsList
     
     // cutOutHiddenOptions();
     
     function openCloseList() {
-        if (menuButtonOpener.classList.contains("open")) {
-            menuOptionsList.classList.remove("open");
-            menuOptionsListWrapper.classList.remove("open");
-            menuButtonOpener.classList.remove("open");
-            menuButtonLabel.classList.remove("open");
-            menuButton.classList.remove("open");
+            menuOptionsList.classList.toggle("open");
+            menuOptionsListWrapper.classList.toggle("open");
+            menuButtonOpener.classList.toggle("open");
+            menuButtonLabel.classList.toggle("open");
+            menuButton.classList.toggle("open");
 
-        } else {
-            menuOptionsList.classList.add("open");
-            menuOptionsListWrapper.classList.add("open");
-            menuButtonOpener.classList.add("open");
-            menuButtonLabel.classList.add("open");
-            menuButton.classList.add("open");
-
-        }
     } 
 
     const menuWrapper = document.createElement("div");
@@ -64,18 +65,20 @@ function styleSingleDropDownMenu(menuObj) {
     const menuOptionsList = document.createElement("div");
     menuOptionsList.className = "jsDropDownMenu__OptionsList";
 
+    const selectElement = (index) => {
+        selectedOption = index;
+        originMenu.selectedIndex = index;
+        console.log(selectedOption);
+        generateLabel();
+        openCloseList();
+    }
+
     options.forEach((option, i) => {
         if (option.hidden !== true) {
-            const selectElement = () => {
-                selectedOption = i;
-                console.log(selectedOption);
-                generateLabel();
-                openCloseList();
-            }
             const element = document.createElement("div");
             const p = document.createElement("p");
             p.innerHTML = option.innerHTML;
-            p.addEventListener("click", selectElement);
+            p.addEventListener("click", selectElement.bind(null, i));
             //TODO: Insert keyboard controlls!;
             element.appendChild(p);
             menuOptionsList.appendChild(element);}
@@ -95,8 +98,7 @@ function styleSingleDropDownMenu(menuObj) {
     menuWrapper.appendChild(menuOptionsListWrapper);
 
     parent.insertBefore(menuWrapper, originMenu);
-    parent.removeChild(originMenu);
-
+    originMenu.classList.add("jsDropDownMenu__Hidden-part");
 }
 
 export default function styleAllDropDownMenus(classSelectorElement = ".jsDropDownMenu") {
