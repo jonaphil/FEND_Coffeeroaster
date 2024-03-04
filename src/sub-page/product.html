@@ -10,23 +10,19 @@
         <main>
             <div class="section product">
                 <picture class="product__image">
-                        <source media="(min-width: 992px)" scrset="/images/desktop/FEND_Coffee_Costa-Rica 1.png">
-                        <img class="product__image" src="/images/mobile/FEND_Coffee_Costa-Rica 1-512px.png"
-                            alt="our flagship coffee">
+                        <source media="(min-width: 992px)" scrset="/images/desktop/example.png">
+                        <img class="product__image" src="/images/mobile/example.png"
+                            alt="The picture of the product">
                 </picture>
                 <div class="product__specs">
                     <div class="product__overview">
-                        <h2>Costa Rica</h2>
+                        <h2>Name</h2>
                         <h5>6,90€ &ndash; 26,90€</h5>
                         <p>Costa Rica Filterkaffee ist äußerst ergiebig und hat praktisch keine Säure. Den Gaumen umschmeichelt ein vollmundiges Haselnussaroma. Gleich probieren!</p>
                     </div>
                     <form class="product__select-to-cart" autocomplete="off">
                         <select class="button-select jsDropDownMenu" name="products">Wie viel?
                             <option selected hidden>Wie viel Kaffee brauchst du?</option> <!-- This option is needed as a display! -->
-                            <option value="0">250g gemahlen</option>
-                            <option value="1">500g gemahlen</option>
-                            <option value="2">250g Bohnen</option>
-                            <option value="3">500g Bohnen</option>
                         </select>
                         <input class="button" type="submit" value="In den Warenkorb">
                     </form>
@@ -51,8 +47,8 @@
             {{>shop-preview}}
         </main>
         {{>footer}}
-        <script src="/js/index.js" type="module"></script>
         <script src="/js/shop.js" type="module" defer></script>
+        <script src="/js/index.js" type="module"></script>
     </body>
 
 

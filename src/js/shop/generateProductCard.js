@@ -1,6 +1,8 @@
 import iconsList from "/js/data/icons.json"; //assert??
 
-import { asMoney, addToCart } from "/js/shop/general";
+import {asMoney, addToCart, getMinMaxPrice} from "/js/shop/general";
+
+
 
 export default function generateProductCard(productObj) {
     
@@ -10,21 +12,7 @@ export default function generateProductCard(productObj) {
     
     const productVariants = productObj.variants; //Array(object)
 
-    const productPriceList = productVariants.map(
-        (variant) => {
-        return variant.price;
-    });
-    
-    const productMinPrice =
-        Math.min.apply(
-            null,
-            productPriceList
-        );
-    const productMaxPrice =
-        Math.max.apply(
-            null,
-            productPriceList
-        );
+    const minMaxPrice = getMinMaxPrice(productVariants);
     
     const productIcons = productObj.icons.map((iconName) => {
         return iconsList.find((iconObj) => iconObj.name === iconName );
@@ -126,7 +114,7 @@ export default function generateProductCard(productObj) {
     productNameHtml.innerHTML = productName;
 
     productPriceTagHtml.classList.add("shop__product__price-tag");
-    productPriceTagHtml.innerHTML = `${asMoney(productMinPrice)} &ndash; ${asMoney(productMaxPrice)}`;
+    productPriceTagHtml.innerHTML = `${asMoney(minMaxPrice[0])} &ndash; ${asMoney(minMaxPrice[1])}`;
 
     productHtml.appendChild(getPicturesHtml());
     productHtml.appendChild(productNameHtml);

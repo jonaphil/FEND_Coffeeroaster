@@ -1,7 +1,9 @@
 import productList from "./data/products.json";
 
 import generateProductCard from "./shop/generateProductCard";
-import {generateShoppingCart} from "./shop/shoppingCart";
+import generateProductPage from "./shop/generateProductPage";
+import { generateShoppingCart } from "./shop/shoppingCart";
+import { urlParams } from "./getURLInformation";
 
 function generateShop(productList) {
     console.log("starting shop");
@@ -15,6 +17,18 @@ function generateShop(productList) {
     console.log("finishing shop");
 }
 
-
-generateShop(productList);
 generateShoppingCart();
+
+localStorage.setItem("allProducts", JSON.stringify(productList));
+
+const currentSubPage = window.location.pathname;
+
+if (currentSubPage === "/sub-page/shop.html") {
+    generateShop(productList);
+} else if (currentSubPage === "/sub-page/product.html") {
+    const productID = parseInt(urlParams.get("product"));
+    generateProductPage(productID);
+}
+
+
+

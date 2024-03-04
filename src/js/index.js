@@ -14,5 +14,6 @@ new Slider({
     shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
 
+
 stylePage();
 

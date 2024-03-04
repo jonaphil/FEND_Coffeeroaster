@@ -8,5 +8,18 @@ export function asMoney(intCents, seperator = ",", currency = "€") {
 
 export function addToCart(productID, variantID) {
     addToShoppingCart(productID, variantID, 1);
-    console.log(`Sorte: ${productID}, Produkt: ${variantID}`);
+    console.log(`Successfully Added To Cart:\nSorte: ${productID}, Produkt: ${variantID}`);
+}
+
+export function getMinMaxPrice(variantsList) {
+    const productPriceList = variantsList.map(
+        (variant) => {
+        return variant.price;
+    });
+    
+    const MinMaxPrice =[
+        Math.min.apply(null, productPriceList),
+        Math.max.apply(null, productPriceList)];
+
+    return MinMaxPrice;
 }

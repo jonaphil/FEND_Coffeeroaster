@@ -3,7 +3,7 @@ export function generateShoppingCart() {
         const shoppingCart = [];
         localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
     } else {
-        console.log(`Old shopping cart is used:`);
+        console.log(`Already existing shopping cart is used:`);
         console.log(JSON.parse(localStorage.getItem("shoppingCart")));
     }
         
