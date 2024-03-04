@@ -39,7 +39,6 @@ function styleSingleDropDownMenu(menuObj) {
             menuButtonOpener.classList.toggle("open");
             menuButtonLabel.classList.toggle("open");
             menuButton.classList.toggle("open");
-
     } 
 
     const menuWrapper = document.createElement("div");
