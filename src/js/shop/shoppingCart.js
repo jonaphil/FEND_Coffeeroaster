@@ -1,7 +1,4 @@
 export function generateShoppingCart() {
-
-    console.log("generation shoppingCart started!");
-
     if (localStorage.getItem("shoppingCart") === null) {
         const shoppingCart = [];
         localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
