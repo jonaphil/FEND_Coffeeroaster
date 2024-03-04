@@ -4,6 +4,8 @@ function styleSingleDropDownMenu(menuObj) {
     const optionsOriginal = originMenu.querySelectorAll("option");
     const options = Array.from(optionsOriginal);
 
+    // ---start generate optionsList
+    // TODO: having a function to generate that List, work on it and then it can be used in the java-script generated form.
     let selectedOption = options.findIndex((option) => option.selected === true);
 
     // define descriptor Line, befor the Hidden option is going to be kicked out of the list;
@@ -20,10 +22,18 @@ function styleSingleDropDownMenu(menuObj) {
             index = options.findIndex((option) => option.hidden === true);
         };
     }
+
+    const optionsList = [
+        {
+            name: "Name of the option",
+            value: "value of the option"
+        }
+    ];
+    // ---end generate optionsList
     
     // cutOutHiddenOptions();
     
-    function openCloseList() {
+    function openCloseList() { //element.classList.toggle("class")
         if (menuButtonOpener.classList.contains("open")) {
             menuOptionsList.classList.remove("open");
             menuOptionsListWrapper.classList.remove("open");
