@@ -54,6 +54,10 @@
 .jsDropDownMenu {
 }
 
+.jsDropDownMenu__Hidden-part {
+  display: none;
+}
+
 .jsDropDownMenu__Wrapper {
   display: flex;
   gap: 2px;
