@@ -1,4 +1,6 @@
-import {asMoney, addToCart, getMinMaxPrice} from "/js/shop/general";
+import { asMoney, addToCart, getMinMaxPrice } from "/js/shop/general";
+import iconsList from "/js/data/icons.json"; //assert??
+
 
 export default function generateProductPage(productID) {
     const productList = JSON.parse(localStorage.getItem("allProducts"));
