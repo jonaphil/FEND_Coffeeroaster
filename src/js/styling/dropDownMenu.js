@@ -102,7 +102,7 @@ function styleSingleDropDownMenu(menuObj) {
 
 export default function styleAllDropDownMenus(classSelectorElement = ".jsDropDownMenu") {
     const menuElement = document.querySelectorAll(classSelectorElement);
-    //if (menuElement.length !== 0) {
+    if (menuElement.length !== 0) {
         menuElement.forEach(styleSingleDropDownMenu);
-    //}
+    }
 }

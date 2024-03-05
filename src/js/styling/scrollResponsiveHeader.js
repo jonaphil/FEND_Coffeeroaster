@@ -1,7 +1,5 @@
 function makeHeaderScrollResponsive(header) {
     
-    const headerLogo = header.querySelector(".header__logo");
-    const headerBurgerMenu = header.querySelector(".header__menu>img");
 
     const changeHeaderToWhite = () => {
 
