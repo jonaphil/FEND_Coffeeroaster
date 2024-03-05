@@ -112,6 +112,7 @@
   cursor: pointer;
   & span {
     // FIXME: Rotate around center!
+    /*
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,25 +123,36 @@
 
     transform-origin: center;
     transform: rotate(90deg);
+    */
+    transform: translate(75%, 25%) rotate(90deg);
     /* transform: translate(-75%, -25%) rotate(-90deg); */
     transition: 1s transform;
     color: var(--color-white);
     font-size: var(--34px);
+    height: var(--18px);
+    width: var(--18px);
   }
 
   &.open span {
-    transform: rotate(-90deg);
+    transform: translate(-75%, -25%) rotate(-90deg);
   }
 }
 
 .jsDropDownMenu__OptionsList__Wrapper {
   overflow: hidden;
+  /*
   transition: 1s transform;
   transform-origin: top;
   transform: scaleY(0);
   height: fit-content;
+  */
+  transition: 1s height;
+  height: 0px;
   &.open {
+    /*
     transform: scaleY(1); /* FIXME: animation with height: fit-content; */
+
+    height: 200px;
   }
 }
 
