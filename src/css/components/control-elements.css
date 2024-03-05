@@ -14,6 +14,7 @@
   /* border: 2px solid var(--color-button-default); */
   text-align: center;
   align-self: center;
+  cursor: pointer;
 
   & * {
     color: inherit;
@@ -112,7 +113,6 @@
   cursor: pointer;
   & span {
     /* // FIXME: Rotate around center!*/
-    /*
     display: flex;
     align-items: center;
     justify-content: center;

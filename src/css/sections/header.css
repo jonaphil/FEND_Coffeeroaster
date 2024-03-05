@@ -13,12 +13,20 @@
 
   padding-left: var(--padding-sides-default);
   padding-right: var(--padding-sides-default);
+
+  transform: translateY(-100%;);
+  transition: 1s transform;
   /* & > * {
     flex-shrink: 1 1 10%;
   }
   & > *:first-child {
     flex-shrink: 0;
   } */
+}
+
+.header--white {
+  background-color: white;
+  color: black;
 }
 
 .header__logo {
@@ -29,6 +37,8 @@
 }
 
 .header__menu {
+  cursor: pointer;
+
   & > img {
     height: 1rem;
 

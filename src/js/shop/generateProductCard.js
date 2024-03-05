@@ -103,15 +103,21 @@ export default function generateProductCard(productObj) {
     const productHtml = document.createElement("div");
     const productNameHtml = document.createElement("h5");
     const productPriceTagHtml = document.createElement("p");
+    const productLink = document.createElement("a");
     
+    productLink.href = `/sub-page/product.html?product=${productObj.id}`;
+    productLink.classList.add("shop__product__link");
+
     productNameHtml.classList.add("shop__product__name");
     productNameHtml.innerHTML = productName;
+
+    productLink.appendChild(productNameHtml);
 
     productPriceTagHtml.classList.add("shop__product__price-tag");
     productPriceTagHtml.innerHTML = `${asMoney(minMaxPrice[0])} &ndash; ${asMoney(minMaxPrice[1])}`;
 
     productHtml.appendChild(getPicturesHtml());
-    productHtml.appendChild(productNameHtml);
+    productHtml.appendChild(productLink);
     productHtml.appendChild(productPriceTagHtml);
     productHtml.appendChild(getIconsHtml());
 

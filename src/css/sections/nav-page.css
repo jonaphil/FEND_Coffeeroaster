@@ -32,7 +32,7 @@
   background: var(--color-black);
   color: var(--color-white);
 
-  transition: all 2s;
+  /* transition: all 2s; */
 
   & * {
     position: relative;
@@ -48,6 +48,12 @@
     background: none;
     overflow-x: scroll;
     overflow-y: visible;
+  }
+}
+
+.navigation--black {
+  @media (min-width: 992px) {
+    color: black;
   }
 }
 

@@ -201,6 +201,12 @@
   transition: transform 1.2s ease;
 }
 
+.shop__product__link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .shop__product__name {
   margin-top: 0.5rem;
   text-align: left;

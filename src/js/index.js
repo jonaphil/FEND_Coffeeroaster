@@ -2,6 +2,10 @@ import Slider from './slider';
 import stylePage from "./styling/styles.js";
 
 // TODO: add Slider only on these pages with an actual slider!
+
+stylePage();
+
+
 new Slider({
     sliderSelector: '.section--shop-preview__wrapper',
     sliderContainerSelector: '.section--shop-preview',
@@ -13,7 +17,3 @@ new Slider({
 
     shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
-
-
-stylePage();
-
