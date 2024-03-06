@@ -17,8 +17,6 @@ function generateShop(productList) {
     console.log("finishing shop");
 }
 
-console.log(showShoppingCart());
-
 localStorage.setItem("allProducts", JSON.stringify(productList));
 
 const currentSubPage = window.location.pathname;
@@ -28,6 +26,7 @@ if (currentSubPage === "/sub-page/shop.html") {
 } else if (currentSubPage === "/sub-page/product.html") {
     const productID = parseInt(urlParams.get("product"));
     generateProductPage(productID);
+    showShoppingCart();
 }
 
 

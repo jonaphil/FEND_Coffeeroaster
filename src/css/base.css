@@ -37,8 +37,10 @@ main {
 
 header {
   position: fixed;
+  top: 0;
   width: 100%;
-  z-index: 1000;
+  box-size: box-border;
+  z-index: 1;
 }
 
 footer {

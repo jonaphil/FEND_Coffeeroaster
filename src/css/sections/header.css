@@ -5,11 +5,11 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--header-horizontal-gap);
-
+  top: 0;
   color: white;
-  z-index: 100;
+  z-index: 1;
 
-  height: 55px;
+  height: var(--56px);
 
   padding-left: var(--padding-sides-default);
   padding-right: var(--padding-sides-default);

@@ -28,3 +28,10 @@
 
 @import "shop/shop.css";
 @import "shop/shopping-cart.css";
+
+.mobile-hidden {
+  display: none;
+  @media (min-width: 992px) {
+    display: block;
+  }
+}
