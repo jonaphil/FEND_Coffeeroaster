@@ -209,6 +209,7 @@
 
 .shop__product__name {
   margin-top: 0.5rem;
+
   text-align: left;
 
   @media (min-width: 992px) {

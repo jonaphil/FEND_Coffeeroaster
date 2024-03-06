@@ -1,0 +1,14 @@
+.shopping-cart {
+  background-color: var(--white);
+  padding: var(--100px) var(--20px) var(--60px) var(--25px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--60px);
+}
+
+.shopping-cart__heading {
+  margin-bottom: calc(-1 * var(--20px));
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+}

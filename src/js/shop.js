@@ -2,7 +2,7 @@ import productList from "./data/products.json";
 
 import generateProductCard from "./shop/generateProductCard";
 import generateProductPage from "./shop/generateProductPage";
-import { generateShoppingCart } from "./shop/shoppingCart";
+import { getShoppingCart, showShoppingCart } from "./shop/shoppingCart";
 import { urlParams } from "./getURLInformation";
 
 function generateShop(productList) {
@@ -17,7 +17,7 @@ function generateShop(productList) {
     console.log("finishing shop");
 }
 
-generateShoppingCart();
+console.log(showShoppingCart());
 
 localStorage.setItem("allProducts", JSON.stringify(productList));
 
