@@ -28,7 +28,9 @@ body {
 
 main {
   width: 100%;
+  /* Necessary?
   max-width: 1440px;
+  */
 
   margin: 0 auto;
 }
