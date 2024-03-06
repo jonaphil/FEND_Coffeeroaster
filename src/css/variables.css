@@ -46,7 +46,10 @@
   --36px: 2.25rem;
   --40px: 2.5rem;
   --42px: 2.635rem;
+  --46px: 2.875rem;
   --48px: 3rem;
+  --50px: 3.125rem;
+  --56px: 3.5rem;
   --60px: 3.75rem;
   --64px: 4rem;
   --70px: 4.375rem;
@@ -55,8 +58,10 @@
   --90px: 5.625rem;
   --96px: 6rem;
   --100px: 6.25rem;
+  --115px: 7.1875rem;
   --125px: 7.8125rem;
   --150px: 9.375rem;
+  --200px: 12.5rem;
   --350px: 21.875rem;
 
   /* # Layout */
@@ -103,10 +108,10 @@
     --header-horizontal-gap: var(--32px);
 
     --padding-sides-default: 100px;
-    --padding-sides-text-area: 125px;
+    --padding-sides-text-area: var(--125px);
 
-    --padding-top-default: 7.8125rem;
-    --padding-bottom-default: 7.8125rem;
+    --padding-top-default: var(--125px);
+    --padding-bottom-default: var(--125px);
 
     --gap-vertical-default: 8.125rem;
   }

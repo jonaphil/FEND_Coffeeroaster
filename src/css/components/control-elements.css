@@ -7,9 +7,10 @@
   border: none;
   background-color: var(--color-button-default);
   color: var(--color-button-font);
+  box-sizing: border-box;
   padding: 15px 50px 15px 50px;
   width: fit-content;
-  height: auto;
+  height: var(--46px);
   border-radius: 5px;
   /* border: 2px solid var(--color-button-default); */
   text-align: center;
@@ -60,10 +61,12 @@
 }
 
 .jsDropDownMenu__Wrapper {
+  position: relative;
   display: flex;
-  gap: 2px;
   flex-direction: column;
   align-items: stretch;
+  box-sizing: border-box;
+  height: var(--46px);
 }
 
 .jsDropDownMenu__Button {
@@ -90,6 +93,10 @@
   color: var(--color-medium-grey);
   background-color: var(--color-white);
 
+  & p {
+    line-height: 1;
+  }
+
   &:hover {
     color: var(--color-anthrazit);
   }
@@ -107,7 +114,7 @@
   background-color: var(--color-anthrazit);
   color: var(--color-white);
 
-  width: 45px;
+  width: var(--46px);
   height: auto;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
@@ -135,6 +142,9 @@
 }
 
 .jsDropDownMenu__OptionsList__Wrapper {
+  position: absolute;
+  top: calc(100% + 2px);
+  width: 100%;
   overflow: hidden;
   transition: 1s transform;
   transform-origin: top;
@@ -149,6 +159,7 @@
   display: block;
   border: 2px solid var(--color-anthrazit);
   border-radius: 5px;
+  background-color: var(--color-white);
   transform: translateY(-100%);
   transition: 1s transform;
 
