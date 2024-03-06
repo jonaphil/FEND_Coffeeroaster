@@ -54,6 +54,10 @@
 .navigation--black {
   @media (min-width: 992px) {
     color: black;
+
+    & .navigation__menu a:after {
+      border-color: black;
+    }
   }
 }
 
@@ -125,11 +129,13 @@
         border-bottom: 1px solid white;
         width: 40px;
         height: 1px;
-        transition: width 0.5s;
+        transform: scaleX(1);
+        transition: transform 0.5s;
+        transform-origin: left;
       }
       &:hover:after,
       &:focus:after {
-        width: 0px;
+        transform: scaleX(0);
       }
     }
   }
