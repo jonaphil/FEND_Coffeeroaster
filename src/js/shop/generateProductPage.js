@@ -9,6 +9,9 @@ export default function generateProductPage(productID) {
 
     const minMaxPrice = getMinMaxPrice(product.variants);
 
+    const websiteTitle = document.querySelector("head title");
+    websiteTitle.innerHTML = `FEND Coffee Roastery - ${product.name}`;
+
     const picture = document.querySelector(".product__image");
     picture.childNodes[1].srcset = product.picture.desktop;
     picture.childNodes[3].src = product.picture.mobile;
@@ -64,8 +67,5 @@ export default function generateProductPage(productID) {
 
     const productDescription = document.querySelector(".product__description");
     productDescription.querySelector("p").innerText = product.description;
-
-
-
     
 }
