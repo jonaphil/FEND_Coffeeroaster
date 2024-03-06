@@ -8,7 +8,7 @@
   background-color: var(--color-button-default);
   color: var(--color-button-font);
   box-sizing: border-box;
-  padding: 15px 50px 15px 50px;
+  padding: var(--15px) var(--50px) var(--15px) var(--50px);
   width: fit-content;
   height: var(--46px);
   border-radius: 5px;
@@ -16,6 +16,9 @@
   text-align: center;
   align-self: center;
   cursor: pointer;
+  line-height: 1;
+  font-size: var(--14px);
+  font-weight: 400;
 
   & * {
     color: inherit;
