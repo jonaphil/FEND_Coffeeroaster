@@ -1,6 +1,8 @@
 import productList from "/js/data/products.json";
 import { asMoney } from "/js/shop/general.js";
 
+export let priceListGlobal;
+
 export function getShoppingCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
     if (shoppingCart === null) {
@@ -12,6 +14,23 @@ export function getShoppingCart() {
         return shoppingCart;
     }
 }
+
+// export function getPriceList() {
+//     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+//     if (shoppingCart === null) {
+//         return [];
+//     } else {
+//         const priceList = [];
+//         shoppingCart.forEach((product) => {
+//             product.variants.forEach((variant) => {
+//                 for (let i = 0; i === variant.amount; i++){
+//                     priceList.push(parseInt(variant.))
+//                 }
+//             })
+//         })
+
+//     }
+// }
 
 function getShoppingCartHtml() {
     const shoppingCart = getShoppingCart();
@@ -26,8 +45,7 @@ function getShoppingCartHtml() {
 
         */
     const priceList = new Array; //TODO Generate this!
-    let amount = 0;
-
+    
     shoppingCart.forEach((cartProduct, index) => {
         cartProduct.variants.forEach(
         (cartVariant) => {
@@ -39,14 +57,20 @@ function getShoppingCartHtml() {
                 variety: productSpecs.variants.find((variantObj) => variantObj.id === cartVariant.id),
                 amount: cartVariant.amount,
                 availability: "sofort versandbereit"
-            }
-            shoppingCartDetailedList.push(shoppingCartProduct);
+                }
+                shoppingCartDetailedList.push(shoppingCartProduct);
+                
+                for (let i = 0; i < shoppingCartProduct.amount; i++){
+                    priceList.push(shoppingCartProduct.variety.price);
+                }
+
 
         }
         )        
     }
     );
 
+    priceListGlobal = priceList;
 
     const getCartProductHtml = (cartProductObj) => {
         const productWrapper = document.createElement("div");
@@ -87,7 +111,7 @@ function getShoppingCartHtml() {
 
             const priceHtml = document.createElement("h5");
             priceHtml.classList.add("shopping-cart__product__specs__price")
-            priceHtml.innerHTML = `je ${asMoney(cartProductObj.variety.price)}`;
+            priceHtml.innerHTML = `${asMoney(cartProductObj.variety.price)}`;
 
             specsWrapper.appendChild(name);
             specsWrapper.appendChild(details);
@@ -121,7 +145,7 @@ function getShoppingCartHtml() {
     const h2Heading = document.createElement("h2");
     h2Heading.innerHTML = "Warenkorb";
     const pHeading = document.createElement("p");
-    pHeading.innerHTML = `Anzahl Artikel`; //FIXME Insert right total amount of products.
+    pHeading.innerHTML = `${priceList.length} Produkte`; //FIXME Insert right total amount of products.
     
     divHeading.appendChild(h2Heading);
     divHeading.appendChild(pHeading);
@@ -179,15 +203,28 @@ function reloadShoppingCart(){
     showShoppingCart();
 }
 
+export function hideShoppingCart() {
+
+    const shoppingCart = document.querySelector(".shopping-cart");
+    const mainNode = document.querySelector("main");
+
+    shoppingCart.classList.toggle("hidden");
+    mainNode.classList.toggle("mobile-hidden");
+    
+    
+}
+
 export function showShoppingCart() {
     // ---    
-    
-    const shoppingCart = getShoppingCartHtml();
+    const existingShoppingCart = document.querySelector(".shopping-cart");
     const mainNode = document.querySelector("main");
-    if (!mainNode.classList.contains("mobile-hidden")) {
-        mainNode.classList.add("mobile-hidden");
+    
+    mainNode.classList.toggle("mobile-hidden");
+
+    if (existingShoppingCart === null) {
+        const shoppingCart = getShoppingCartHtml();
+        document.querySelector("body").insertBefore(shoppingCart, mainNode);
+    } else {
+        existingShoppingCart.classList.remove("hidden");
     }
-
-    document.querySelector("body").insertBefore(shoppingCart, mainNode);
-
 }

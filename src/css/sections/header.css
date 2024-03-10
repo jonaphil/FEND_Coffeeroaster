@@ -38,6 +38,16 @@
 
 .header__menu {
   cursor: pointer;
+  justify-self: flex-end;
+  margin-left: 60%;
+
+  @media (min-width: 992px) {
+    position: relative;
+    margin-left: auto;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
 
   & > img {
     height: 1rem;
@@ -48,25 +58,24 @@
       width: 0;
     }
   }
-
-  @media (min-width: 992px) {
-    position: relative;
-    top: 0;
-    height: 100%;
-    width: 100%;
-  }
 }
 
 .header__shopping-cart {
-  position: fixed;
   display: none;
-  height: 0;
-  width: 0;
+  /* height: 0;
+  width: 0; */
+  cursor: pointer;
+  transition: 0.5s transform;
 
   @media (min-width: 992px) {
     display: block;
     position: relative;
     width: var(--19px);
     height: var(--22px);
+  }
+
+  &:hover,
+  &.activated {
+    transform: scale(1.2);
   }
 }

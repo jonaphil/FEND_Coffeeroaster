@@ -1,14 +1,16 @@
+import { showShoppingCart, hideShoppingCart } from "/js/shop/shoppingCart.js";
+
 const headerElement = document.querySelector("header");
 
 const headerDiv = headerElement.querySelector("div.header");
 const headerLogo = headerElement.querySelector(".header__logo");
 const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
-const headerShoppingCart = headerElement.querySelector(".header__shopping-cart>img");
+const headerShoppingCart = headerElement.querySelector(".header__shopping-cart");
 const navigation = headerElement.querySelector(".navigation");
 
 const hero = document.querySelector(".hero");
 
-const changeHeaderToOriginal = () => {
+function changeHeaderToOriginal() {
     if (hero === null) {
         changeHeaderToWhite();
     } else {
@@ -24,7 +26,7 @@ const changeHeaderToOriginal = () => {
     }
 }
 
-const changeHeaderToWhite = () => {
+function changeHeaderToWhite() {
 
     if (!headerDiv.classList.contains("header--white")){
         headerDiv.classList.add("header--white");
@@ -50,11 +52,29 @@ function makeHeaderScrollResponsive() {
     //TODO Add Movement of the header, from top down!
 }
 
+function styleShoppingCartButton() {
+    
+    const toggleShoppingCart = () => {
+        const shoppingCart = document.querySelector(".shopping-cart");
+        if (shoppingCart === null || shoppingCart.classList.contains("hidden")) {
+            showShoppingCart();
+            headerShoppingCart.src = "/images/icons/Shopping-bag-petrol.svg";
+            headerShoppingCart.classList.toggle("activated");
+        } else {
+            hideShoppingCart();
+            headerShoppingCart.src = "/images/icons/Shopping-bag-black.svg";
+            headerShoppingCart.classList.toggle("activated");
+        }
+    }
+    
+    headerShoppingCart.addEventListener("click", toggleShoppingCart);
+
+}
+
 export default function styleHeader() {
     changeHeaderToOriginal();
-
     if (headerElement !== null) {
         makeHeaderScrollResponsive();
-    } else {
     }
+    styleShoppingCartButton();
 }
