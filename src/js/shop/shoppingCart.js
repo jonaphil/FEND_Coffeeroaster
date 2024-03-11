@@ -1,7 +1,8 @@
 import productList from "/js/data/products.json";
 import { asMoney } from "/js/shop/general.js";
+import { styleShoppingCartPatch } from "../styling/header";
 
-export let priceListGlobal;
+export let priceListGlobal = [];
 
 export function getShoppingCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -15,36 +16,31 @@ export function getShoppingCart() {
     }
 }
 
-// export function getPriceList() {
-//     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-//     if (shoppingCart === null) {
-//         return [];
-//     } else {
-//         const priceList = [];
-//         shoppingCart.forEach((product) => {
-//             product.variants.forEach((variant) => {
-//                 for (let i = 0; i === variant.amount; i++){
-//                     priceList.push(parseInt(variant.))
-//                 }
-//             })
-//         })
-
-//     }
-// }
+export function getPriceList() {
+    const priceList = [];
+    const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+    if (shoppingCart !== null) {
+        shoppingCart.forEach((cartProduct) => {
+            cartProduct.variants.forEach((cartProductVariant) => {
+                const amount = cartProductVariant.amount;
+                const price = productList.find((product) => product.id === cartProduct.id).variants.find((variant) => variant.id === cartProductVariant.id).price;
+                for (let i = 0; i < amount; i++){
+                    priceList.push(price);
+                }
+           })
+        });
+    }
+    
+    priceListGlobal = priceList;
+    return priceList;
+}
 
 function getShoppingCartHtml() {
     const shoppingCart = getShoppingCart();
 
     const shoppingCartDetailedList = new Array;
-        /*
-        name (mit id für mich), string
-        picture, {}
-        variety, {}
-        amount,
-        availability
 
-        */
-    const priceList = new Array; //TODO Generate this!
+    const priceList = new Array;
     
     shoppingCart.forEach((cartProduct, index) => {
         cartProduct.variants.forEach(
@@ -71,10 +67,14 @@ function getShoppingCartHtml() {
     );
 
     priceListGlobal = priceList;
+    console.log(priceListGlobal);
 
     const getCartProductHtml = (cartProductObj) => {
         const productWrapper = document.createElement("div");
         productWrapper.classList.add("shopping-cart__product");
+        
+        // data
+        // <div data-productId="1" data-variantId="2"> </div>
 
         const getPictureHtml = () => {
             const productPicture = document.createElement("picture");
@@ -126,6 +126,7 @@ function getShoppingCartHtml() {
         deleteButton.classList.add("shopping-cart__product__delete");
         deleteButton.src = "/images/icons/Burger-Menu-Close-black.svg";
         deleteButton.addEventListener("click", removeFromShoppingCart.bind(null, cartProductObj.id, cartProductObj.variety.id));
+        // Data-variablen 
 
         productWrapper.appendChild(getPictureHtml());
         productWrapper.appendChild(getSpecsHtml());
@@ -163,6 +164,13 @@ function getShoppingCartHtml() {
 
 }
 
+function getPrice(productID, variantID) {
+    const product = productList.find((productObj) => productObj.id === productID);
+    const variant = product.variants.find((variantObj) => variantObj.id === variantID);
+
+    return variant.price;
+}
+
 export function addToShoppingCart(productID, variantID, amount) {
     const shoppingCart = getShoppingCart();
     const cartProductIndex = shoppingCart.findIndex((product) => product.id === productID);
@@ -178,21 +186,34 @@ export function addToShoppingCart(productID, variantID, amount) {
         const productSpecs = {id: productID, variants: [ {id: variantID, amount: amount} ] };
         shoppingCart.push(productSpecs);
     }
+
+    for (let i = 0; i < amount; i++){
+        priceListGlobal.push(getPrice(productID, variantID))
+    }
     console.log(shoppingCart);
+    styleShoppingCartPatch();
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
 } 
 
 function removeFromShoppingCart(productID, variantID) {
 
     const shoppingCart = getShoppingCart();
+
+    // shoppingCart.reduce(); //TODO
+
     const productToRemove = shoppingCart.findIndex((productObj) => productObj.id === productID);
     const variantToRemove = shoppingCart[productToRemove].variants.findIndex((variantObj) => variantObj.id === variantID);
+    const priceToRemove = getPrice(productID, variantID);
 
     shoppingCart[productToRemove].variants.splice(variantToRemove, 1);
     if (shoppingCart[productToRemove].variants.length === 0) {
         shoppingCart.splice(productToRemove, 1);
     }
 
+    const indexToRemove = priceListGlobal.findIndex((price) => price === priceToRemove);
+    priceListGlobal.splice(indexToRemove, 1);
+
+    styleShoppingCartPatch();
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
     reloadShoppingCart();
 }
@@ -220,11 +241,12 @@ export function showShoppingCart() {
     const mainNode = document.querySelector("main");
     
     mainNode.classList.toggle("mobile-hidden");
+    const shoppingCart = getShoppingCartHtml();
 
-    if (existingShoppingCart === null) {
-        const shoppingCart = getShoppingCartHtml();
-        document.querySelector("body").insertBefore(shoppingCart, mainNode);
-    } else {
-        existingShoppingCart.classList.remove("hidden");
+    if (existingShoppingCart !== null) {
+        existingShoppingCart.remove();
     }
+
+    document.querySelector("header").append(shoppingCart);
+
 }

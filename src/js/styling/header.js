@@ -1,11 +1,12 @@
-import { showShoppingCart, hideShoppingCart } from "/js/shop/shoppingCart.js";
+import { showShoppingCart, hideShoppingCart, getPriceList } from "/js/shop/shoppingCart.js";
 
 const headerElement = document.querySelector("header");
 
 const headerDiv = headerElement.querySelector("div.header");
 const headerLogo = headerElement.querySelector(".header__logo");
 const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
-const headerShoppingCart = headerElement.querySelector(".header__shopping-cart");
+const headerShoppingCart = headerElement.querySelector(".header__shopping-cart")
+const headerShoppingCartImg = headerShoppingCart.querySelector("img");
 const navigation = headerElement.querySelector(".navigation");
 
 const hero = document.querySelector(".hero");
@@ -22,7 +23,7 @@ function changeHeaderToOriginal() {
         }
         headerLogo.src = "/images/icons/Logo-white.svg";
         headerBurgerMenu.src = "/images/icons/Burger-Menu-white.svg";
-        headerShoppingCart.src = "/images/icons/Shopping-bag-white.svg";
+        headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
     }
 }
 
@@ -36,12 +37,13 @@ function changeHeaderToWhite() {
     }
     headerLogo.src = "/images/icons/Logo-black.svg";
     headerBurgerMenu.src = "/images/icons/Burger-Menu-black.svg";
-    headerShoppingCart.src = "/images/icons/Shopping-bag-black.svg";
+    headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
 
 }
 
-function makeHeaderScrollResponsive() {   
-    document.addEventListener("scrollend", () => {
+function makeHeaderScrollResponsive() {  
+    //Debouncing! set-debounce.
+    document.addEventListener("scroll", () => {
         if (window.scrollY >= 100) {
             changeHeaderToWhite();
         } else {
@@ -58,16 +60,47 @@ function styleShoppingCartButton() {
         const shoppingCart = document.querySelector(".shopping-cart");
         if (shoppingCart === null || shoppingCart.classList.contains("hidden")) {
             showShoppingCart();
-            headerShoppingCart.src = "/images/icons/Shopping-bag-petrol.svg";
-            headerShoppingCart.classList.toggle("activated");
+            headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
+            headerShoppingCartImg.classList.toggle("activated");
         } else {
             hideShoppingCart();
-            headerShoppingCart.src = "/images/icons/Shopping-bag-black.svg";
-            headerShoppingCart.classList.toggle("activated");
+            if (headerDiv.classList.contains("header--white")) {
+                headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
+            } else if (!headerDiv.classList.contains("header--white")) {
+                headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
+            } else {
+                console.log("error!");
+            }
+            
+            headerShoppingCartImg.classList.toggle("activated");
         }
     }
     
-    headerShoppingCart.addEventListener("click", toggleShoppingCart);
+    headerShoppingCartImg.addEventListener("click", toggleShoppingCart);
+
+}
+
+export function styleShoppingCartPatch() {
+
+    // FIXME: number of cartProducts in Patch
+
+    const amountProducts = getPriceList().length;
+    
+    const patchDiv = document.createElement("div");
+    patchDiv.classList.add("header__shopping-cart__patch");
+    
+    const patchText = document.createElement("p");
+    patchText.innerText = amountProducts;
+    
+    patchDiv.appendChild(patchText);
+
+    const oldDiv = headerShoppingCart.querySelector(".header__shopping-cart__patch");
+    if (oldDiv !== null) {
+        headerShoppingCart.removeChild(oldDiv);
+    }
+    if (amountProducts > 0) {
+        headerShoppingCart.appendChild(patchDiv);
+    }
 
 }
 
