@@ -16,12 +16,14 @@
 
   @media (min-width: 992px) {
     /*
+    //FIXME
     --- Just Prototype ---
     */
     position: absolute;
     overflow: scroll;
     width: 400px;
     height: 670px;
+    max-height: calc(100vh - 100px);
     top: 60px;
     right: 20px;
     border: solid 2px var(--color-kraftpapier);

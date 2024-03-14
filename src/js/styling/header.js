@@ -1,11 +1,11 @@
-import { showShoppingCart, hideShoppingCart, getPriceList } from "/js/shop/shoppingCart.js";
+import { toggleShoppingCart } from "/js/shop/shoppingCart.js";
 
 const headerElement = document.querySelector("header");
 
 const headerDiv = headerElement.querySelector("div.header");
 const headerLogo = headerElement.querySelector(".header__logo");
 const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
-const headerShoppingCart = headerElement.querySelector(".header__shopping-cart")
+const headerShoppingCart = headerElement.querySelector(".header__shopping-cart"); //FIXME two Shopping-Carts in the header, because of mobile/desktop difficulty
 const headerShoppingCartImg = headerShoppingCart.querySelector("img");
 const navigation = headerElement.querySelector(".navigation");
 
@@ -56,25 +56,25 @@ function makeHeaderScrollResponsive() {
 
 function styleShoppingCartButton() {
     
-    const toggleShoppingCart = () => {
-        const shoppingCart = document.querySelector(".shopping-cart");
-        if (shoppingCart === null || shoppingCart.classList.contains("hidden")) {
-            showShoppingCart();
-            headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
-            headerShoppingCartImg.classList.toggle("activated");
-        } else {
-            hideShoppingCart();
-            if (headerDiv.classList.contains("header--white")) {
-                headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
-            } else if (!headerDiv.classList.contains("header--white")) {
-                headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
-            } else {
-                console.log("error!");
-            }
+    // const toggleShoppingCart = () => {
+    //     const shoppingCart = document.querySelector(".shopping-cart");
+    //     if (shoppingCart === null || shoppingCart.classList.contains("hidden")) {
+    //         showShoppingCart();
+    //         headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
+    //         headerShoppingCartImg.classList.toggle("activated");
+    //     } else {
+    //         hideShoppingCart();
+    //         if (headerDiv.classList.contains("header--white")) {
+    //             headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
+    //         } else if (!headerDiv.classList.contains("header--white")) {
+    //             headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
+    //         } else {
+    //             console.log("error!");
+    //         }
             
-            headerShoppingCartImg.classList.toggle("activated");
-        }
-    }
+    //         headerShoppingCartImg.classList.toggle("activated");
+    //     }
+    // }
     
     headerShoppingCartImg.addEventListener("click", toggleShoppingCart);
 
@@ -84,7 +84,7 @@ export function styleShoppingCartPatch() {
 
     // FIXME: number of cartProducts in Patch
 
-    const amountProducts = getPriceList().length;
+    const amountProducts = 5;
     
     const patchDiv = document.createElement("div");
     patchDiv.classList.add("header__shopping-cart__patch");
@@ -102,6 +102,12 @@ export function styleShoppingCartPatch() {
         headerShoppingCart.appendChild(patchDiv);
     }
 
+}
+
+export function updateShoppingCartPatch() {
+    //update inner Number
+
+    //generate little Animation
 }
 
 export default function styleHeader() {

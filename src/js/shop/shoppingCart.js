@@ -1,84 +1,54 @@
-import productList from "/js/data/products.json";
-import { asMoney } from "/js/shop/general.js";
-import { styleShoppingCartPatch } from "../styling/header";
+import { productList } from "/js/shop/general";
+import { updateShoppingCartPatch } from "/js/styling/header.js";
 
-export let priceListGlobal = [];
+export const shoppingCartArray = [];
 
-export function getShoppingCart() {
-    const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-    if (shoppingCart === null) {
-        console.log("No shopping cart found, starting to use a new one.");
-        return [];
+function getProductCartSpecs(productId, variantId) {
+    const productDetails = productList.find((productObj) => productObj.id === productId);
+    const variantDetails = productDetails.variants.find((variantObj) => variantObj.id === variantId);
+    const cartIdCounter = shoppingCartArray.slice(-1).pop();
+    const cartProductSpecs = {
+        id: cartIdCounter ? cartIdCounter + 1 : 0,
+        productId: productDetails.id,
+        variantId: variantDetails.id,
+        name: `${productDetails.name} [${productDetails.id}]`,
+        variantName: variantDetails.name,
+        price: variantDetails.price,
+        weight: variantDetails.weight,
+        picture: productDetails.picture,
+        availability: "sofort versandbereit",
+    };
+    return cartProductSpecs;
+}
+
+function loadShoppingCartFromLocalStorage() { 
+    const shoppingCart = localStorage.getItem("shoppingCart");
+    if (shoppingCart) {
+        // FIXME: quicker approch to circumvent 2 times forEach?
+        shoppingCart.forEach((cartProductShort) => {
+            cartProductShort.variants.forEach((cartVariantShort) => {
+                const cartObject = {
+                    ...getProductCartSpecs(cartProductShort.id, cartVariantShort.id),
+                    amount: cartVariantShort.amount,
+                }
+                shoppingCartArray.push(cartObject);               
+            })
+        })
+        console.log("finished array");
+        console.log(shoppingCartArray);
+        return;
     } else {
-        console.log(`Already existing shopping cart is used:`);
-        console.log(shoppingCart);
-        return shoppingCart;
+        return;
     }
 }
 
-export function getPriceList() {
-    const priceList = [];
-    const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-    if (shoppingCart !== null) {
-        shoppingCart.forEach((cartProduct) => {
-            cartProduct.variants.forEach((cartProductVariant) => {
-                const amount = cartProductVariant.amount;
-                const price = productList.find((product) => product.id === cartProduct.id).variants.find((variant) => variant.id === cartProductVariant.id).price;
-                for (let i = 0; i < amount; i++){
-                    priceList.push(price);
-                }
-           })
-        });
-    }
-    
-    priceListGlobal = priceList;
-    return priceList;
-}
-
-function getShoppingCartHtml() {
-    const shoppingCart = getShoppingCart();
-
-    const shoppingCartDetailedList = new Array;
-
-    const priceList = new Array;
-    
-    shoppingCart.forEach((cartProduct, index) => {
-        cartProduct.variants.forEach(
-        (cartVariant) => {
-            const productSpecs = productList.find((productObj) => productObj.id === cartProduct.id);
-                const shoppingCartProduct = {
-                id: productSpecs.id,
-                name: `${productSpecs.name}[${productSpecs.id}]`,
-                picture: productSpecs.picture,
-                variety: productSpecs.variants.find((variantObj) => variantObj.id === cartVariant.id),
-                amount: cartVariant.amount,
-                availability: "sofort versandbereit"
-                }
-                shoppingCartDetailedList.push(shoppingCartProduct);
-                
-                for (let i = 0; i < shoppingCartProduct.amount; i++){
-                    priceList.push(shoppingCartProduct.variety.price);
-                }
-
-
-        }
-        )        
-    }
-    );
-
-    priceListGlobal = priceList;
-    console.log(priceListGlobal);
-
-    const getCartProductHtml = (cartProductObj) => {
-        const productWrapper = document.createElement("div");
-        productWrapper.classList.add("shopping-cart__product");
-        
-        // data
-        // <div data-productId="1" data-variantId="2"> </div>
+function createShoppingCartProductNode(cartProductObj) {
+    const cartProductHtml = document.createElement("div");
+        cartProductHtml.classList.add("shopping-cart__product");
+        cartProductHtml.dataset.cartId = cartProductObj.id;
 
         const getPictureHtml = () => {
             const productPicture = document.createElement("picture");
-        
             const productPictureSource = document.createElement("source");
             const productPictureImg = document.createElement("img");
             
@@ -94,7 +64,6 @@ function getShoppingCartHtml() {
 
             return productPicture;
         }
-
         const getSpecsHtml = () => {
             const specsWrapper = document.createElement("div");
             specsWrapper.classList.add("shopping-cart__product__specs");
@@ -103,7 +72,8 @@ function getShoppingCartHtml() {
             name.innerHTML = cartProductObj.name;
 
             const details = document.createElement("p");
-            details.innerHTML = `${cartProductObj.amount} Stück<br>${cartProductObj.variety.name}`;
+            details.classList.add("shopping-cart__product__specs__details");
+            details.innerHTML = `${cartProductObj.amount} Stück<br>${cartProductObj.variantName}`;
 
             const availability = document.createElement("p");
             availability.classList.add("shopping-cart__product__specs__availability");
@@ -124,21 +94,20 @@ function getShoppingCartHtml() {
 
         const deleteButton = document.createElement("img");
         deleteButton.classList.add("shopping-cart__product__delete");
-        deleteButton.src = "/images/icons/Burger-Menu-Close-black.svg";
-        deleteButton.addEventListener("click", removeFromShoppingCart.bind(null, cartProductObj.id, cartProductObj.variety.id));
-        // Data-variablen 
+        deleteButton.dataset.cartId = cartProduct.id;
+        deleteButton.addEventListener("click", removeFromShoppingCart);
 
-        productWrapper.appendChild(getPictureHtml());
-        productWrapper.appendChild(getSpecsHtml());
-        productWrapper.appendChild(deleteButton);
+        cartProductHtml.appendChild(getPictureHtml());
+        cartProductHtml.appendChild(getSpecsHtml());
+        cartProductHtml.appendChild(deleteButton);
+        
+        return cartProductHtml;
+}
 
-        return productWrapper;
-    }
-
-    console.log(shoppingCartDetailedList);
-
-    const divWrapper = document.createElement("div");
-    divWrapper.classList.add("shopping-cart");
+function createShoppingCartHtml() { 
+    const shoppingCartDiv = document.createElement("div");
+    shoppingCartDiv.classList.add("shopping-cart");
+    shoppingCartDiv.classList.add("hidden");
 
     const divHeading = document.createElement("div");
     divHeading.classList.add("shopping-cart__heading");
@@ -146,107 +115,104 @@ function getShoppingCartHtml() {
     const h2Heading = document.createElement("h2");
     h2Heading.innerHTML = "Warenkorb";
     const pHeading = document.createElement("p");
-    pHeading.innerHTML = `${priceList.length} Produkte`; //FIXME Insert right total amount of products.
+    pHeading.innerHTML = `6 Produkte`; //FIXME Insert right total amount of products.
     
     divHeading.appendChild(h2Heading);
     divHeading.appendChild(pHeading);
 
-    divWrapper.appendChild(divHeading);
+    shoppingCartDiv.appendChild(divHeading);
 
-    shoppingCartDetailedList.forEach((shoppingCartProductObj, index) => {
-        if (index > 0) {
-            divWrapper.appendChild(document.createElement("hr"));
-        }
-        divWrapper.appendChild(getCartProductHtml(shoppingCartProductObj));
-    })
-    
-    return divWrapper;
+    const shoppingCartProductsAllHtml = shoppingCartArray.map((cartProduct) => {
+        return createShoppingCartProductNode(cartProduct);
+    });
 
+    shoppingCartProductsAllHtml.forEach((obj) => {
+        console.log("append shoppingCartProductObj");
+        shoppingCartDiv.appendChild(obj);
+    });
+
+    document.querySelector("header").appendChild(shoppingCartDiv);
 }
 
-function getPrice(productID, variantID) {
-    const product = productList.find((productObj) => productObj.id === productID);
-    const variant = product.variants.find((variantObj) => variantObj.id === variantID);
-
-    return variant.price;
+function getShoppingCartNode() {
+    const nodeList = document.querySelector(".shopping-cart");
+    return nodeList;
+    // -> return existingNodeList
 }
 
-export function addToShoppingCart(productID, variantID, amount) {
-    const shoppingCart = getShoppingCart();
-    const cartProductIndex = shoppingCart.findIndex((product) => product.id === productID);
-    if (cartProductIndex >= 0) {
-        const cartProductVariantIndex = shoppingCart[cartProductIndex].variants.findIndex((variant) => variant.id === variantID);
-        if (cartProductVariantIndex >= 0) {
-            shoppingCart[cartProductIndex].variants[cartProductVariantIndex].amount += amount;
-        } else {
-            const variantSpecs = { id: variantID, amount: amount };
-            shoppingCart[cartProductIndex].variants.push(variantSpecs);
-        }
+function getShoppingCartNodeListItem(productId, variantId) {
+
+    // -> return specific Node
+}
+
+export function toggleShoppingCart() {
+    const mainNode = document.querySelector("main");
+
+    getShoppingCartNode().classList.toggle("hidden");
+    mainNode.classList.toggle("mobile-hidden");
+ }
+
+// export function hideShoppingCart() { }
+
+export function addToShoppingCart(productId, variantId, amount = 1) {
+    // Add to shopping Cart Array
+    // Remove and newly add to shoppingCartDiv
+    // Update or Add the cart in the localStorage
+
+    const productInCartIndex = shoppingCartArray.findIndex((cartProduct) =>
+        cartProduct.productId === productId && cartProduct.variantId == variantId);
+    const cartId = productInCartIndex > -1 ? shoppingCartArray[productInCartIndex].cartId : null;
+    const oldProduct = cartId ? document.querySelector(`[data-cart-id="${cartId}"]`) : null;
+    const newProduct = oldProduct ? oldProduct : { ...getProductCartSpecs (productId, variantId), amount: amount };
+    const shoppingCartElement = getShoppingCartNode();
+
+    const localStoredCart = localStorage.getItem("shoppingCart");
+    const cartShort = localStoredCart ? localStoredCart : [];
+
+    if (productInCartIndex > -1) {
+        shoppingCartArray[productInCartIndex].amount += amount;
+        
+        oldProduct.querySelector(".shopping-cart__product__specs__details").innerHTML = `${shoppingCartArray[productInCartIndex].amount} Stück<br>${shoppingCartArray[productInCartIndex].variantName}`;
+        
+        cartShort.find((product) =>
+            product.id === productId).variants.find((variant) =>
+                variant.id === variantId).amount += amount; //Good Style?
     } else {
-        const productSpecs = {id: productID, variants: [ {id: variantID, amount: amount} ] };
-        shoppingCart.push(productSpecs);
+        shoppingCartArray.push();
+        const productInCartShort = cartShort.findIndex((product) => product.id === productId);
+        if (productInCartShort > -1) {
+            const variant = { id: variantId, amount: amount };
+            cartShort[productInCartShort].variants.push(variant);
+        } else {
+            const shortProduct = { id: productId, variants: { id: variantId, amount: amount } };
+            cartShort.push(shortProduct);
+        }
     }
+    shoppingCartElement.appendChild(createShoppingCartProductNode(newProduct));
 
-    for (let i = 0; i < amount; i++){
-        priceListGlobal.push(getPrice(productID, variantID))
-    }
-    console.log(shoppingCart);
-    styleShoppingCartPatch();
-    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-} 
+    localStorage.setItem("shoppingCart", cartShort);
+    // updateShoppingCartPatch
+ }
 
-function removeFromShoppingCart(productID, variantID) {
-
-    const shoppingCart = getShoppingCart();
-
-    // shoppingCart.reduce(); //TODO
-
-    const productToRemove = shoppingCart.findIndex((productObj) => productObj.id === productID);
-    const variantToRemove = shoppingCart[productToRemove].variants.findIndex((variantObj) => variantObj.id === variantID);
-    const priceToRemove = getPrice(productID, variantID);
-
-    shoppingCart[productToRemove].variants.splice(variantToRemove, 1);
-    if (shoppingCart[productToRemove].variants.length === 0) {
-        shoppingCart.splice(productToRemove, 1);
-    }
-
-    const indexToRemove = priceListGlobal.findIndex((price) => price === priceToRemove);
-    priceListGlobal.splice(indexToRemove, 1);
-
-    styleShoppingCartPatch();
-    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-    reloadShoppingCart();
+export function removeFromShoppingCart(productId, variantId, amonut) { 
+    // remove from shoppingCartArray
+    // remove from shoppingCartNodeList
+    // remove from LocalStorage
+    // uptdateShoppingCartPatch
 }
 
-function reloadShoppingCart(){
-    const oldShoppingCart = document.querySelector(".shopping-cart");
-    oldShoppingCart.remove();
-    showShoppingCart();
+export function getShoppingCartAmountTotal() {
+    const totalAmount = shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.amount);
+    return totalAmount;
 }
 
-export function hideShoppingCart() {
+export function getShoppingCartPriceTotal(shippingCost = 0) {
+    const totalPrice = shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.variant.price, shippingCost);
+    return totalPrice;
+ }
 
-    const shoppingCart = document.querySelector(".shopping-cart");
-    const mainNode = document.querySelector("main");
+export function generateShoppingCart() {
+    loadShoppingCartFromLocalStorage();
 
-    shoppingCart.classList.toggle("hidden");
-    mainNode.classList.toggle("mobile-hidden");
-    
-    
-}
-
-export function showShoppingCart() {
-    // ---    
-    const existingShoppingCart = document.querySelector(".shopping-cart");
-    const mainNode = document.querySelector("main");
-    
-    mainNode.classList.toggle("mobile-hidden");
-    const shoppingCart = getShoppingCartHtml();
-
-    if (existingShoppingCart !== null) {
-        existingShoppingCart.remove();
-    }
-
-    document.querySelector("header").append(shoppingCart);
-
+    createShoppingCartHtml();
 }

@@ -23,3 +23,16 @@ export function getMinMaxPrice(variantsList) {
 
     return MinMaxPrice;
 }
+
+export async function fetchProductList() {
+    const productListStr = await fetch("/data/products.json");
+    return productListStr.json();
+}
+
+async function fetchIconsList() {
+    const iconsListStr = await fetch("/data/icons.json");
+    return iconsListStr.json();
+}
+
+export const productList = await fetchProductList();
+export const iconsList = await fetchIconsList();

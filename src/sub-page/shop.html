@@ -19,3 +19,16 @@
         <script src="/js/shop.js" type="module" defer></script>
     </body>
 </html>
+
+<div class="shopping-cart__product">
+    <picture>
+        <source media="(min-width: 992px)" srcset="${cartProduct.picture.desktop}">
+        <img src="${cartProduct.picture.mobile}" alt="${cartProduct.picture.alt}">
+    </picture>
+    <div class="shopping-cart__product__specs">
+        <h3>${cartProduct.name}</h3>
+        <p>${cartProduct.amount} Stück<br>${cartProductObj.variant.name}</p>
+        <p class="shopping-cart__product__specs__availability">${cartProduct.availability}</p>
+        <h5 class="shopping-cart__product__specs__price">${asMoney(cartProduct.variant.price)}</h5>
+    </div>
+</div>
