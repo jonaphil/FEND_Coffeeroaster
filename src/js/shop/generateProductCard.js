@@ -1,9 +1,7 @@
 import {asMoney, addToCart, getMinMaxPrice, iconsList} from "/js/shop/general";
+import { addToShoppingCart } from "./shoppingCart";
 
 export default function generateProductCard(productObj) {
-    
-    // Variables:
-
     const productName = productObj.name; //string
     const productVariants = productObj.variants; //Array(object)
     const minMaxPrice = getMinMaxPrice(productVariants);
@@ -27,7 +25,11 @@ export default function generateProductCard(productObj) {
 
             productVariants.forEach((variant) => {
                 const varietyHtml = document.createElement("button");
-                varietyHtml.addEventListener("click", addToCart.bind(null, productObj.id, variant.id)); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
+                const quickAddClick = (event) => {
+                    event.preventDefault();
+                    addToShoppingCart(productObj.id, variant.id);
+                }
+                varietyHtml.addEventListener("click", quickAddClick); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
                 varietyHtml.innerHTML = `${variant.name}`;
                 
                 selectionHtml.appendChild(varietyHtml);
@@ -70,7 +72,8 @@ export default function generateProductCard(productObj) {
         return iconsAllHtml;
     }
     const getPicturesHtml = () => {
-        const wrapperHtml = document.createElement("div");
+        const wrapperHtml = document.createElement("a");
+        wrapperHtml.href = `/sub-page/product.html?product=${productObj.id}`;
 
         const pictureHtml = document.createElement("picture");
         const sourceHtml = document.createElement("source");

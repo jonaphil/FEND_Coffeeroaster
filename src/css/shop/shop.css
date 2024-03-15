@@ -123,6 +123,7 @@
 }
 
 .shop__product__image-wrapper {
+  display: block;
   position: relative;
   background-color: var(--color-background-product);
   overflow: hidden;

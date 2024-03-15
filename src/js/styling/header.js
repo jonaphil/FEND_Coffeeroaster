@@ -80,7 +80,7 @@ function styleShoppingCartButton() {
 }
 
 export function generateShoppingCartPatch() {
-    const amountProducts = getShoppingCartAmountTotal();
+    const amountProducts = 0;
     
     const patchDiv = document.createElement("div");
     patchDiv.classList.add("header__shopping-cart__patch");
@@ -121,7 +121,7 @@ export function updateShoppingCartPatch() {
     //TODO generate little Animation
 }
 
-export default function styleHeader() {
+export function styleHeader() {
     changeHeaderToOriginal();
     if (headerElement !== null) {
         makeHeaderScrollResponsive();
