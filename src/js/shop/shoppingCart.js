@@ -1,8 +1,8 @@
 import { productList, asMoney } from "/js/shop/general";
 import { updateShoppingCartPatch } from "/js/styling/header.js";
 
-export const shoppingCartArray = []; 
-const shoppingCartHtml = createShoppingCartWrapperHtml();
+const shoppingCartArray = []; 
+export const shoppingCartEl = createShoppingCartWrapperEl();
 
 /* dataFormat of shoppingCart in localStorage:
     [{
@@ -44,6 +44,7 @@ function loadShoppingCartFromLocalStorage() {
         // FIXME: quicker approch to circumvent 2 times forEach?
         shoppingCart.forEach(item => createShoppingCartEntry(item.productId, item.variantId, item.amount));
         console.log("finished loading shoppingCart");
+        updateShoppingCartPatch();
         return;
     } else {
         return;
@@ -127,7 +128,7 @@ function createShoppingCartProductNode(cartProductObj) {
     return cartProductWrapper;
 }
 
-function createShoppingCartWrapperHtml() { 
+function createShoppingCartWrapperEl() { 
     const oldShoppingCart = document.querySelector(".shopping-cart");
     if (oldShoppingCart) {
         console.log("Error generating shopping Cart. Shopping Cart already exists.");
@@ -143,25 +144,20 @@ function createShoppingCartWrapperHtml() {
     const h2Heading = document.createElement("h2");
     h2Heading.innerHTML = "Warenkorb";
     const pHeading = document.createElement("p");
-    pHeading.innerHTML = `6 Produkte`; //FIXME Insert right total amount of products.
+    pHeading.innerHTML = `${getShoppingCartAmountTotal()} Produkte`;
     
     divHeading.appendChild(h2Heading);
     divHeading.appendChild(pHeading);
 
     shoppingCartDiv.appendChild(divHeading);
 
-    // const shoppingCartProductsAllHtml = shoppingCartArray.map((cartProduct) => {
-    //     return createShoppingCartProductNode(cartProduct);
-    // });
-
-    // shoppingCartProductsAllHtml.forEach((obj) => {
-    //     console.log("append shoppingCartProductObj");
-    //     shoppingCartDiv.appendChild(obj);
-    // });
-
     document.querySelector("header").appendChild(shoppingCartDiv);
 
     return shoppingCartDiv;
+}
+
+function updateShoppingCartWrapperEl() {
+    shoppingCartEl.querySelector(".shopping-cart__heading p").innerHTML = `${getShoppingCartAmountTotal()} Produkte`;
 }
 
 function createShoppingCartEntry(productId, variantId, amount) {
@@ -172,7 +168,7 @@ function createShoppingCartEntry(productId, variantId, amount) {
     shoppingCartArray.push(shoppingCartItemObj);
 
     const shoppingCartItemDiv = createShoppingCartProductNode(shoppingCartItemObj);
-    shoppingCartHtml.appendChild(shoppingCartItemDiv);
+    shoppingCartEl.appendChild(shoppingCartItemDiv);
 
     saveCartToLocalStorage();
  };
@@ -185,7 +181,7 @@ function updateShoppingCartEntry(cartIndex, amount) {
     }
     shoppingCartArray[cartIndex].amount = amount;
 
-    const cartEntryNodes = shoppingCartHtml.children[cartIndex + 1]; //the index in the NodeList has to be adjusted by one, because there is the preceding shoppingCartHeader
+    const cartEntryNodes = shoppingCartEl.children[cartIndex + 1]; //the index in the NodeList has to be adjusted by one, because there is the preceding shoppingCartHeader
     cartEntryNodes.querySelector(".shopping-cart__product__specs__details").innerHTML =
         `${amount} Stück<br>${shoppingCartArray[cartIndex].variantName}`;
 
@@ -202,7 +198,7 @@ function removeShoppingCartEntry(cartIndex) {
     }
     console.log("Trying to remove" + cartIndex);
     shoppingCartArray.splice(cartIndex, 1);
-    shoppingCartHtml.children[cartIndex + 1].remove();
+    shoppingCartEl.children[cartIndex + 1].remove();
 
     saveCartToLocalStorage();
     return 0;
@@ -211,12 +207,11 @@ function removeShoppingCartEntry(cartIndex) {
 export function toggleShoppingCart() {
     const mainNode = document.querySelector("main");
 
-    shoppingCartHtml.classList.toggle("hidden");
+    shoppingCartEl.classList.toggle("hidden");
     mainNode.classList.toggle("mobile-hidden");
  }
 
 export function addToShoppingCart(productId, variantId, amount = 1) {
-
     const indexInCart = getCartIndex(productId, variantId);
     if (indexInCart > -1) {
         const newAmount = shoppingCartArray[indexInCart].amount + amount;
@@ -225,7 +220,8 @@ export function addToShoppingCart(productId, variantId, amount = 1) {
         createShoppingCartEntry(productId, variantId, amount);
     }
 
-    // updateShoppingCartPatch
+    updateShoppingCartPatch();
+    updateShoppingCartWrapperEl();
  }
 
 export function removeFromShoppingCart(indexInCart, amount = null) { 
@@ -238,11 +234,14 @@ export function removeFromShoppingCart(indexInCart, amount = null) {
         removeShoppingCartEntry(indexInCart);
     }
 
-    // uptdateShoppingCartPatch
+    updateShoppingCartPatch();
+    updateShoppingCartWrapperEl();
 }
 
 export function getShoppingCartAmountTotal() {
-    const totalAmount = shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.amount);
+    const totalAmount = shoppingCartArray.length > 0 ? shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.amount, 0) : 0;
+    shoppingCartArray.length > 0 ? console.log(shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.amount, 0)) : 0;
+    console.log("total amount:" + totalAmount);
     return totalAmount;
 }
 
@@ -252,5 +251,6 @@ export function getShoppingCartPriceTotal(shippingCost = 0) {
 }
 
 export function generateShoppingCart() {
+    // Is it necessary like this?
     loadShoppingCartFromLocalStorage();
 }

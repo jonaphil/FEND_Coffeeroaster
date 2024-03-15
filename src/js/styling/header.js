@@ -1,4 +1,4 @@
-import { toggleShoppingCart } from "/js/shop/shoppingCart.js";
+import { toggleShoppingCart, getShoppingCartAmountTotal, shoppingCartEl } from "/js/shop/shoppingCart.js";
 
 const headerElement = document.querySelector("header");
 
@@ -8,6 +8,8 @@ const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
 const headerShoppingCart = headerElement.querySelector(".header__shopping-cart"); //FIXME two Shopping-Carts in the header, because of mobile/desktop difficulty
 const headerShoppingCartImg = headerShoppingCart.querySelector("img");
 const navigation = headerElement.querySelector(".navigation");
+
+const shoppingCartPatchDiv = generateShoppingCartPatch();
 
 const hero = document.querySelector(".hero");
 
@@ -56,38 +58,33 @@ function makeHeaderScrollResponsive() {
 
 function styleShoppingCartButton() {
     
-    // const toggleShoppingCart = () => {
-    //     const shoppingCart = document.querySelector(".shopping-cart");
-    //     if (shoppingCart === null || shoppingCart.classList.contains("hidden")) {
-    //         showShoppingCart();
-    //         headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
-    //         headerShoppingCartImg.classList.toggle("activated");
-    //     } else {
-    //         hideShoppingCart();
-    //         if (headerDiv.classList.contains("header--white")) {
-    //             headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
-    //         } else if (!headerDiv.classList.contains("header--white")) {
-    //             headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
-    //         } else {
-    //             console.log("error!");
-    //         }
-            
-    //         headerShoppingCartImg.classList.toggle("activated");
-    //     }
-    // }
+    const activateShoppingCart = () => {
+        const shoppingCart = shoppingCartEl;
+        if (shoppingCart.classList.contains("hidden")) {
+            headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
+            headerShoppingCartImg.classList.toggle("activated");
+        } else {
+            if (headerDiv.classList.contains("header--white")) {
+                headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
+            } else {
+                headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
+            } 
+            headerShoppingCartImg.classList.toggle("activated");
+        }
+        toggleShoppingCart();
+
+    }
     
-    headerShoppingCartImg.addEventListener("click", toggleShoppingCart);
+    headerShoppingCartImg.addEventListener("click", activateShoppingCart);
 
 }
 
-export function styleShoppingCartPatch() {
-
-    // FIXME: number of cartProducts in Patch
-
-    const amountProducts = 5;
+export function generateShoppingCartPatch() {
+    const amountProducts = getShoppingCartAmountTotal();
     
     const patchDiv = document.createElement("div");
     patchDiv.classList.add("header__shopping-cart__patch");
+    patchDiv.classList.add("hidden");
     
     const patchText = document.createElement("p");
     patchText.innerText = amountProducts;
@@ -99,15 +96,29 @@ export function styleShoppingCartPatch() {
         headerShoppingCart.removeChild(oldDiv);
     }
     if (amountProducts > 0) {
-        headerShoppingCart.appendChild(patchDiv);
+        patchDiv.classList.remove("hidden");
     }
 
+    headerShoppingCart.appendChild(patchDiv);
+    return patchDiv;
 }
 
 export function updateShoppingCartPatch() {
-    //update inner Number
+    const amount = getShoppingCartAmountTotal();
+    const patchDiv = shoppingCartPatchDiv;
 
-    //generate little Animation
+    if (amount > 0) {
+        patchDiv.classList.contains("hidden") ? shoppingCartPatchDiv.classList.remove("hidden") : 0;
+    } else if (!patchDiv.classList.contains("hidden")) {
+        shoppingCartPatchDiv.classList.add("hidden");
+    } else {
+        console.log("Error!")
+        return;
+        //should be nothing to do, since .hidden is contained as a class and it doesn't need to be removed!
+    }
+    patchDiv.querySelector("p").innerHTML = amount;
+    
+    //TODO generate little Animation
 }
 
 export default function styleHeader() {

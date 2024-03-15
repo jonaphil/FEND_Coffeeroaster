@@ -87,7 +87,7 @@
 .header__shopping-cart__patch {
   display: flex;
   position: absolute;
-  top: 0px;
+  top: -2px;
   right: -6px;
   height: var(--12px);
   width: var(--12px);
