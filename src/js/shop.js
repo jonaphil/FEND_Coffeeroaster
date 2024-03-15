@@ -22,11 +22,10 @@ function generateShop(productList) {
 
 const currentSubPage = window.location.pathname;
 
-// generateShoppingCart();
+generateShoppingCart();
 
 if (currentSubPage === "/sub-page/shop.html") {
     generateShop(productList);
-    generateShoppingCart();
 } else if (currentSubPage === "/sub-page/product.html") {
     const productID = parseInt(urlParams.get("product"));
     generateProductPage(productID);
