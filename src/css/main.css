@@ -36,6 +36,12 @@
   }
 }
 
+.mobile-only {
+  display: block;
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
 .hidden {
   display: none;
 }
