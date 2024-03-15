@@ -1,3 +1,9 @@
+.header--shopping-cart-visible {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -38,8 +44,6 @@
 
 .header__menu {
   cursor: pointer;
-  justify-self: flex-end;
-  margin-left: 60%;
 
   @media (min-width: 992px) {
     position: relative;
@@ -66,8 +70,10 @@
   /* height: 0;
   width: 0; */
   cursor: pointer;
+  margin-left: 60%;
 
   @media (min-width: 992px) {
+    margin: auto;
     display: block;
     position: relative;
     width: var(--19px);

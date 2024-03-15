@@ -86,7 +86,9 @@ function styleShoppingCartButton() {
             } 
             headerShoppingCartImgSetProp({ toggleClass: "activated" });
         }
+
         toggleShoppingCart();
+        headerElement.classList.toggle("header--shopping-cart-visible");
 
     }
     
