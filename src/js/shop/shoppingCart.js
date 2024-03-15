@@ -1,14 +1,24 @@
 import { productList } from "/js/shop/general";
 import { updateShoppingCartPatch } from "/js/styling/header.js";
 
-export const shoppingCartArray = [];
+export const shoppingCartArray = []; 
+const shoppingCartHtml = createShoppingCartWrapperHtml();
+
+/* dataFormat of shoppingCart in localStorage:
+    [{
+        id: int, -> this is optional. is it using to much memory???
+        productId: int, 
+        variantId: int, 
+        amount: int
+    }]
+*/
 
 function getProductCartSpecs(productId, variantId) {
     const productDetails = productList.find((productObj) => productObj.id === productId);
     const variantDetails = productDetails.variants.find((variantObj) => variantObj.id === variantId);
-    const cartIdCounter = shoppingCartArray.slice(-1).pop();
+    const lastElement = shoppingCartArray.slice(-1).pop();
     const cartProductSpecs = {
-        id: cartIdCounter ? cartIdCounter + 1 : 0,
+        id: lastElement ? lastElement.id + 1 : 0, // Is the cartId counter really necessary? i think not!
         productId: productDetails.id,
         variantId: variantDetails.id,
         name: `${productDetails.name} [${productDetails.id}]`,
@@ -23,24 +33,21 @@ function getProductCartSpecs(productId, variantId) {
 
 function loadShoppingCartFromLocalStorage() { 
     const shoppingCart = localStorage.getItem("shoppingCart");
+    shoppingCartArray.splice(0);
     if (shoppingCart) {
         // FIXME: quicker approch to circumvent 2 times forEach?
-        shoppingCart.forEach((cartProductShort) => {
-            cartProductShort.variants.forEach((cartVariantShort) => {
-                const cartObject = {
-                    ...getProductCartSpecs(cartProductShort.id, cartVariantShort.id),
-                    amount: cartVariantShort.amount,
-                }
-                shoppingCartArray.push(cartObject);               
-            })
-        })
-        console.log("finished array");
-        console.log(shoppingCartArray);
+        shoppingCart.forEach(item => createShoppingCartEntry(item.productId, item.variantId, item.amount));
+        console.log("finished loading shoppingCart");
         return;
     } else {
         return;
     }
 }
+
+function saveCartToLocalStorage() { 
+    const localStorageList = shoppingCartArray.map(({ id, productId, variantId, amount }) => ({ id, productId, variantId, amount }));
+    localStorage.setItem("shoppingCart", JSON.stringify(localStorageList));
+};
 
 function createShoppingCartProductNode(cartProductObj) {
     const cartProductHtml = document.createElement("div");
@@ -81,7 +88,7 @@ function createShoppingCartProductNode(cartProductObj) {
 
             const priceHtml = document.createElement("h5");
             priceHtml.classList.add("shopping-cart__product__specs__price")
-            priceHtml.innerHTML = `${asMoney(cartProductObj.variety.price)}`;
+            priceHtml.innerHTML = `${asMoney(cartProductObj.price)}`;
 
             specsWrapper.appendChild(name);
             specsWrapper.appendChild(details);
@@ -94,7 +101,7 @@ function createShoppingCartProductNode(cartProductObj) {
 
         const deleteButton = document.createElement("img");
         deleteButton.classList.add("shopping-cart__product__delete");
-        deleteButton.dataset.cartId = cartProduct.id;
+        deleteButton.dataset.cartId = cartProductObj.id;
         deleteButton.addEventListener("click", removeFromShoppingCart);
 
         cartProductHtml.appendChild(getPictureHtml());
@@ -104,7 +111,7 @@ function createShoppingCartProductNode(cartProductObj) {
         return cartProductHtml;
 }
 
-function createShoppingCartHtml() { 
+function createShoppingCartWrapperHtml() { 
     const shoppingCartDiv = document.createElement("div");
     shoppingCartDiv.classList.add("shopping-cart");
     shoppingCartDiv.classList.add("hidden");
@@ -122,28 +129,68 @@ function createShoppingCartHtml() {
 
     shoppingCartDiv.appendChild(divHeading);
 
-    const shoppingCartProductsAllHtml = shoppingCartArray.map((cartProduct) => {
-        return createShoppingCartProductNode(cartProduct);
-    });
+    // const shoppingCartProductsAllHtml = shoppingCartArray.map((cartProduct) => {
+    //     return createShoppingCartProductNode(cartProduct);
+    // });
 
-    shoppingCartProductsAllHtml.forEach((obj) => {
-        console.log("append shoppingCartProductObj");
-        shoppingCartDiv.appendChild(obj);
-    });
+    // shoppingCartProductsAllHtml.forEach((obj) => {
+    //     console.log("append shoppingCartProductObj");
+    //     shoppingCartDiv.appendChild(obj);
+    // });
 
     document.querySelector("header").appendChild(shoppingCartDiv);
+
+    return shoppingCartDiv;
 }
 
-function getShoppingCartNode() {
-    const nodeList = document.querySelector(".shopping-cart");
-    return nodeList;
-    // -> return existingNodeList
-}
+function createShoppingCartEntry(productId, variantId, amount) {
+    const shoppingCartItemObj = {
+        ...getProductCartSpecs(productId, variantId),
+        amount,
+    };
+    shoppingCartArray.push(shoppingCartItemObj);
 
-function getShoppingCartNodeListItem(productId, variantId) {
+    const shoppingCartItemDiv = createShoppingCartProductNode(shoppingCartItemObj);
+    shoppingCartHtml.appendChild(shoppingCartItemDiv);
 
-    // -> return specific Node
-}
+    saveCartToLocalStorage();
+ };
+
+function readShoppingCartEntryIndex(productId, variantId) {
+    // return cartIndex;
+ };
+
+function updateShoppingCartEntry(cartIndex, amount) {
+    // const cartIndex = shoppingCartArray.findIndex(({ id }) => cartId === id);
+    if (cartIndex > -1) {
+        shoppingCartArray[cartIndex].amount = amount;
+
+        const entryNode = shoppingCartHtml.children[cartIndex + 1];
+        entryNode.querySelector("shopping-cart__product__specs__details").innerHTML =
+            `${amount} Stück<br>${shoppingCartArray[cartIndex].variantName}`;
+
+    } else {
+        return -1;
+    }
+
+    saveCartToLocalStorage();
+    return 0;
+
+
+};
+
+function removeShoppingCartEntry(cartId) { };
+
+// function getShoppingCartNode() {
+//     const nodeList = document.querySelector(".shopping-cart");
+//     return nodeList;
+//     // -> return existingNodeList
+// }
+
+// function getShoppingCartNodeListItem(productId, variantId) {
+
+//     // -> return specific Node
+// }
 
 export function toggleShoppingCart() {
     const mainNode = document.querySelector("main");
@@ -154,39 +201,19 @@ export function toggleShoppingCart() {
 
 // export function hideShoppingCart() { }
 
+
+
 export function addToShoppingCart(productId, variantId, amount = 1) {
     // Add to shopping Cart Array
     // Remove and newly add to shoppingCartDiv
     // Update or Add the cart in the localStorage
-
     const productInCartIndex = shoppingCartArray.findIndex((cartProduct) =>
         cartProduct.productId === productId && cartProduct.variantId == variantId);
-    const cartId = productInCartIndex > -1 ? shoppingCartArray[productInCartIndex].cartId : null;
-    const oldProduct = cartId ? document.querySelector(`[data-cart-id="${cartId}"]`) : null;
-    const newProduct = oldProduct ? oldProduct : { ...getProductCartSpecs (productId, variantId), amount: amount };
-    const shoppingCartElement = getShoppingCartNode();
-
-    const localStoredCart = localStorage.getItem("shoppingCart");
-    const cartShort = localStoredCart ? localStoredCart : [];
-
     if (productInCartIndex > -1) {
-        shoppingCartArray[productInCartIndex].amount += amount;
-        
-        oldProduct.querySelector(".shopping-cart__product__specs__details").innerHTML = `${shoppingCartArray[productInCartIndex].amount} Stück<br>${shoppingCartArray[productInCartIndex].variantName}`;
-        
-        cartShort.find((product) =>
-            product.id === productId).variants.find((variant) =>
-                variant.id === variantId).amount += amount; //Good Style?
+        const newAmount = shoppingCartArray[productInCartIndex].amount + amount;
+        updateShoppingCartEntry(productInCartIndex, newAmount);
     } else {
-        shoppingCartArray.push();
-        const productInCartShort = cartShort.findIndex((product) => product.id === productId);
-        if (productInCartShort > -1) {
-            const variant = { id: variantId, amount: amount };
-            cartShort[productInCartShort].variants.push(variant);
-        } else {
-            const shortProduct = { id: productId, variants: { id: variantId, amount: amount } };
-            cartShort.push(shortProduct);
-        }
+        createShoppingCartEntry(productId, variantId, amount);
     }
     shoppingCartElement.appendChild(createShoppingCartProductNode(newProduct));
 
@@ -209,7 +236,7 @@ export function getShoppingCartAmountTotal() {
 export function getShoppingCartPriceTotal(shippingCost = 0) {
     const totalPrice = shoppingCartArray.reduce((preSum, cartProduct) => preSum + cartProduct.variant.price, shippingCost);
     return totalPrice;
- }
+}
 
 export function generateShoppingCart() {
     loadShoppingCartFromLocalStorage();
