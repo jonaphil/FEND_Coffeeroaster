@@ -45,6 +45,7 @@ function loadShoppingCartFromLocalStorage() {
         shoppingCart.forEach(item => createShoppingCartEntry(item.productId, item.variantId, item.amount));
         console.log("finished loading shoppingCart");
         updateShoppingCartPatch();
+        updateShoppingCartWrapperEl();
         return;
     } else {
         return;

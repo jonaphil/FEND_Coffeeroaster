@@ -5,13 +5,26 @@ const headerElement = document.querySelector("header");
 const headerDiv = headerElement.querySelector("div.header");
 const headerLogo = headerElement.querySelector(".header__logo");
 const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
-const headerShoppingCart = headerElement.querySelector(".header__shopping-cart"); //FIXME two Shopping-Carts in the header, because of mobile/desktop difficulty
-const headerShoppingCartImg = headerShoppingCart.querySelector("img");
+const headerShoppingCart = headerElement.querySelectorAll(".header__shopping-cart"); //FIXME two Shopping-Carts in the header, because of mobile/desktop difficulty
+const headerShoppingCartImg = Array.from(headerShoppingCart).map( div => div.querySelector("img"));
 const navigation = headerElement.querySelector(".navigation");
 
 const shoppingCartPatchDiv = generateShoppingCartPatch();
 
 const hero = document.querySelector(".hero");
+
+function headerShoppingCartImgSetProp(propsToChange = { src: undefined, toggleClass: undefined, onClick: undefined }) {
+    const imgList = headerShoppingCartImg;
+    if (propsToChange.src) {
+        imgList.forEach(imgObj => imgObj.src = propsToChange.src);
+    }
+    if (propsToChange.toggleClass) {
+        imgList.forEach(imgObj => imgObj.classList.toggle(propsToChange.toggleClass));
+    }
+    if (propsToChange.onClick) {
+        imgList.forEach(imgObj => imgObj.addEventListener("click", propsToChange.onClick));
+    }
+}
 
 function changeHeaderToOriginal() {
     if (hero === null) {
@@ -25,7 +38,7 @@ function changeHeaderToOriginal() {
         }
         headerLogo.src = "/images/icons/Logo-white.svg";
         headerBurgerMenu.src = "/images/icons/Burger-Menu-white.svg";
-        headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
+        headerShoppingCartImgSetProp({src: "/images/icons/Shopping-bag-white.svg"});
     }
 }
 
@@ -39,7 +52,7 @@ function changeHeaderToWhite() {
     }
     headerLogo.src = "/images/icons/Logo-black.svg";
     headerBurgerMenu.src = "/images/icons/Burger-Menu-black.svg";
-    headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
+    headerShoppingCartImgSetProp({ src: "/images/icons/Shopping-bag-black.svg" });
 
 }
 
@@ -61,21 +74,23 @@ function styleShoppingCartButton() {
     const activateShoppingCart = () => {
         const shoppingCart = shoppingCartEl;
         if (shoppingCart.classList.contains("hidden")) {
-            headerShoppingCartImg.src = "/images/icons/Shopping-bag-petrol.svg";
-            headerShoppingCartImg.classList.toggle("activated");
+            headerShoppingCartImgSetProp({
+                src: "/images/icons/Shopping-bag-petrol.svg",
+                toggleClass: "activated"
+            })
         } else {
             if (headerDiv.classList.contains("header--white")) {
-                headerShoppingCartImg.src = "/images/icons/Shopping-bag-black.svg";
+                headerShoppingCartImgSetProp({ src: "/images/icons/Shopping-bag-black.svg" });
             } else {
-                headerShoppingCartImg.src = "/images/icons/Shopping-bag-white.svg";
+                headerShoppingCartImgSetProp({ src: "/images/icons/Shopping-bag-white.svg" });
             } 
-            headerShoppingCartImg.classList.toggle("activated");
+            headerShoppingCartImgSetProp({ toggleClass: "activated" });
         }
         toggleShoppingCart();
 
     }
     
-    headerShoppingCartImg.addEventListener("click", activateShoppingCart);
+    headerShoppingCartImgSetProp({ onClick: activateShoppingCart });
 
 }
 
@@ -91,33 +106,35 @@ export function generateShoppingCartPatch() {
     
     patchDiv.appendChild(patchText);
 
-    const oldDiv = headerShoppingCart.querySelector(".header__shopping-cart__patch");
-    if (oldDiv !== null) {
-        headerShoppingCart.removeChild(oldDiv);
-    }
-    if (amountProducts > 0) {
-        patchDiv.classList.remove("hidden");
-    }
-
-    headerShoppingCart.appendChild(patchDiv);
-    return patchDiv;
+    const patchDivList = [];
+    
+    headerShoppingCart.forEach(elem => {
+        const oldDivs = elem.querySelectorAll(".header__shopping-cart__patch");
+        oldDivs.length > 0 ? oldDivs.forEach(item => item.remove()) : 0;
+        const clonePatch = patchDiv.cloneNode(true);
+        elem.appendChild(clonePatch);
+        patchDivList.push(clonePatch);
+    })
+    return patchDivList;
 }
 
 export function updateShoppingCartPatch() {
     const amount = getShoppingCartAmountTotal();
-    const patchDiv = shoppingCartPatchDiv;
+    const patchDivList = shoppingCartPatchDiv;
 
-    if (amount > 0) {
-        patchDiv.classList.contains("hidden") ? shoppingCartPatchDiv.classList.remove("hidden") : 0;
-    } else if (!patchDiv.classList.contains("hidden")) {
-        shoppingCartPatchDiv.classList.add("hidden");
-    } else {
-        console.log("Error!")
-        return;
-        //should be nothing to do, since .hidden is contained as a class and it doesn't need to be removed!
-    }
-    patchDiv.querySelector("p").innerHTML = amount;
-    
+    const updateSinglePatch = (patchDiv) => {
+        if (amount > 0) {
+            patchDiv.classList.contains("hidden") ? patchDiv.classList.remove("hidden") : 0;
+        } else if (!patchDiv.classList.contains("hidden")) {
+            patchDiv.classList.add("hidden");
+        } else {
+            console.log("Error!")
+            return;
+        }
+        patchDiv.querySelector("p").innerHTML = amount;
+    };
+
+    patchDivList.forEach(singlePatch => updateSinglePatch(singlePatch));
     //TODO generate little Animation
 }
 
