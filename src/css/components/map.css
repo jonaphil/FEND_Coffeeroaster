@@ -13,7 +13,6 @@
   & iframe {
     height: 35vh;
     width: 100vw;
-    z-index: 1;
     border: none;
 
     @media (min-width: 992px) {
