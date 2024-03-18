@@ -10,6 +10,10 @@
 @import "sections/footer.css";
 @import "sections/nav-page.css";
 
+@import "components/map.css";
+@import "components/control-elements.css";
+@import "components/wrapper.css";
+
 @import "sections/hero.css";
 @import "sections/section.css";
 @import "sections/information.css";
@@ -22,10 +26,6 @@
 @import "sub-pages/origin.css";
 @import "sub-pages/product.css";
 @import "sub-pages/contact.css";
-
-@import "components/map.css";
-@import "components/control-elements.css";
-@import "components/wrapper.css";
 
 @import "shop/shop.css";
 @import "shop/shopping-cart.css";

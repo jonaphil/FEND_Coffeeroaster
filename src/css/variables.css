@@ -9,6 +9,8 @@
   --color-orange: #d77c12;
   --color-medium-grey: #737373;
   --color-light-grey: #e9e9e9;
+  --color-error: #ff0000;
+  --color-error-background: #ff00004d;
 
   --color-button-default: #1a1a1a;
   --color-button-font: var(--color-white);
@@ -68,7 +70,9 @@
   --125px: 7.8125rem;
   --150px: 9.375rem;
   --200px: 12.5rem;
+  --220px: 13.75rem;
   --350px: 21.875rem;
+  --380px: 23.75rem;
 
   /* # Layout */
 
