@@ -56,6 +56,43 @@
   }
 }
 
+.checkbox {
+  & input {
+    display: none;
+  }
+  & label {
+    position: relative;
+    display: flex;
+    gap: var(--12px);
+    align-items: center;
+  }
+
+  & label:before {
+    display: block;
+    content: " ";
+    height: var(--16px);
+    width: var(--16px);
+    border: var(--2px) solid var(--color-anthrazit);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  & .checkbox__checked {
+    display: none;
+    position: absolute;
+    height: var(--12px);
+    width: var(--12px);
+    background-color: black;
+    border-radius: var(--6px);
+    left: var(--4px);
+    cursor: pointer;
+  }
+
+  & input:checked + label *.checkbox__checked {
+    display: block;
+  }
+}
+
 .jsDropDownMenu {
 }
 

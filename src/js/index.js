@@ -1,10 +1,11 @@
 import Slider from './slider';
 import stylePage from "./styling/styles.js";
+import generateContactForm from "./forms/contact.js";
 
 // TODO: add Slider only on these pages with an actual slider!
+const currentSubPage = window.location.pathname;
 
 stylePage();
-
 
 new Slider({
     sliderSelector: '.section--shop-preview__wrapper',
@@ -17,3 +18,7 @@ new Slider({
 
     shortcutsClass: 'section--shop-preview__navigation__shortcuts',
 });
+
+if (currentSubPage === "./sub-page/contact.html") {
+    generateContactForm();
+}

@@ -30,8 +30,9 @@
   display: flex;
   flex-direction: row;
   gap: var(--12px);
-  & input {
-    height: auto;
-    width: auto;
+  align-items: center;
+  & .checkbox {
+    &:after {
+    }
   }
 }
