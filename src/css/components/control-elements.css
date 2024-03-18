@@ -68,14 +68,15 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  box-sizing: border-box;
+  justify-content: stretch;
+  /* box-sizing: content-box; */
   height: var(--46px);
 }
 
 .jsDropDownMenu__Button {
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
+  /* height: 100%; */
   &:hover .jsDropDownMenu__Button__Label {
     color: var(--color-anthrazit);
   }
@@ -88,10 +89,10 @@
 }
 
 .jsDropDownMenu__Button__Label {
-  padding: 12px 22px; /*recalculated that sizes starting from 15px and 25px to get the border inside of the padding*/
+  padding: 14px 22px; /*recalculated that sizes starting from 15px and 25px to get the border inside of the padding*/
   border: 2px solid var(--color-anthrazit);
   border-radius: 5px 0 0 5px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   cursor: pointer;
   color: var(--color-medium-grey);
   background-color: var(--color-white);

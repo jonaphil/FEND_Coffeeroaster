@@ -1,0 +1,37 @@
+.section--contact {
+  margin-top: var(--56px);
+}
+
+.contact-form {
+  margin-top: var(--14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--40px);
+
+  & .jsDropDownMenu__Button__Label {
+    width: 100%;
+  }
+}
+
+.contact-form__text-input {
+  & input {
+    width: 100%;
+  }
+}
+
+.contact-form__message {
+  & textarea {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.contact-form__accept {
+  display: flex;
+  flex-direction: row;
+  gap: var(--12px);
+  & input {
+    height: auto;
+    width: auto;
+  }
+}
