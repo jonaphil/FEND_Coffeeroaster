@@ -77,6 +77,10 @@
     cursor: pointer;
   }
 
+  & input.error + label:before {
+    background-color: var(--color-error-background);
+  }
+
   & .checkbox__checked {
     display: none;
     position: absolute;

@@ -4,7 +4,6 @@ function styleSingleDropDownMenu(menuObj) {
     const optionsOriginal = originMenu.querySelectorAll("option");
     const options = Array.from(optionsOriginal);
 
-    // ---start generate optionsList
     // TODO: having a function to generate that List, work on it and then it can be used in the java-script generated form.
     let selectedOption = options.findIndex((option) => option.selected === true);
 
@@ -13,26 +12,7 @@ function styleSingleDropDownMenu(menuObj) {
         const r = options[selectedOption].innerHTML;
         return r;
     };
-    
-    // Is it maybe optional to cut out hidden options?
-    const cutOutHiddenOptions = () => {
-        let index = options.findIndex((option) => option.hidden === true);
-        while (index >= 0 ) {
-            options.splice(index, 1);
-            index = options.findIndex((option) => option.hidden === true);
-        };
-    }
-
-    const optionsList = [
-        {
-            name: "Name of the option",
-            value: "value of the option"
-        }
-    ];
-    // ---end generate optionsList
-    
-    // cutOutHiddenOptions();
-    
+        
     function openCloseList() {
             menuOptionsList.classList.toggle("open");
             menuOptionsListWrapper.classList.toggle("open");
@@ -84,9 +64,6 @@ function styleSingleDropDownMenu(menuObj) {
     })
 
     menuOptionsListWrapper.appendChild(menuOptionsList);
-
-    // const test = document.createElement("p");
-    // test.innerHTML = "Test";
 
     menuButtonOpener.addEventListener("click", openCloseList);
     menuButtonLabel.addEventListener("click", openCloseList);
