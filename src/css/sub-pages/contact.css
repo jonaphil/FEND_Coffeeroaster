@@ -6,10 +6,14 @@
     align-itmes: flex-start;
     justify-content: space-between;
     padding-right: var(--200px);
-    gap: var(--220px);
+    gap: var(--150px);
 
     & h2 {
       min-width: fit-content;
+    }
+
+    @media (min-width: 1200px) {
+      gap: var(--220px);
     }
   }
 }
@@ -18,11 +22,11 @@
   margin-top: var(--14px);
   display: flex;
   flex-direction: column;
-  gap: var(--40px);
+  gap: var(--20px);
   width: 100%;
 
   @media (min-width: 992px) {
-    min-width: 350px;
+    min-width: var(--350px);
   }
 
   & .jsDropDownMenu__Button__Label {
