@@ -137,14 +137,3 @@ address {
   text-decoration: none;
   font-style: normal;
 }
-
-input,
-textarea {
-  border: none;
-  box-shadow: none;
-  border-bottom: 3px solid var(--color-anthrazit);
-}
-
-input {
-  height: var(--40px);
-}

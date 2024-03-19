@@ -16,7 +16,7 @@ function emailIsValid(email) {
 
 function messageIsValid(message) { 
     const realMessage = message.trim();
-    if (realMessage > 0) {
+    if (realMessage.length > 0) {
         return true;
     } else {
         return false;
@@ -25,7 +25,9 @@ function messageIsValid(message) {
 }
 
 function showError(node) {
-    node.classList.add("error");
+    if (!node.classList.contains("error")) {
+        node.classList.add("error");
+    }
 }
 
 export default function generateContactForm() {
@@ -42,6 +44,7 @@ export default function generateContactForm() {
 
     const evaluateInput = () => {
         requiredFields.forEach((node) => {
+            node.classList.contains("error") ? node.classList.remove("error") : 0;
             switch (node.id) {
                 case 'name':
                     nameIsValid(node.value) ? 0 : showError(node);
@@ -53,7 +56,7 @@ export default function generateContactForm() {
                     messageIsValid(node.value) ? 0 : showError(node);
                     break;
                 case 'concern':
-                    node.value !== 0 ? 0 : showError(node);
+                    parseInt(node.value) !== 0 ? 0 : showError(node);
                     break;
                 case 'accept-dataprotection':
                     node.checked ? 0 : showError(node);
@@ -82,18 +85,9 @@ export default function generateContactForm() {
         } else {
             error = false;
         }
-        // error = !nameIsValid(name) ? true : false;
-        // error = !emailIsValid(email) ? true : false;
-        // error = concernValue === 0 ? true : false;
-        // error = !messageIsValid(message) ? true : false;
-        // error = checkbox.checked === false ? true : false;
-
-        console.log(error);
-        let test = !error ? true : false;
-        console.log(test);
-        
+       
         if (!error) {
-            console.log("submit!");
+            contactForm.submit();
         } else {
             alert("Please fill out the form correctly!\n\nLook at the hints.");
             evaluateInput();

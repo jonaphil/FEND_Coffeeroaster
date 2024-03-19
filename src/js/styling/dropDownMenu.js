@@ -73,7 +73,7 @@ function styleSingleDropDownMenu(menuObj) {
     menuWrapper.appendChild(menuButton);
     menuWrapper.appendChild(menuOptionsListWrapper);
 
-    parent.insertBefore(menuWrapper, originMenu);
+    parent.insertBefore(menuWrapper, originMenu.nextSibling);
     originMenu.classList.add("jsDropDownMenu__Hidden-part");
 }
 
