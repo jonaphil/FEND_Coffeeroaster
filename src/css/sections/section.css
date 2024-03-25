@@ -8,17 +8,12 @@
     var(--padding-bottom-default);
   gap: var(--distance-vertical-small);
   align-items: flex-start;
-
-  /*FIXME Coloring and codestyling of the "& foo {}" sometimes broken. why? */
-
   & > *:first-child {
     margin-top: 0rem;
   }
-
   & > *:last-child {
     margin-bottom: 0rem;
   }
-
   @media (min-width: 992px) {
   }
 }

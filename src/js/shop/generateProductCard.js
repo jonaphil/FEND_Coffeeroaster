@@ -29,7 +29,7 @@ export default function generateProductCard(productObj) {
                     event.preventDefault();
                     addToShoppingCart(productObj.id, variant.id);
                 }
-                varietyHtml.addEventListener("click", quickAddClick); //FIXME: beide IDs übergeben, ohne Funktion aufzurufen.
+                varietyHtml.addEventListener("click", quickAddClick); 
                 varietyHtml.innerHTML = `${variant.name}`;
                 
                 selectionHtml.appendChild(varietyHtml);

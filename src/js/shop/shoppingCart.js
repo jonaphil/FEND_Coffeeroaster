@@ -1,6 +1,7 @@
 import { productList, asMoney } from "/js/shop/general";
 import { updateShoppingCartPatch } from "/js/styling/header.js";
 
+
 const shoppingCartArray = []; 
 export const shoppingCartEl = createShoppingCartWrapperEl();
 
@@ -41,7 +42,6 @@ function loadShoppingCartFromLocalStorage() {
     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
     shoppingCartArray.splice(0);
     if (shoppingCart) {
-        // FIXME: quicker approch to circumvent 2 times forEach?
         shoppingCart.forEach(item => createShoppingCartEntry(item.productId, item.variantId, item.amount));
         console.log("finished loading shoppingCart");
         updateShoppingCartPatch();
@@ -175,7 +175,7 @@ function createShoppingCartEntry(productId, variantId, amount) {
  };
 
 function updateShoppingCartEntry(cartIndex, amount) {
-    // const cartIndex = shoppingCartArray.findIndex(({ id }) => cartId === id);
+    // const cartIndex = shoppingCartArray.findIndex(({ id }) => cartId === id//;
     if (cartIndex < 0) {
         console.log("Trying to update non existing cartEntry");
         return -1;

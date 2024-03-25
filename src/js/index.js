@@ -4,14 +4,11 @@ import generateContactForm from "./forms/contact.js";
 
 // TODO: add Slider only on these pages with an actual slider!
 const currentSubPage = window.location.pathname;
-console.log(currentSubPage);
 stylePage();
 
 switch (currentSubPage) {
     case "/sub-page/contact.html":
-        console.log("form stying"); //FIXME
         generateContactForm();
-        console.log("form styling finished");
         break
 }
 

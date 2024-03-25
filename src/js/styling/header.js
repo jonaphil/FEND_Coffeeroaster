@@ -5,7 +5,7 @@ const headerElement = document.querySelector("header");
 const headerDiv = headerElement.querySelector("div.header");
 const headerLogo = headerElement.querySelector(".header__logo");
 const headerBurgerMenu = headerElement.querySelector(".header__menu>img");
-const headerShoppingCart = headerElement.querySelectorAll(".header__shopping-cart"); //FIXME two Shopping-Carts in the header, because of mobile/desktop difficulty
+const headerShoppingCart = headerElement.querySelectorAll(".header__shopping-cart"); 
 const headerShoppingCartImg = Array.from(headerShoppingCart).map( div => div.querySelector("img"));
 const navigation = headerElement.querySelector(".navigation");
 

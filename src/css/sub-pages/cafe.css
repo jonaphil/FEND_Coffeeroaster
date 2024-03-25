@@ -64,9 +64,8 @@
     "g h";
   grid-auto-rows: min-content;
 
-  /* FIXME: dimensions!! */
-  row-gap: 14px;
-  column-gap: 16px;
+  row-gap: var(--14px);
+  column-gap: var(--16px);
   justify-items: center;
   align-items: top;
 

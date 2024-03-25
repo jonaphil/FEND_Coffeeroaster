@@ -69,7 +69,7 @@
   width: 100%;
 
   /* FIXME okay?*/
-  height: 55px;
+  height: var(--56px);
 
   & * {
     height: fit-content;

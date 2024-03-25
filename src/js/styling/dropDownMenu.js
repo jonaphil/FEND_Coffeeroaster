@@ -31,7 +31,7 @@ function styleSingleDropDownMenu(menuObj) {
     menuButtonLabel.className = "jsDropDownMenu__Button__Label";
     const generateLabel = () => {
         menuButtonLabel.innerHTML = `<p>${descriptorLine()}</p>`;
-    }; //FIXME: regenerate descriptorLine if there was a new element chosen.
+    }; 
     generateLabel();
 
     const menuButtonOpener = document.createElement("div");
