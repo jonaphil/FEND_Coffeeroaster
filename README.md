@@ -4,4 +4,4 @@ This Repository is done for educational purposes. It is the first Project I did,
 
 # Progress
 
-This Project is far from being finished. Since it is not a realworld Project and I am advancing with the Learning of the React Framework I decided to publish it although it is not finished. It should show my contemporary Understanding of HTML, CSS and JavaScript.
+This Project is far from being finished. Since it is not a realworld Project and I am advancing with the Learning of the React Framework, I decided to publish it although it is not finished. It should show my contemporary Understanding of HTML, CSS and JavaScript. There is still a lot of work planned - which could be seen by all the TODO and FIXME Tags.
