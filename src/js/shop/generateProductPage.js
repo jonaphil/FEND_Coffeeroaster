@@ -62,6 +62,9 @@ export default function generateProductPage(productID) {
         productProperties.appendChild(label);
     })
     //TODO Generate Property-Icons
+  //Test for nvchad
+    //const array = new Array(9);
+//  array.fill(3);
 
     const productDescription = document.querySelector(".product__description");
     productDescription.querySelector("p").innerText = product.description;

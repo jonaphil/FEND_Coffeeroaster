@@ -1,4 +1,4 @@
-import {asMoney, addToCart, getMinMaxPrice, iconsList} from "/js/shop/general";
+import {asMoney, getMinMaxPrice, iconsList} from "/js/shop/general";
 import { addToShoppingCart } from "./shoppingCart";
 
 export default function generateProductCard(productObj) {
@@ -37,7 +37,8 @@ export default function generateProductCard(productObj) {
             selectionHtml.onmouseout = showButton;
             return selectionHtml;
         }
-
+        
+        quickAddSelection
         quickMenuWrapper.appendChild(quickAddButton);
 
         const showSelection = () => {
@@ -50,7 +51,7 @@ export default function generateProductCard(productObj) {
             quickMenuWrapper.appendChild(quickAddButton);
             quickAddButton.onmouseover = showSelection;
         }
-        
+      
         quickAddButton.onmouseover = showSelection;
 
         return quickMenuWrapper;
